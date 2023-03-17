@@ -1,0 +1,26 @@
+* {
+   font-family: 'Inter', sans-serif;
+}
+
+#hero-before::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid black;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateY(0);
+	}
+	30% {
+		transform: translateY(100px);
+	}
+}
+
+svg #wheel {
+	animation: scroll ease 1.5s infinite;
+}
