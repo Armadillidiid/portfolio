@@ -155,7 +155,7 @@ const Hero = () => {
         height="100"
         viewBox="0 0 100 100"
         className={
-          "absolute w-[580px] h-[580px] self-center top-[15%] left-[25%] -z-10"
+          "absolute w-[580px] h-[580px] self-center top-[18%] left-[23%] -z-10"
         }
       >
         <circle
@@ -174,7 +174,7 @@ const Hero = () => {
         height="100"
         viewBox="0 0 100 100"
         className={
-          "absolute w-[500px] h-[500px] self-center top-[40%] right-[20%] -z-10"
+          "absolute w-[440px] h-[440px] self-center top-[40%] right-[15%] -z-10"
         }
       >
         <rect
