@@ -24,3 +24,22 @@
 svg #wheel {
 	animation: scroll ease 1.5s infinite;
 }
+
+.gradient-text {
+  background: linear-gradient(300deg, #ffee07, #ff2b6a, #ab4bff, #5ca2ff, #df1700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 30s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
