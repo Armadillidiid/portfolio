@@ -10,7 +10,7 @@ import {
 } from "../data/icons";
 
 const Skill: React.FC = () => {
-  const icon = (arr) => (
+  const icon = (arr: {name: string, url: string}) => (
     <div className="flex flex-col gap-4 justify-between items-center h-full">
       <img src={arr.url} className="w-24 rounded-xl" />
       <div className="text-center">

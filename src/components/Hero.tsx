@@ -1,12 +1,11 @@
-import React from "react";
 import Typewriter from "typewriter-effect";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const animationControls = useAnimation();
 
-  const words = [
+  const words: string[] = [
     "craft digital solutions with code",
     "build intuitive web applications",
     "design custom web experiences",

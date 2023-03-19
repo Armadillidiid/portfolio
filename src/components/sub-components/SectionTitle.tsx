@@ -1,6 +1,10 @@
-import React from "react";
+import type { ReactNode } from "react";
 
-const SectionTitle = ({ children }) => {
+interface Prop {
+  children: ReactNode;
+}
+
+const SectionTitle = ({ children }: Prop) => {
   return (
     <h3 className="text-3xl font-semibold text-neutral-700 mb-4">{children}</h3>
   );

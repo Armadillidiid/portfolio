@@ -1,6 +1,10 @@
-import React from "react";
+import type { ReactNode } from "react";
 
-const SectionDescription = ({ children }) => {
+interface Props {
+  children: ReactNode;
+}
+
+const SectionDescription = ({ children }: Props) => {
   return (
     <h3 className="text-8xl font-semibold tracking-tighter mb-12">
       {children}

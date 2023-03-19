@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import Manifest from "../components/Manifest";
 import About from "../components/About";
 import Project from "../components/Project";
+import Skill from "../components/Skill";
 ---
 
 <Layout title="Emmanuel Isenah | Web Developer">
@@ -24,5 +25,10 @@ import Project from "../components/Project";
   </div>
   <div class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
     <Project client:only="react" />
+  </div>
+  <div class="bg-neutral-100">
+    <div class="container py-24 mx-auto lg:px-12 xl:px-32 overflow-hidden">
+      <Skill client:only="react" />
+    </div>
   </div>
 </Layout>

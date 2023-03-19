@@ -1,6 +1,4 @@
-import React from "react";
-
-const About = () => {
+const About: React.FC = () => {
   return (
     <div className="py-24">
       <h3 className="text-3xl font-semibold text- text-neutral-700 mb-4">

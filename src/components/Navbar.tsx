@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { FaBars, FaMoon } from "react-icons/fa";
-const Navbar = () => {
+
+const Navbar: React.FC = () => {
   const [toggle, setToggle] = useState(false);
   return (
     <nav
-      className="flex max-w-min rounded-full top-5 flex-col md:flex-row justify-center p-2 fixed bg-transparent backdrop-blur-md shadow-[0_0_3px_rgba(0,0,0,0.3)] z-10
+      className="flex bg-white/50 max-w-min rounded-full top-5 flex-col md:flex-row justify-center p-2 fixed backdrop-blur-[8px] shadow-[0_0_3px_rgba(0,0,0,0.3)] z-10
      "
     >
       <button
