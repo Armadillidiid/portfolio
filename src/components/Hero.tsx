@@ -77,7 +77,7 @@ const Hero = () => {
             custom={2}
             initial="initial"
             animate="animate"
-            className="font-normal text-3xl md:text-5xl"
+            className="font-semibold text-3xl md:text-5xl"
           >
             I'm a <b className="font-extrabold">Software Developer</b>
           </motion.p>
