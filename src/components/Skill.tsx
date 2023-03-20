@@ -65,7 +65,7 @@ const Skill: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-4 bg-white p-10 rounded-2xl border border-neutral-200/80">
+        <div className="lg:col-span-5 bg-white p-10 rounded-2xl border border-neutral-200/80">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Testing Frameworks</span>
             <div className="flex flex-grow justify-around items-center gap-12">
@@ -73,7 +73,7 @@ const Skill: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-4 bg-white p-10 rounded-2xl border border-neutral-200/80">
+        <div className="lg:col-span-3 bg-white p-10 rounded-2xl border border-neutral-200/80">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Version Control</span>
             <div className="flex flex-grow justify-around items-center gap-12">
