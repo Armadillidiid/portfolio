@@ -12,29 +12,33 @@ import "react-toastify/dist/ReactToastify.css";
 ---
 
 <Layout title="Emmanuel Isenah | Web Developer">
+
   <div class="container mx-auto px-4 flex justify-center">
     <Navbar client:only="react" />
   </div>
-  <div class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
+  <div id="" class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
     <Hero client:only="react" />
   </div>
   <div class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
     <Manifest client:only="react" />
   </div>
   <div class="bg-neutral-100">
-    <div class="container mx-auto lg:px-12 xl:px-32 overflow-hidden">
+    <div id="about" class="container mx-auto lg:px-12 xl:px-32 overflow-hidden">
       <About client:only="react" />
     </div>
   </div>
-  <div class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
+  <div id="projects" class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
     <Project client:only="react" />
   </div>
-  <div class="bg-neutral-100">
+  <div id="skills" class="bg-neutral-100">
     <div class="container py-24 mx-auto lg:px-12 xl:px-32 overflow-hidden">
       <Skill client:only="react" />
     </div>
   </div>
-  <div class="container pt-24 mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
+  <div
+    id="contact"
+    class="container pt-24 mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden"
+  >
     <Contact client:load />
   </div>
   <ToastContainer client:only="react" />
