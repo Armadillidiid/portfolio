@@ -100,3 +100,15 @@ svg #wheel {
   top: -3rem;
   background: rgb(64, 64, 64);
 }
+
+.blue-button {
+  background-color: #3b82f6;
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+}
+
+.blue-button:hover {
+  background-color: #2563eb;
+}
