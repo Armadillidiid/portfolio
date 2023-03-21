@@ -103,12 +103,13 @@ svg #wheel {
 
 .blue-button {
   background-color: #3b82f6;
-  transition-property: background-color, border-color, color, fill, stroke;
+  transition-property: background-color, border-color, color, fill, stroke, transform;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   color: #ffffff;
 }
 
-.blue-button:hover {
+.blue-button:active {
   background-color: #2563eb;
+  transform: scale(0.97)
 }

@@ -4,19 +4,41 @@ import {
   FaGithub,
   FaLinkedinIn,
   FaRegClipboard,
+  FaMailBulk,
 } from "react-icons/fa";
 import SectionDescription from "./sub-components/SectionDescription";
 import SectionTitle from "./sub-components/SectionTitle";
 import emailjs from "@emailjs/browser";
 import { useRef } from "react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const form = useRef<HTMLFormElement>(null);
 
+  const displayToast = (message: string) => {
+    toast(message, {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (form.current === null) return;
-
+     
     return emailjs
       .sendForm(
         "service_yxh67lq",
@@ -25,11 +47,13 @@ const Contact = () => {
         "f22cRsV4RnHdpwvEd"
       )
       .then((result) => {
+        displayToast("✅ Message sent")
         console.log(result.text);
-        return result;
+        form.current?.reset();
       })
       .catch((error) => {
         console.log(error.text);
+        form.current?.reset();
         throw error;
       });
   };
@@ -62,8 +86,11 @@ const Contact = () => {
                   <FaLinkedinIn />
                   Linkedin
                 </button>
-                <button className="col-span-12 justify-center flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-teal-500 hover:to-teal-700">
-                  <FaRegClipboard />
+                <button
+                  onClick={() => displayToast("📧 Copied E-mail!")}
+                  className="col-span-12 justify-center flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-teal-500 hover:to-teal-700"
+                >
+                  <FaMailBulk />
                   Copy email
                 </button>
               </div>
@@ -116,7 +143,7 @@ const Contact = () => {
               placeholder="I'd like to inquire more about..."
               className="w-full text-sm rounded py-2 px-3 text-neutral-600 bg-neutral-100 outline outline-2 outline-neutral-200/80 focus:outline-blue-500 focus:outline-2 focus:outline"
             ></textarea>
-            <button className="bg-blue-500 text-white rounded p-2 text-sm font-medium">
+            <button className="blue-button text-white rounded p-2 text-sm font-medium">
               Submit
             </button>
           </form>
@@ -129,6 +156,7 @@ const Contact = () => {
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          onClick={scrollToTop}
         >
           <path
             stroke-linecap="round"

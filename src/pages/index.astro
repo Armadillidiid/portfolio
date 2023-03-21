@@ -7,6 +7,8 @@ import About from "../components/About";
 import Project from "../components/Project";
 import Skill from "../components/Skill";
 import Contact from "../components/Contact";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 ---
 
 <Layout title="Emmanuel Isenah | Web Developer">
@@ -35,4 +37,5 @@ import Contact from "../components/Contact";
   <div class="container pt-24 mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
     <Contact client:load />
   </div>
+  <ToastContainer client:only="react" />
 </Layout>
