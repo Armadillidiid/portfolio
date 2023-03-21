@@ -7,8 +7,32 @@ import {
 } from "react-icons/fa";
 import SectionDescription from "./sub-components/SectionDescription";
 import SectionTitle from "./sub-components/SectionTitle";
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 
 const Contact = () => {
+  const form = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (form.current === null) return;
+
+    return emailjs
+      .sendForm(
+        "service_yxh67lq",
+        "template_egmalli",
+        form.current,
+        "f22cRsV4RnHdpwvEd"
+      )
+      .then((result) => {
+        console.log(result.text);
+        return result;
+      })
+      .catch((error) => {
+        console.log(error.text);
+        throw error;
+      });
+  };
   return (
     <div>
       <div className="flex flex-col justify-center items-center text-center">
@@ -60,7 +84,11 @@ const Contact = () => {
           </div>
         </div>
         <div className="col-span-8 h-fit bg-white rounded-xl drop-shadow-[0_0_5px_rgba(0,0,0,0.25)]">
-          <form action="" className="flex flex-col gap-4 p-8">
+          <form
+            onSubmit={(e) => sendEmail(e)}
+            ref={form}
+            className="flex flex-col gap-4 p-8"
+          >
             <div className="flex gap-4">
               <input
                 name="name"
