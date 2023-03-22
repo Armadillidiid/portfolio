@@ -10,8 +10,11 @@ import {
 } from "../data/icons";
 
 const Skill: React.FC = () => {
-  const icon = (arr: {name: string, url: string}) => (
-    <div className="flex flex-col gap-4 justify-between items-center h-full">
+  const icon = (arr: { name: string; url: string }, id: number) => (
+    <div
+      key={id}
+      className="flex flex-col gap-4 justify-between items-center h-full"
+    >
       <img src={arr.url} className="w-24 rounded-xl" />
       <div className="text-center">
         <span className="font-semibold text-neutral-700 max-w-full h-auto">
@@ -21,15 +24,19 @@ const Skill: React.FC = () => {
     </div>
   );
 
-  const languageList = languages.map((language) => icon(language));
-  const frameworkList = frameworks.map((framework) => icon(framework));
-  const testingFrameworkList = testing_frameworks.map((framework) =>
-    icon(framework)
+  const languageList = languages.map((language, index) =>
+    icon(language, index)
   );
-  const librariesList = libraries.map((library) => icon(library));
-  const editorsList = editors.map((editor) => icon(editor));
-  const versionControlList = version_control.map((versionControl) =>
-    icon(versionControl)
+  const frameworkList = frameworks.map((framework, index) =>
+    icon(framework, index)
+  );
+  const testingFrameworkList = testing_frameworks.map((framework, index) =>
+    icon(framework, index)
+  );
+  const librariesList = libraries.map((library, index) => icon(library, index));
+  const editorsList = editors.map((editor, index) => icon(editor, index));
+  const versionControlList = version_control.map((versionControl, index) =>
+    icon(versionControl, index)
   );
 
   return (

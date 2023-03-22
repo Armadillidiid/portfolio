@@ -6,7 +6,7 @@ import { projectData as data } from "../data/projects";
 const Project: React.FC = () => {
   const ProjectList = data.map((project, index) => {
     return (
-      <div className="flex flex-col first:mt-24">
+      <div key={index} className="flex flex-col first:mt-24">
         <div className="grid grid-cols-12 gap-12">
           <div
             className={`col-span-6 flex flex-col gap-1 justify-evenly font-light text-lg ${
@@ -16,8 +16,8 @@ const Project: React.FC = () => {
             <div className="flex flex-col gap-2">
               <span className="font-bold text-3xl mb-1">{project.name}</span>
               <ul className="flex gap-1 list-inside list-disc font-medium">
-                {project.stack.map((item) => (
-                  <li>{item}</li>
+                {project.stack.map((item, index) => (
+                  <li key={index}>{item}</li>
                 ))}
               </ul>
             </div>
