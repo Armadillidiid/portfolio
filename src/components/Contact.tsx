@@ -124,7 +124,7 @@ const Contact = () => {
                 button below.
               </p>
               <a
-                href="/public/resume.pdf"
+                href="/resume.pdf"
                 download
                 className="self-center bg-white text-blue-500 hover:text-white hover:bg-blue-500 transition-colors duration-200 flex items-center w-fit gap-2 py-3 px-6 rounded-xl text-base font-semibold shadow-lg"
               >
