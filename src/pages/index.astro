@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 ---
 
 <Layout title="Emmanuel Isenah | Web Developer">
-
+  <div class="custom-cursor"></div>
   <div class="container mx-auto px-4 flex justify-center">
     <Navbar client:only="react" />
   </div>
@@ -27,7 +27,10 @@ import "react-toastify/dist/ReactToastify.css";
       <About client:only="react" />
     </div>
   </div>
-  <div id="projects" class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
+  <div
+    id="projects"
+    class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden"
+  >
     <Project client:only="react" />
   </div>
   <div id="skills" class="bg-neutral-100">
@@ -43,3 +46,28 @@ import "react-toastify/dist/ReactToastify.css";
   </div>
   <ToastContainer client:only="react" />
 </Layout>
+
+<script>
+  const customCursor = document.querySelector(".custom-cursor") as HTMLElement;
+  const root = document.querySelector("html") as HTMLElement;
+  let cursorX = 0;
+  let cursorY = 0;
+  let scrollX = window.scrollX || window.pageXOffset;
+  let scrollY = window.scrollY || window.pageYOffset;
+
+  const handleCursor = (e: MouseEvent) => {
+    cursorX = e.clientX;
+    cursorY = e.clientY;
+    customCursor.style.top = cursorY + scrollY + "px";
+    customCursor.style.left = cursorX + scrollX + "px";
+  };
+
+  root.addEventListener("mousemove", handleCursor);
+
+  window.addEventListener("scroll", () => {
+    scrollX = window.scrollX || window.pageXOffset;
+    scrollY = window.scrollY || window.pageYOffset;
+    customCursor.style.top = cursorY + scrollY + "px";
+    customCursor.style.left = cursorX + scrollX + "px";
+  });
+</script>

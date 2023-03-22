@@ -1,5 +1,6 @@
 * {
   font-family: "Inter", sans-serif;
+  cursor: none !important;
 }
 
 #hero-before::before {
@@ -36,6 +37,7 @@ svg #wheel {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-size: 250% 250%;
   animation: gradient 30s ease infinite;
 }
 
@@ -103,7 +105,8 @@ svg #wheel {
 
 .blue-button {
   background-color: #3b82f6;
-  transition-property: background-color, border-color, color, fill, stroke, transform;
+  transition-property: background-color, border-color, color, fill, stroke,
+    transform;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   color: #ffffff;
@@ -111,5 +114,17 @@ svg #wheel {
 
 .blue-button:active {
   background-color: #2563eb;
-  transform: scale(0.97)
+  transform: scale(0.97);
+}
+
+.custom-cursor {
+  position: absolute;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  backdrop-filter: grayscale(1) invert(100%);
+  z-index: 30;
+  transition-property: transform, width, height;
 }
