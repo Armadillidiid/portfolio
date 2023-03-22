@@ -88,14 +88,24 @@ const Contact = () => {
                 Socials
               </span>
               <div className="grid grid-cols-12 gap-3 mt-6">
-                <button className="col-span-6 flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-700">
+                <a
+                  href="https://github.com/Armadillidiid"
+                  target={"_blank"}
+                  rel={"noreferrer noopener"}
+                  className="col-span-6 flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-700"
+                >
                   <FaGithub />
                   GitHub
-                </button>
-                <button className="col-span-6 flex gap-2 items-center rounded-lg py-2 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700">
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/emmanuel-isenah-541593190?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B8jozcR60TrSSNPHpHUNgQw%3D%3D"
+                  target={"_blank"}
+                  rel={"noreferrer noopener"}
+                  className="col-span-6 flex gap-2 items-center rounded-lg py-2 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700"
+                >
                   <FaLinkedinIn />
                   Linkedin
-                </button>
+                </a>
                 <button
                   onClick={copyToClipboard}
                   className="col-span-12 justify-center flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-teal-500 hover:to-teal-700"
