@@ -70,4 +70,13 @@ import "react-toastify/dist/ReactToastify.css";
     customCursor.style.top = cursorY + scrollY + "px";
     customCursor.style.left = cursorX + scrollX + "px";
   });
+
+  const handleMouseClick = () => {
+    customCursor.classList.contains("mouse-click")
+      ? customCursor.classList.remove("mouse-click")
+      : customCursor.classList.add("mouse-click");
+  };
+
+  window.addEventListener("mousedown", handleMouseClick);
+  window.addEventListener("mouseup", handleMouseClick);
 </script>
