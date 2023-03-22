@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaMoon } from "react-icons/fa";
-import { animateScroll, Link, scrollSpy } from "react-scroll";
+import { Link, scrollSpy } from "react-scroll";
+import ThemeToggle from "./sub-components/ThemeToggle";
 
 const Navbar: React.FC = () => {
   const [toggle, setToggle] = useState(false);
@@ -27,9 +28,7 @@ const Navbar: React.FC = () => {
           `}
       >
         <li>
-          <button className="bg-blue-500 p-3 rounded-full text-white">
-            <FaMoon />
-          </button>
+          <ThemeToggle />
         </li>
         <li className="cursor-pointer">
           <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
