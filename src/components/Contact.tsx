@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 
 const Contact = () => {
   const form = useRef<HTMLFormElement>(null);
+  const email = "emmanuelisenah@gmail.com";
 
   const displayToast = (message: string) => {
     toast(message, {
@@ -27,18 +28,27 @@ const Contact = () => {
       theme: "light",
     });
   };
-  
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      displayToast("📧 Copied E-mail!");
+    } catch (e) {
+      console.log("Failed to copy to clipboard: ", e);
+    }
+  };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
-  }
+  };
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (form.current === null) return;
-     
+
     return emailjs
       .sendForm(
         "service_yxh67lq",
@@ -47,7 +57,7 @@ const Contact = () => {
         "f22cRsV4RnHdpwvEd"
       )
       .then((result) => {
-        displayToast("✅ Message sent")
+        displayToast("✅ Message sent");
         console.log(result.text);
         form.current?.reset();
       })
@@ -87,7 +97,7 @@ const Contact = () => {
                   Linkedin
                 </button>
                 <button
-                  onClick={() => displayToast("📧 Copied E-mail!")}
+                  onClick={copyToClipboard}
                   className="col-span-12 justify-center flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-teal-500 hover:to-teal-700"
                 >
                   <FaMailBulk />
@@ -103,10 +113,14 @@ const Contact = () => {
                 You may also obtain a copy of my resume by clicking the download
                 button below.
               </p>
-              <button className="self-center bg-white text-blue-500 hover:text-white hover:bg-blue-500 transition-colors duration-200 flex items-center w-fit gap-2 py-3 px-6 rounded-xl text-base font-semibold shadow-lg">
+              <a
+                href="/public/resume.pdf"
+                download
+                className="self-center bg-white text-blue-500 hover:text-white hover:bg-blue-500 transition-colors duration-200 flex items-center w-fit gap-2 py-3 px-6 rounded-xl text-base font-semibold shadow-lg"
+              >
                 <FaFileDownload />
                 Download CV
-              </button>
+              </a>
             </div>
           </div>
         </div>
