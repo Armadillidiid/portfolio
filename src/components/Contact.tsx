@@ -72,9 +72,10 @@ const Contact = () => {
       <div className="flex flex-col justify-center items-center text-center">
         <SectionTitle>Contact</SectionTitle>
         <SectionDescription>
-          Reach out to me <br /> any way you want.
+          Get in touch with me
+          <br />whatever you prefer.
         </SectionDescription>
-        <p className="text-neutral-600 max-w-3xl">
+        <p className="text-neutral-600 dark:text-neutral-400 max-w-3xl">
           Fill in the form on the left with your information and I will get back
           to you as soon as possible. Alternatively, you can find me on the
           platforms listed on the right.
@@ -134,38 +135,39 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-8 h-fit bg-white rounded-xl drop-shadow-[0_0_5px_rgba(0,0,0,0.25)]">
+        <div className="col-span-8 h-fit bg-white dark:bg-[#0d0d0d] rounded-xl drop-shadow-[0_0_5px_rgba(0,0,0,0.25)]">
           <form
             onSubmit={(e) => sendEmail(e)}
             ref={form}
             className="flex flex-col gap-4 p-8"
+            id="contact-form"
           >
             <div className="flex gap-4">
               <input
                 name="name"
                 type="text"
                 placeholder="Your name"
-                className="w-1/2 text-sm rounded py-2 px-3 text-neutral-600 bg-neutral-100 outline outline-2 outline-neutral-200/80 focus:outline-blue-500 focus:outline-2 focus:outline"
+                className="w-1/2 contact-input"
               />
               <input
                 name="email"
                 type="text"
                 placeholder="Your email address"
-                className="w-1/2 text-sm rounded py-2 px-3 text-neutral-600 bg-neutral-100 outline outline-2 outline-neutral-200/80 focus:outline-blue-500 focus:outline-2 focus:outline"
+                className="w-1/2 contact-input"
               />
             </div>
             <input
               name="subject"
               type="text"
               placeholder="Subject"
-              className="w-full text-sm rounded py-2 px-3 text-neutral-600 bg-neutral-100 outline outline-2 outline-neutral-200/80 focus:outline-blue-500 focus:outline-2 focus:outline"
+              className="w-full contact-input"
             />
             <textarea
               name="messaage"
               id="message"
               rows={13}
               placeholder="I'd like to inquire more about..."
-              className="w-full text-sm rounded py-2 px-3 text-neutral-600 bg-neutral-100 outline outline-2 outline-neutral-200/80 focus:outline-blue-500 focus:outline-2 focus:outline"
+              className="w-full contact-textarea"
             ></textarea>
             <button className="blue-button text-white rounded p-2 text-sm font-medium">
               Submit

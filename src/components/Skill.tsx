@@ -17,7 +17,7 @@ const Skill: React.FC = () => {
     >
       <img src={arr.url} className="w-24 rounded-xl" />
       <div className="text-center">
-        <span className="font-semibold text-neutral-700 max-w-full h-auto">
+        <span className="font-semibold text-neutral-700 dark:text-neutral-400 max-w-full h-auto">
           {arr.name}
         </span>
       </div>
@@ -44,11 +44,12 @@ const Skill: React.FC = () => {
       <SectionTitle>Skills</SectionTitle>
       <SectionDescription>
         Everything I utilize to
-        <br /> turn an idea into <br />
-        reality.
+        <br /> translate a concept
+        <br />
+        into actuality.
       </SectionDescription>
       <div className="mt-24 grid grid-cols-12 gap-5 max-w-fit mx-auto">
-        <div className="lg:col-span-12 bg-white p-10 rounded-2xl border border-neutral-200/80">
+        <div className="lg:col-span-12 skill">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Frameworks</span>
             <div className="flex flex-grow justify-around items-center gap-12">
@@ -56,7 +57,7 @@ const Skill: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-6 bg-white p-10 rounded-2xl border border-neutral-200/80">
+        <div className="lg:col-span-6 skill">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Languages</span>
             <div className="flex flex-grow justify-around items-center gap-12">
@@ -64,7 +65,7 @@ const Skill: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-6 bg-white p-10 rounded-2xl border border-neutral-200/80">
+        <div className="lg:col-span-6 skill">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Libraries</span>
             <div className="flex flex-grow justify-around items-center gap-12">
@@ -72,7 +73,7 @@ const Skill: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-5 bg-white p-10 rounded-2xl border border-neutral-200/80">
+        <div className="lg:col-span-5 skill">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Testing Frameworks</span>
             <div className="flex flex-grow justify-around items-center gap-12">
@@ -80,7 +81,7 @@ const Skill: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-3 bg-white p-10 rounded-2xl border border-neutral-200/80">
+        <div className="lg:col-span-3 skill">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Version Control</span>
             <div className="flex flex-grow justify-around items-center gap-12">
@@ -88,7 +89,7 @@ const Skill: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-4 bg-white p-10 rounded-2xl border border-neutral-200/80">
+        <div className="lg:col-span-4 skill">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Code Editors</span>
             <div className="flex flex-grow justify-around items-center gap-12">

@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
             custom={2}
             initial="initial"
             animate="animate"
-            className="font-semibold text-3xl md:text-5xl"
+            className="font-semibold text-3xl md:text-5xl dark:text-white"
           >
             I'm a <b className="font-extrabold">Software Developer</b>
           </motion.p>
@@ -87,7 +87,7 @@ const Hero: React.FC = () => {
             custom={3}
             initial="initial"
             animate="animate"
-            className="flex flex-col lg:flex-row font-normal text-3xl md:text-5xl"
+            className="flex flex-col lg:flex-row font-normal text-3xl md:text-5xl dark:text-white"
           >
             and I&nbsp;
             <Typewriter
@@ -139,12 +139,12 @@ const Hero: React.FC = () => {
         <path
           id="wheel"
           d="M123.359,79.775l0,72.843"
-          style={{ fill: "none", stroke: "#000000", strokeWidth: 20 }}
+          className="fill-none stroke-black dark:stroke-white stroke-[20px]"
         />
         <path
           id="mouse"
           d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z"
-          style={{ fill: "none", stroke: "#000000", strokeWidth: 15 }}
+          className="fill-none stroke-black dark:stroke-white stroke-[15px]"
         />
       </motion.svg>
       <motion.svg
@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
           cx="50"
           cy="50"
           r="40"
-          stroke="rgba(91, 91, 91, 0.35)"
+          stroke="rgba(91, 91, 91, 0.45)"
           strokeWidth="0.15"
           fill="none"
         />
@@ -181,8 +181,8 @@ const Hero: React.FC = () => {
           y="0"
           width="100"
           height="100"
-          stroke="rgba(91, 91, 91, 0.35)"
-          strokeWidth={0.2}
+          stroke="rgba(91, 91, 91, 0.45)"
+          strokeWidth={0.25}
           fill="none"
         />
       </motion.svg>

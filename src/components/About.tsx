@@ -1,13 +1,14 @@
+import SectionDescription from "./sub-components/SectionDescription";
+import SectionTitle from "./sub-components/SectionTitle";
+
 const About: React.FC = () => {
   return (
     <div className="py-24">
-      <h3 className="text-3xl font-semibold text- text-neutral-700 mb-4">
-        About Me
-      </h3>
-      <h2 className="text-8xl font-semibold tracking-tighter mb-12 max-w-[780px]">
-        My tech stack and expertise.
-      </h2>
-      <div className="flex flex-col gap-8 font-light text-lg">
+      <SectionTitle>About Me</SectionTitle>
+      <SectionDescription>
+        My background and <br /> who I am.
+      </SectionDescription>
+      <div className="flex flex-col gap-8 font-light dark:text-white text-lg">
         <p className="text-2xl">
           I am creative developer and Web designer based in New Delhi, India. I
           am a Civil Engineering graduate and later switched to the awesome

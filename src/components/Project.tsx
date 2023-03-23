@@ -14,20 +14,24 @@ const Project: React.FC = () => {
             }`}
           >
             <div className="flex flex-col gap-2">
-              <span className="font-bold text-3xl mb-1">{project.name}</span>
+              <span className="font-bold text-3xl mb-1 dark:text-white">
+                {project.name}
+              </span>
               <ul className="flex gap-1 list-inside list-disc font-medium">
                 {project.stack.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li key={index} className="dark:text-white">
+                    {item}
+                  </li>
                 ))}
               </ul>
             </div>
-            <p>{project.description}</p>
+            <p className="dark:text-white">{project.description}</p>
             <div className="flex gap-10 mt-8 font-bold">
               <a
                 href={project.previewURL}
                 target={"_blank"}
                 rel="noreferrer"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 dark:text-white"
               >
                 <span className="relative uppercase ButtonText">
                   Live Preview
@@ -38,7 +42,7 @@ const Project: React.FC = () => {
                 href={project.codeURL}
                 target={"_blank"}
                 rel="noreferrer"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 dark:text-white"
               >
                 <span className="relative uppercase ButtonText">View Code</span>
                 <BsArrowUpRight className="stroke-1" />
@@ -65,14 +69,17 @@ const Project: React.FC = () => {
     <div className="py-24">
       <SectionTitle>Projects</SectionTitle>
       <SectionDescription>
-        A small preview into <br /> my work.
+        A brief glimpse of
+        <br /> my work.
       </SectionDescription>
       <div className="flex flex-col gap-24">{ProjectList}</div>
       <a
-        href="https://github.com/Armadillidiid"
+        href="https://github.com/Armadillidiid?tab=repositories"
+        target={"_blank"}
+        rel="noreferrer noopener"
         className="flex justify-center items-center mt-24"
       >
-        <span className="text-blue-500 text-lg font-medium">Show more</span>
+        <span className="text-blue-500 hover:scale-110 transition text-lg font-medium">Show more</span>
       </a>
     </div>
   );
