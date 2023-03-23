@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
             custom={1}
             initial="initial"
             animate="animate"
-            className="font-normal text-2xl md:text-4xl text-blue-500"
+            className="font-normal text-2xl md:text-4xl text-blue-500 tracking-tight"
           >
             Hi, I'm Emmanuel Isenah 👋
           </motion.p>
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
             custom={2}
             initial="initial"
             animate="animate"
-            className="font-semibold text-3xl md:text-6xl dark:text-white"
+            className="font-semibold text-3xl md:text-5xl dark:text-white tracking-tight"
           >
             I'm a <b className="font-black">Software Developer</b>
           </motion.p>
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
             custom={3}
             initial="initial"
             animate="animate"
-            className="flex flex-col lg:flex-row font-semibold text-3xl md:text-5xl dark:text-white"
+            className="flex flex-col lg:flex-row font-semibold text-3xl md:text-5xl dark:text-white tracking-tight"
           >
             and I&nbsp;
             <Typewriter
