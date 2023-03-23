@@ -1,6 +1,7 @@
 import Typewriter from "typewriter-effect";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
+import { Link, scrollSpy } from "react-scroll";
 
 const Hero: React.FC = () => {
   const animationControls = useAnimation();
@@ -52,6 +53,10 @@ const Hero: React.FC = () => {
     }, 1000);
   }, [animationControls]);
 
+  useEffect(() => {
+    scrollSpy.update();
+  }, []);
+
   return (
     <div
       className="pt-[52px] h-screen flex flex-col justify-center items-start gap-2 md:gap-5 overflow-hidden relative"
@@ -64,7 +69,7 @@ const Hero: React.FC = () => {
             custom={1}
             initial="initial"
             animate="animate"
-            className="font-semibold text-2xl md:text-4xl text-blue-500"
+            className="font-normal text-2xl md:text-4xl text-blue-500"
           >
             Hi, I'm Emmanuel Isenah 👋
           </motion.p>
@@ -76,9 +81,9 @@ const Hero: React.FC = () => {
             custom={2}
             initial="initial"
             animate="animate"
-            className="font-semibold text-3xl md:text-5xl dark:text-white"
+            className="font-semibold text-3xl md:text-6xl dark:text-white"
           >
-            I'm a <b className="font-extrabold">Software Developer</b>
+            I'm a <b className="font-black">Software Developer</b>
           </motion.p>
         </div>
         <div className="overflow-hidden pb-2">
@@ -87,7 +92,7 @@ const Hero: React.FC = () => {
             custom={3}
             initial="initial"
             animate="animate"
-            className="flex flex-col lg:flex-row font-normal text-3xl md:text-5xl dark:text-white"
+            className="flex flex-col lg:flex-row font-semibold text-3xl md:text-5xl dark:text-white"
           >
             and I&nbsp;
             <Typewriter
@@ -111,7 +116,9 @@ const Hero: React.FC = () => {
           animate="animate"
           className="mt-10 py-3 px-8 bg-blue-500 text-white rounded"
         >
-          About Me
+          <Link to="contact" spy={true} smooth={true} offset={0} duration={500}>
+            About Me
+          </Link>
         </motion.button>
       </div>
       <div className="overflow-hidden"></div>
