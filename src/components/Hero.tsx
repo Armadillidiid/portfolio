@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
           y: -50,
           scale: 1,
           rotate: 160,
-          transition: { duration: 5 },
+          transition: { duration: 3.5 },
         });
         await animationControls.start({
           x: 0,
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
           opacity: 1,
           scale: 1.15,
           rotate: -160,
-          transition: { duration: 5 },
+          transition: { duration: 3.5 },
         });
       }
     };
@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: 8, duration: 1, type: "tween" },
+          transition: { delay: 6.25, duration: 0.5, type: "tween" },
         }}
         className="absolute bottom-20"
         width="35"
