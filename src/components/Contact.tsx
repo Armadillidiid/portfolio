@@ -71,7 +71,7 @@ const Contact = () => {
     <div>
       <div className="flex flex-col justify-center items-center text-center">
         <SectionTitle>Contact</SectionTitle>
-        <SectionDescription>
+        <SectionDescription style="bg-gradient-to-r from-blue-500 via-blue-400 to-sky-500 text-transparent bg-clip-text pb-2">
           Get in touch with me
           <br />whatever you prefer.
         </SectionDescription>
