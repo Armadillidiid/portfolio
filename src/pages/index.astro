@@ -12,8 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 ---
 
 <Layout title="Emmanuel Isenah | Web Developer">
-<div class=""></div>
-  <div class="custom-cursor"></div>
+  <div class="custom-cursor inset-6"></div>
   <div class="container mx-auto px-4 flex justify-center">
     <Navbar client:only="react" />
   </div>
@@ -99,4 +98,45 @@ import "react-toastify/dist/ReactToastify.css";
     document.documentElement.classList.add("dark");
   }
   window.localStorage.setItem("theme", theme);
+</script>
+
+<script>
+  // Get custom cursor
+  const customCursor = document.querySelector(".custom-cursor") as HTMLElement;
+
+  // Set the distance from the edge of the screen that the cursor should disappear
+  const distanceFromEdgeX = 100;
+  const distanceFromEdgeY = 5;
+
+  // Get a reference to the body element
+  const body = document.body;
+
+  // Add an event listener to track the mouse movement
+  body.addEventListener("mousemove", (e) => {
+    // Get the current mouse position
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    // Get the width and height of the body element
+    const bodyWidth = window.innerWidth;
+    const bodyHeight = window.innerHeight;
+    if (window.matchMedia("(min-width: 1280px)").matches) {
+      // Check if the mouse is too close to the edge of the screen
+      if (
+        mouseX < distanceFromEdgeX ||
+        mouseX > bodyWidth - distanceFromEdgeX ||
+        mouseY < distanceFromEdgeY ||
+        mouseY > bodyHeight - distanceFromEdgeY
+      ) {
+        // Hide the cursor
+        customCursor.style.opacity = "0";
+
+        body!.style.cursor = "auto";
+      } else {
+        // Show the cursor
+        customCursor.style.opacity = "100";
+        body!.style.cursor = "none ";
+      }
+    }
+  });
 </script>

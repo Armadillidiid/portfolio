@@ -1,5 +1,15 @@
 * {
   font-family: "Inter", sans-serif;
+}
+
+html {
+  cursor: none;
+  cursor: -webkit-none; /* Safari */
+  cursor: -moz-none; /* Firefox */
+  cursor: none !important; /* IE/Edge */
+}
+
+button, a, input, textarea {
   cursor: none !important;
 }
 
@@ -127,7 +137,7 @@ svg #wheel {
   pointer-events: none;
   backdrop-filter: grayscale(1) invert(100%);
   z-index: 30;
-  transition-property: width, height;
+  transition-property: opacity, width, height;
   transition-duration: 200ms;
   transition-timing-function: ease;
 }
