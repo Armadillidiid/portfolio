@@ -175,7 +175,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center mt-14 py-8 gap-6 text-neutral-700">
+      <div className="flex flex-col justify-center items-center mt-14 py-8 gap-6 text-neutral-700 dark:text-white">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6 m-auto animate-bounce cursor-pointer transition duration-200"
