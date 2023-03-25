@@ -21,7 +21,7 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <button
-      className="bg-blue-500 p-3 rounded-full text-white transition"
+      className="blue-button active:scale-90 duration-100 p-3 rounded-full transition"
       onClick={handleClick}
     >
       {theme === "light" ? <FaMoon /> : <FaSun />}

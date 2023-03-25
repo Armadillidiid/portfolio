@@ -30,12 +30,12 @@ const Navbar: React.FC = () => {
         <li>
           <ThemeToggle />
         </li>
-        <li className="cursor-pointer">
+        <li className="hover:scale-[1.2] transition">
           <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
             About
           </Link>
         </li>
-        <li className="cursor-pointer">
+        <li className="hover:scale-[1.2] transition">
           <Link
             to="projects"
             spy={true}
@@ -43,16 +43,16 @@ const Navbar: React.FC = () => {
             offset={0}
             duration={500}
           >
-            Projects
+            Project
           </Link>
         </li>
-        <li className="cursor-pointer">
+        <li className="hover:scale-[1.2] transition">
           <Link to="skills" spy={true} smooth={true} offset={0} duration={500}>
             Skills
           </Link>
         </li>
         <li>
-          <button className="bg-blue-500 py-2 px-3 rounded-full text-white">
+          <button className="blue-button duration-100 active:scale-95 py-2 px-3 rounded-full">
             <Link
               to="contact"
               spy={true}

@@ -9,7 +9,10 @@ html {
   cursor: none !important; /* IE/Edge */
 }
 
-button, a, input, textarea {
+button,
+a,
+input,
+textarea {
   cursor: none !important;
 }
 
@@ -115,17 +118,11 @@ svg #wheel {
 }
 
 .blue-button {
-  background-color: #3b82f6;
-  transition-property: background-color, border-color, color, fill, stroke,
-    transform;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  color: #ffffff;
+  @apply bg-blue-500 transition-all duration-200 ease-in-out text-white;
 }
 
 .blue-button:active {
-  background-color: #2563eb;
-  transform: scale(0.97);
+  @apply bg-blue-600 scale-[0.97];
 }
 
 .custom-cursor {

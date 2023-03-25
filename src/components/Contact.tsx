@@ -1,4 +1,3 @@
-import Button from "./sub-components/Button";
 import {
   FaFileDownload,
   FaGithub,
@@ -73,7 +72,8 @@ const Contact = () => {
         <SectionTitle>Contact</SectionTitle>
         <SectionDescription style="bg-gradient-to-r from-blue-500 via-blue-400 to-sky-500 text-transparent bg-clip-text pb-2">
           Get in touch with me
-          <br />whatever you prefer.
+          <br />
+          whatever you prefer.
         </SectionDescription>
         <p className="text-neutral-600 dark:text-neutral-400 max-w-3xl">
           Fill in the form on the left with your information and I will get back
@@ -90,10 +90,9 @@ const Contact = () => {
               </span>
               <div className="grid grid-cols-12 gap-3 mt-6">
                 <a
-                  href="https://github.com/Armadillidiid"
-                  target={"_blank"}
+                  href="https://github.com/Armadillidiid" target={"_blank"}
                   rel={"noreferrer noopener"}
-                  className="col-span-6 flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-700"
+                  className="col-span-6 flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-700 active:scale-90"
                 >
                   <FaGithub />
                   GitHub
@@ -102,14 +101,14 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/emmanuel-isenah-541593190?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B8jozcR60TrSSNPHpHUNgQw%3D%3D"
                   target={"_blank"}
                   rel={"noreferrer noopener"}
-                  className="col-span-6 flex gap-2 items-center rounded-lg py-2 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700"
+                  className="col-span-6 flex gap-2 items-center rounded-lg py-2 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700 active:scale-90"
                 >
                   <FaLinkedinIn />
                   Linkedin
                 </a>
                 <button
                   onClick={copyToClipboard}
-                  className="col-span-12 justify-center flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-teal-500 hover:to-teal-700"
+                  className="col-span-12 justify-center flex gap-2 items-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-purple-500 hover:to-sky-700 active:scale-90"
                 >
                   <FaMailBulk />
                   Copy email
@@ -127,7 +126,7 @@ const Contact = () => {
               <a
                 href="/resume.pdf"
                 download
-                className="self-center bg-white text-blue-500 hover:text-white hover:bg-blue-500 transition-colors duration-200 flex items-center w-fit gap-2 py-3 px-6 rounded-xl text-base font-semibold shadow-lg"
+                className="self-center bg-white text-blue-500 hover:text-white hover:bg-blue-500 transition-all duration-200 ease-in-out flex items-center w-fit gap-2 py-3 px-6 rounded-xl text-base font-semibold shadow-lg active:scale-90"
               >
                 <FaFileDownload />
                 Download CV
@@ -180,7 +179,6 @@ const Contact = () => {
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6 m-auto animate-bounce cursor-pointer transition duration-200"
           fill="none"
-          viewBox="0 0 24 24"
           stroke="currentColor"
           onClick={scrollToTop}
         >
