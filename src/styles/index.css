@@ -2,18 +2,33 @@
   font-family: "Inter", sans-serif;
 }
 
-html {
-  cursor: none;
-  cursor: -webkit-none; /* Safari */
-  cursor: -moz-none; /* Firefox */
-  cursor: none !important; /* IE/Edge */
+@media only screen and (min-width: 768px) {
+  html {
+    cursor: none;
+    cursor: -webkit-none; /* Safari */
+    cursor: -moz-none; /* Firefox */
+    cursor: none !important; /* IE/Edge */
+  }
+
+  button,
+  a,
+  input,
+  textarea {
+    cursor: none !important;
+  }
 }
 
-button,
-a,
-input,
-textarea {
-  cursor: none !important;
+@media only screen and (max-width: 768px) {
+  html {
+    cursor: auto !important;
+  }
+
+  button,
+  a,
+  input,
+  textarea {
+    cursor: auto !important;
+  }
 }
 
 #hero-before::before {
@@ -164,4 +179,20 @@ svg #wheel {
 #contact-form input,
 #contact-form textarea {
   @apply dark:text-neutral-300;
+}
+
+.navbar {
+  @apply flex md:bg-white/50 md:dark:bg-white/[0.15] max-w-[180px] md:max-w-min md:rounded-full top-5 flex-col md:flex-row justify-center items-center md:p-2 fixed backdrop-blur-[8px] shadow-[0_0_3px_rgba(0,0,0,0.3)] z-10 md:transition !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-item {
+    @apply bg-blue-500 text-white dark:text-black w-full text-center rounded-2xl p-1 py-2;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar-item {
+    @apply md:bg-none md:text-black dark:text-white w-fit text-center rounded-none p-0;
+  }
 }
