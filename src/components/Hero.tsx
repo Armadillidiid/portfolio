@@ -62,14 +62,14 @@ const Hero: React.FC = () => {
       className="pt-[52px] h-screen flex flex-col justify-center items-start gap-2 md:gap-5 overflow-hidden relative"
       id="hero"
     >
-      <div className="mb-0 flex flex-col gap-1 md:gap-2 lg:gap-6">
+      <div className="mb-0 flex flex-col gap-1 md:gap-2 lg:gap-4 2xl:gap-6">
         <div className="overflow-hidden">
           <motion.p
             variants={variant}
             custom={1}
             initial="initial"
             animate="animate"
-            className="font-normal text-2xl md:text-4xl text-blue-500 tracking-tight"
+            className="text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl text-blue-500 tracking-tight"
           >
             Hi, I'm Emmanuel Isenah 👋
           </motion.p>
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
             custom={2}
             initial="initial"
             animate="animate"
-            className="font-semibold text-3xl md:text-5xl dark:text-white tracking-tight"
+            className="font-semibold text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl dark:text-white tracking-tight"
           >
             I'm a <b className="font-black">Software Developer</b>
           </motion.p>
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
             custom={3}
             initial="initial"
             animate="animate"
-            className="flex flex-col lg:flex-row font-semibold text-3xl md:text-5xl dark:text-white tracking-tight"
+            className="flex flex-col lg:flex-row font-semibold text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl dark:text-white tracking-tight"
           >
             and I&nbsp;
             <Typewriter
@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
           custom={3.7}
           initial="initial"
           animate="animate"
-          className="mt-10 py-3 px-8 bg-blue-500 text-white rounded"
+          className="mt-10 py-3 px-8 bg-blue-500 text-sm md:text-normal text-white rounded"
         >
           <Link to="contact" spy={true} smooth={true} offset={0} duration={500}>
             About Me

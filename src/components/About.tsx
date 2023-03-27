@@ -3,13 +3,13 @@ import SectionTitle from "./sub-components/SectionTitle";
 
 const About: React.FC = () => {
   return (
-    <div className="py-24">
+    <div className="py-16 md:py-24">
       <SectionTitle>About Me</SectionTitle>
       <SectionDescription>
         My background and <br /> who I am.
       </SectionDescription>
-      <div className="flex flex-col gap-8 font-light dark:text-white text-lg">
-        <p className="text-2xl">
+      <div className="flex flex-col gap-8 font-light dark:text-white text-base lg:text-lg">
+        <p className="text-lg lg:text-2xl">
           I am creative developer and Web designer based in New Delhi, India. I
           am a Civil Engineering graduate and later switched to the awesome
           world of front end web development.

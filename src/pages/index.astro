@@ -9,8 +9,6 @@ import Skill from "../components/Skill";
 import Contact from "../components/Contact";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaSun, FaMoon } from "react-icons/fa";
-import {BsFillSunFill} from "react-icons/bs"
 import ThemeToggle from "../components/sub-components/ThemeToggle";
 ---
 
@@ -29,24 +27,24 @@ import ThemeToggle from "../components/sub-components/ThemeToggle";
     <Manifest client:only="react" />
   </div>
   <div class="bg-neutral-100 dark:bg-[#0d0d0d]">
-    <div id="about" class="container mx-auto lg:px-12 xl:px-32 overflow-hidden">
+    <div id="about" class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden">
       <About client:only="react" />
     </div>
   </div>
   <div
     id="projects"
-    class="container mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden"
+    class="container mx-auto px-4 lg:px-12 xl:px-32"
   >
     <Project client:only="react" />
   </div>
   <div id="skills" class="bg-neutral-100 dark:bg-[#0d0d0d]">
-    <div class="container py-24 mx-auto lg:px-12 xl:px-32 overflow-hidden">
+    <div class="container py-12 md:py-24 mx-auto px-4 lg:px-12 xl:px-32">
       <Skill client:only="react" />
     </div>
   </div>
   <div
     id="contact"
-    class="container pt-24 mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden"
+    class="container pt-12 md:pt-24 mx-auto px-4 lg:px-12 xl:px-32 overflow-hidden"
   >
     <Contact client:load />
   </div>

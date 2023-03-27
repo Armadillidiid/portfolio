@@ -30,12 +30,12 @@ const Navbar: React.FC = () => {
         <li className="hidden md:flex">
           <ThemeToggle navbar={true} />
         </li>
-        <li className="hover:scale-[1.2] transition navbar-item">
+        <li className="hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
           <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
             About
           </Link>
         </li>
-        <li className="hover:scale-[1.2] transition navbar-item">
+        <li className="hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
           <Link
             to="projects"
             spy={true}
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
             Project
           </Link>
         </li>
-        <li className="hover:scale-[1.2] transition navbar-item">
+        <li className="hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
           <Link to="skills" spy={true} smooth={true} offset={0} duration={500}>
             Skills
           </Link>
