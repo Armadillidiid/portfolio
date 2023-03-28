@@ -182,7 +182,7 @@ svg #wheel {
 }
 
 .navbar {
-  @apply flex md:bg-white/50 md:dark:bg-white/[0.15] max-w-[180px] md:max-w-min md:rounded-full top-5 flex-col md:flex-row justify-center items-center md:p-2 fixed backdrop-blur-[8px] shadow-[0_0_3px_rgba(0,0,0,0.3)] z-10 md:transition !important;
+  @apply flex md:bg-white/70 md:dark:bg-white/[0.15] max-w-[180px] md:max-w-min md:rounded-full top-5 flex-col md:flex-row justify-center items-center md:p-2 fixed backdrop-blur-[8px] shadow-[0_0_3px_rgba(0,0,0,0.3)] z-10 md:transition !important;
 }
 
 @media only screen and (max-width: 768px) {
