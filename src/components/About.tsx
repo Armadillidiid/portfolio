@@ -1,8 +1,16 @@
 import SectionDescription from "./sub-components/SectionDescription";
 import SectionTitle from "./sub-components/SectionTitle";
-import { Link, scrollSpy } from "react-scroll";
+import { Link } from "react-scroll";
+import { motion } from "framer-motion";
 
 const About: React.FC = () => {
+  const variant = {
+    initial: { opacity: 0, scale: 0.5 },
+    whileInView: { opacity: 1, scale: 1, transition: { duration: 0.2 } },
+  };
+  const viewport = {
+    viewport: { once: true, margin: "-50px" },
+  };
   return (
     <div className="py-16 md:py-24">
       <SectionTitle>About Me</SectionTitle>
@@ -38,17 +46,44 @@ const About: React.FC = () => {
             alt=""
           />
           <div className="flex flex-col gap-6 bg-black/30 text-white rounded-3xl p-10 max-w-2xl flex-auto  m-10 right-6 self-center justify-center">
-            <h3 className="text-4xl font-bold">I'm Emmanuel Isenah</h3>
-            <p className="text-base">
+            <motion.h3
+              variants={variant}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true, margin: "-50px" }}
+              className="text-4xl font-bold"
+            >
+              I'm Emmanuel Isenah
+            </motion.h3>
+            <motion.p
+              variants={variant}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true, margin: "-50px" }}
+              className="text-base"
+            >
               I can assist in the growth of your company by aligning your
               business objectives with your customers' needs, resulting in
               increased customer conversions and sales.
-            </p>
-            <button className="rounded-xl py-2 px-8 w-fit bg-white text-neutral-800 font-semibold transition hover:-translate-y-1">
-          <Link to="contact" spy={true} smooth={true} offset={0} duration={500}>
-              Let's work together
-          </Link>
-            </button>
+            </motion.p>
+            <motion.button
+              variants={variant}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ y: -4 }}
+              className="rounded-xl py-2 px-8 w-fit bg-white text-neutral-800 font-semibold"
+            >
+              <Link
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
+                Let's work together
+              </Link>
+            </motion.button>
           </div>
         </div>
       </div>
