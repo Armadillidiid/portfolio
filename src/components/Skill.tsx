@@ -1,5 +1,6 @@
 import SectionDescription from "./sub-components/SectionDescription";
 import SectionTitle from "./sub-components/SectionTitle";
+import { motion } from "framer-motion";
 import {
   languages,
   frameworks,
@@ -10,35 +11,62 @@ import {
 } from "../data/icons";
 
 const Skill: React.FC = () => {
-  const icon = (arr: { name: string; url: string }, id: number, isFramework: boolean = false) => (
-  <>
-  {isFramework 
-  ? 
-    <div
-      key={id}
-      className="flex flex-col gap-4 justify-between items-center w-1/4 max-w-[60px] md:max-w-[96px] md:w-full "
-    >
-      <img src={arr.url} className="w-full 2xl:w-24 rounded-xl" />
-      <div className="text-center">
-        <span className="font-semibold text-neutral-700 dark:text-neutral-400 max-w-full h-auto">
-          {arr.name}
-        </span>
-      </div>
-    </div>
-   : 
-    <div
-      key={id}
-      className="flex flex-col gap-4 justify-between items-center w-full max-w-[60px] md:max-w-[96px] xl:w-24"
-    >
-      <img src={arr.url} className="w-full 2xl:w-24 rounded-xl" />
-      <div className="text-center">
-        <span className="font-semibold text-neutral-700 dark:text-neutral-400 max-w-full h-auto">
-          {arr.name}
-        </span>
-      </div>
-    </div>
-   }
-  </>
+  const icon = (
+    arr: { name: string; url: string; category: string },
+    id: number,
+    isFramework: boolean = false
+  ) => (
+    <>
+      {isFramework ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            type: "spring",
+            bounce: 0.3,
+          }}
+          viewport={{ once: true }}
+          key={id}
+          className="flex flex-col gap-4 justify-between items-center w-1/4 max-w-[60px] md:max-w-[96px] md:w-full "
+        >
+          <img src={arr.url} className="w-full 2xl:w-24 rounded-xl" />
+          <div className="text-center">
+            <span className="font-semibold text-neutral-700 dark:text-neutral-400 max-w-full h-auto">
+              {arr.name}
+            </span>
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            type: "spring",
+            bounce: 0.3,
+            delay:
+              arr.category === "languages"
+                ? 0.2
+                : arr.category === "libraries"
+                ? 0.35
+                : arr.category === "testing_frameworks"
+                ? 0.45
+                : arr.category === "version_control"
+                ? 0.55
+                : 0.6,
+          }}
+          viewport={{ once: true }}
+          key={id}
+          className="flex flex-col gap-4 justify-between items-center w-full max-w-[60px] md:max-w-[96px] xl:w-24"
+        >
+          <img src={arr.url} className="w-full 2xl:w-24 rounded-xl" />
+          <div className="text-center">
+            <span className="font-semibold text-neutral-700 dark:text-neutral-400 max-w-full h-auto">
+              {arr.name}
+            </span>
+          </div>
+        </motion.div>
+      )}
+    </>
   );
 
   const languageList = languages.map((language, index) =>
@@ -66,14 +94,23 @@ const Skill: React.FC = () => {
         into actuality.
       </SectionDescription>
       <div className="mt-12 md:mt-24 grid grid-cols-12 gap-5 max-w-fit mx-auto">
-        <div className="col-span-12 lg:col-span-12 skill">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            type: "spring",
+            bounce: 0.25,
+          }}
+          viewport={{ once: true, margin: "50px" }}
+          className="col-span-12 lg:col-span-12 skill"
+        >
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Frameworks</span>
             <div className="flex flex-grow flex-wrap justify-around items-center gap-8 sm:gap-12">
               {frameworkList}
             </div>
           </div>
-        </div>
+        </motion.div>
         <div className="col-span-12 lg:col-span-6 skill">
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Languages</span>

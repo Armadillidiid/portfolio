@@ -40,7 +40,7 @@ const About: React.FC = () => {
             <li>Front end web development</li>
           </ul>
         </div>
-        <div className="flex bg-gradient-to-br from-[#e7505e] via-[#cb5891]  to-[#a364dc]  rounded-3xl h-[350px] overflow-hidden w-full mt-8 max-w-5xl mx-auto relative">
+        <div className="flex flex-col md:flex-row bg-gradient-to-br from-[#e7505e] via-[#cb5891]  to-[#a364dc]  rounded-3xl h-[350px] overflow-hidden w-full mt-8 max-w-5xl mx-auto relative">
           <img
             src="/PXL_20230106_140646324_2__1__3-removebg-preview.png"
             alt=""
