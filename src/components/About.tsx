@@ -1,5 +1,6 @@
 import SectionDescription from "./sub-components/SectionDescription";
 import SectionTitle from "./sub-components/SectionTitle";
+import { Link, scrollSpy } from "react-scroll";
 
 const About: React.FC = () => {
   return (
@@ -30,6 +31,25 @@ const About: React.FC = () => {
             <li>UI/UX Design</li>
             <li>Front end web development</li>
           </ul>
+        </div>
+        <div className="flex bg-gradient-to-br from-[#e7505e] via-[#cb5891]  to-[#a364dc]  rounded-3xl h-[350px] overflow-hidden w-full mt-8 max-w-5xl mx-auto relative">
+          <img
+            src="/PXL_20230106_140646324_2__1__3-removebg-preview.png"
+            alt=""
+          />
+          <div className="flex flex-col gap-6 bg-black/30 text-white rounded-3xl p-10 max-w-2xl flex-auto  m-10 right-6 self-center justify-center">
+            <h3 className="text-4xl font-bold">I'm Emmanuel Isenah</h3>
+            <p className="text-base">
+              I can assist in the growth of your company by aligning your
+              business objectives with your customers' needs, resulting in
+              increased customer conversions and sales.
+            </p>
+            <button className="rounded-xl py-2 px-8 w-fit bg-white text-neutral-800 font-semibold transition hover:-translate-y-1">
+          <Link to="contact" spy={true} smooth={true} offset={0} duration={500}>
+              Let's work together
+          </Link>
+            </button>
+          </div>
         </div>
       </div>
     </div>
