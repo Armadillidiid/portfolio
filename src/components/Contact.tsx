@@ -86,26 +86,26 @@ const Contact = () => {
   return (
     <div>
       <div className="flex flex-col justify-center items-center text-center">
-      <motion.div
-        variants={variants}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true, margin: "50px"}}
-      >
-        <SectionTitle>Contact</SectionTitle>
-      </motion.div>
-      <motion.div
-        variants={variants}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true, margin: "100px"}}
-      >
-        <SectionDescription style="bg-gradient-to-r from-blue-500 via-blue-400 to-sky-500 text-transparent bg-clip-text pb-2">
-          Get in touch with me
-          <br />
-          any how you prefer.
-        </SectionDescription>
-      </motion.div>
+        <motion.div
+          variants={variants}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true, margin: "50px" }}
+        >
+          <SectionTitle>Contact</SectionTitle>
+        </motion.div>
+        <motion.div
+          variants={variants}
+          initial="initial"
+          whileInView="whileInView"
+          viewport={{ once: true, margin: "100px" }}
+        >
+          <SectionDescription style="bg-gradient-to-r from-blue-500 via-blue-400 to-sky-500 text-transparent bg-clip-text pb-2">
+            Get in touch with me
+            <br />
+            any how you prefer.
+          </SectionDescription>
+        </motion.div>
         <p className="text-sm md:text-normal text-neutral-600 dark:text-neutral-400 max-w-[280px] sm:max-w-3xl">
           Fill in the form on the left with your information and I will get back
           to you as soon as possible. Alternatively, you can find me on the
@@ -113,11 +113,16 @@ const Contact = () => {
         </p>
       </div>
       <div className="grid grid-cols-12 gap-6 mx-auto mt-14 lg:max-w-5xl">
-        <motion.div 
-        initial={{opacity: 0, x: "-300"}}
-        whileInView={{opacity: 1, x: 0, transition: { bounce: 0.3, type: "spring", duration: 0.5 }}}
-        viewport={{ once: true, margin: "-150px"}}
-        className="col-span-12 md:col-span-5 lg:col-span-4 order-last md:order-first">
+        <motion.div
+          initial={{ opacity: 0, x: "-300" }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            transition: { bounce: 0.3, type: "spring", duration: 0.5 },
+          }}
+          viewport={{ once: true, margin: "-150px" }}
+          className="col-span-12 md:col-span-5 lg:col-span-4 order-last md:order-first"
+        >
           <div className="flex flex-col gap-6 ">
             <div className="h-fit p-8 bg-gradient-to-br from-blue-500 to-sky-400 text-white rounded-xl drop-shadow-[0_0_5px_rgba(0,0,0,0.25)]">
               <span className="font-semibold text-2xl tracking-tight">
@@ -125,7 +130,8 @@ const Contact = () => {
               </span>
               <div className="grid grid-cols-12 gap-3 mt-6 justify-center">
                 <a
-                  href="https://github.com/Armadillidiid" target={"_blank"}
+                  href="https://github.com/Armadillidiid"
+                  target={"_blank"}
                   rel={"noreferrer noopener"}
                   className="col-span-6 flex gap-2 items-center text-sm xl:text-base justify-center rounded-lg py-3 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-700 active:scale-90"
                 >
@@ -169,11 +175,16 @@ const Contact = () => {
             </div>
           </div>
         </motion.div>
-        <motion.div 
-        initial={{opacity: 0, x: "300"}}
-        whileInView={{opacity: 1, x: 0, transition: { bounce: 0.3, type: "spring", duration: 0.5 }}}
-        viewport={{ once: true, margin: "-150px"}}
-        className="col-span-12 md:col-span-7 lg:col-span-8 h-fit bg-white dark:bg-[#0d0d0d] rounded-xl drop-shadow-[0_0_5px_rgba(0,0,0,0.25)]">
+        <motion.div
+          initial={{ opacity: 0, x: "300" }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            transition: { bounce: 0.3, type: "spring", duration: 0.5 },
+          }}
+          viewport={{ once: true, margin: "-150px" }}
+          className="col-span-12 md:col-span-7 lg:col-span-8 h-fit bg-white dark:bg-[#0d0d0d] rounded-xl drop-shadow-[0_0_5px_rgba(0,0,0,0.25)]"
+        >
           <form
             onSubmit={(e) => sendEmail(e)}
             ref={form}

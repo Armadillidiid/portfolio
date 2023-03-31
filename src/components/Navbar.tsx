@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
-import {GrClose} from "react-icons/gr";
+import { GrClose } from "react-icons/gr";
 import { Link, scrollSpy } from "react-scroll";
 import ThemeToggle from "./sub-components/ThemeToggle";
 
@@ -13,7 +13,11 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`navbar ${toggle ? "rounded-3xl p-4 bg-white/20 md:bg-white  backdrop-blur w-full" : "rounded-full p-3 bg-white dark:bg-blue-500"}`}
+      className={`navbar ${
+        toggle
+          ? "rounded-3xl p-4 bg-white/20 md:bg-white  backdrop-blur w-full"
+          : "rounded-full p-3 bg-white dark:bg-blue-500"
+      }`}
     >
       <button
         className="flex md:hidden"
@@ -52,7 +56,9 @@ const Navbar: React.FC = () => {
           </Link>
         </li>
         <li className={`w-full ${toggle ?? "dark:text-black"}`}>
-          <button className={`blue-button duration-100 w-full active:scale-95 py-2 px-3 rounded-2xl md:rounded-full text-white dark:text-black md:text-white md:dark:text-white`}>
+          <button
+            className={`blue-button duration-100 w-full active:scale-95 py-2 px-3 rounded-2xl md:rounded-full text-white dark:text-black md:text-white md:dark:text-white`}
+          >
             <Link
               to="contact"
               spy={true}
