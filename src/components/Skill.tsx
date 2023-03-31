@@ -45,14 +45,14 @@ const Skill: React.FC = () => {
             bounce: 0.3,
             delay:
               arr.category === "languages"
-                ? 0.2
+                ? 0.1
                 : arr.category === "libraries"
-                ? 0.35
+                ? 0.15
                 : arr.category === "testing_frameworks"
-                ? 0.45
+                ? 0.20
                 : arr.category === "version_control"
-                ? 0.55
-                : 0.6,
+                ? 0.25
+                : 0.3,
           }}
           viewport={{ once: true }}
           key={id}
