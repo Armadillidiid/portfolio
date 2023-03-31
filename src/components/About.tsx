@@ -19,27 +19,22 @@ const About: React.FC = () => {
       </SectionDescription>
       <div className="flex flex-col gap-8 font-light dark:text-white text-base lg:text-lg">
         <p className="text-lg lg:text-2xl">
-          I am creative developer and Web designer based in New Delhi, India. I
-          am a Civil Engineering graduate and later switched to the awesome
-          world of front end web development.
+          I am creative software developer based in Port Harcourt, Nigeria. I
+          started my professional journey as a Electrical Engineering graduate,
+          but my curiosity and interest in the digital world led me to the
+          software development field.
         </p>
         <p>
-          I believe in creating experiences that are interactive, clean and
-          responsive. I enjoy using my skill-set to empower people to accomplish
-          their goals.
+          As a front-end software developer, I enjoy creating interactive,
+          clean, and responsive designs that provide an enjoyable user
+          experience. I strive to make websites both aesthetically pleasing and
+          easy to use, helping individuals accomplish their goals.
         </p>
         <p>
-          My development stack is focused on performance & accessibility with
-          delightful interactions. I create blazing fast web experience using
-          Jamstack with the help of Next.js
+          My development stack is focused on performance and accessibility.
+          Using technologies like the MERN stack and React.js, I build fast
+          websites with seamless interactions that keep users engaged.
         </p>
-        <div>
-          <span>Services i offer include:</span>
-          <ul className="list-disc list-inside">
-            <li>UI/UX Design</li>
-            <li>Front end web development</li>
-          </ul>
-        </div>
         <div className="flex flex-col gap-0 md:gap-20 md:flex-row justify-end bg-gradient-to-br from-[#e7505e] via-[#cb5891]  to-[#a364dc]  rounded-3xl overflow-hidden w-full mt-8 max-w-6xl mx-auto relative">
           <img
             src="/portrait.png"
