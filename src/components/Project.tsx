@@ -1,4 +1,4 @@
-import { BsArrowUpRight } from "react-icons/bs";
+import { BsArrowUpRight } from "react-icons/bs/index.js";
 import SectionDescription from "./sub-components/SectionDescription";
 import SectionTitle from "./sub-components/SectionTitle";
 import { projectData as data } from "../data/projects";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
-import { BsFillSunFill } from "react-icons/bs";
+import { FaSun, FaMoon } from "react-icons/fa/index.js";
+import { BsFillSunFill } from "react-icons/bs/index.js";
 
 interface Prop {
   navbar: boolean;

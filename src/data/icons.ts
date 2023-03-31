@@ -40,7 +40,7 @@ const frameworks: Icon[] = [
   },
   {
     name: "Astro",
-    url: "/src/images/astro.svg",
+    url: "/images/astro.svg",
     category: "frameworks",
   },
   {
@@ -58,17 +58,17 @@ const frameworks: Icon[] = [
 const libraries: Icon[] = [
   {
     name: "Framer Motion",
-    url: "/src/images/framer-motion.png",
+    url: "/images/framer-motion.png",
     category: "libraries",
   },
   {
     name: "TanStack Query",
-    url: "/src/images/tanstack-query.png",
+    url: "/images/tanstack-query.png",
     category: "libraries",
   },
   {
     name: "React Router",
-    url: "/src/images/react-router.svg",
+    url: "/images/react-router.svg",
     category: "libraries",
   },
 ];
@@ -81,7 +81,7 @@ const testing_frameworks: Icon[] = [
   },
   {
     name: "Cypress",
-    url: "/src/images/cypress-svgrepo-com.svg",
+    url: "/images/cypress-svgrepo-com.svg",
     category: "testing_frameworks",
   },
 ];
@@ -97,7 +97,7 @@ const version_control: Icon[] = [
 const editors: Icon[] = [
   {
     name: "Neovim",
-    url: "/src/images/neovim.png",
+    url: "/images/neovim.png",
     category: "editors",
   },
   {

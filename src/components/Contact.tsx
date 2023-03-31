@@ -4,7 +4,7 @@ import {
   FaLinkedinIn,
   FaRegClipboard,
   FaMailBulk,
-} from "react-icons/fa";
+} from "react-icons/fa/index.js";
 import SectionDescription from "./sub-components/SectionDescription";
 import SectionTitle from "./sub-components/SectionTitle";
 import emailjs from "@emailjs/browser";

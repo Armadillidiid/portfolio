@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FaBars } from "react-icons/fa";
-import { GrClose } from "react-icons/gr";
+import { FaBars } from "react-icons/fa/index.js";
+import { GrClose } from "react-icons/gr/index.js";
 import { Link, scrollSpy } from "react-scroll";
 import ThemeToggle from "./sub-components/ThemeToggle";
 

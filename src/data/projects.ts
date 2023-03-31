@@ -10,7 +10,7 @@ interface Project {
 const projectData: Project[] = [
   {
     name: "React-Game-Store",
-    image: "src/images/react-game-store.png",
+    image: "/images/react-game-store.png",
     stack: ["React", "Firebase", "Tailwind"],
     previewURL: "https://armadillidiid.github.io/react-game-store/",
     codeURL: "https://github.com/Armadillidiid/react-game-store",
@@ -19,7 +19,7 @@ const projectData: Project[] = [
   },
   {
     name: "Rumble",
-    image: "src/images/rumble.png",
+    image: "/images/rumble.png",
     stack: ["Python", "Django", "PostgreSQL"],
     previewURL: "https://rumble-eats.live/",
     codeURL: "https://github.com/Armadillidiid/food-delivery-ecommerce",
