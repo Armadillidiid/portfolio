@@ -15,7 +15,7 @@ const projectData: Project[] = [
     previewURL: "https://armadillidiid.github.io/react-game-store/",
     codeURL: "https://github.com/Armadillidiid/react-game-store",
     description:
-      "Led the redesign of our Concierge dispatching tool to assist healthcare riders, standardized components to be used across our family of Lyft Business products, assisted with interviewing and hiring committees, and co-chaired internal design mentorship program.",
+      "GameStore is a game store (no pun intended) built with React for the frontend and Firebase for authentication and database management. It utilizes the RAWG API to fetch details of games, such as release date, images, metacritic score, and other relevant information.",
   },
   {
     name: "Rumble",
@@ -24,7 +24,7 @@ const projectData: Project[] = [
     previewURL: "https://rumble-eats.live/",
     codeURL: "https://github.com/Armadillidiid/food-delivery-ecommerce",
     description:
-      "Led the redesign of our Concierge dispatching tool to assist healthcare riders, standardized components to be used across our family of Lyft Business products, assisted with interviewing and hiring committees, and co-chaired internal design mentorship program.",
+      "Rumble is a food delivery web app built with Python, Django, and PostgreSQL. It connects customers with local restaurants, and features a clean, user-friendly interface for easy navigation. Customers can track deliveries and pay directly through the app.",
   },
   {
     name: "CV Application(Maker)",
@@ -34,7 +34,7 @@ const projectData: Project[] = [
     previewURL: "https://armadillidiid.github.io/cv-application/",
     codeURL: "https://github.com/Armadillidiid/cv-application",
     description:
-      "Led the redesign of our Concierge dispatching tool to assist healthcare riders, standardized components to be used across our family of Lyft Business products, assisted with interviewing and hiring committees, and co-chaired internal design mentorship program.",
+      "CV Maker is a React app that allows users to create and download their CV in a professional format, with real-time updates. It's built using React.js and Tailwind for the frontend, and uses libraries like html2canvas and jsPDF for CV generation and download.",
   },
 ];
 
