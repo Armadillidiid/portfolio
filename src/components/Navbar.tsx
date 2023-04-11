@@ -55,20 +55,18 @@ const Navbar: React.FC = () => {
             Skills
           </Link>
         </li>
-        <li className={`w-full ${toggle ?? "dark:text-black"}`}>
-          <button
-            className={`blue-button duration-100 w-full active:scale-95 py-2 px-3 rounded-2xl md:rounded-full text-white dark:text-black md:text-white md:dark:text-white`}
+        <li className={`w-full active:scale-95 transition ${toggle ?? "dark:text-black"}`}>
+          <Link
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={0}
+            duration={500}
+            className="blue-button duration-100 w-full py-2 px-3 rounded-2xl md:rounded-full text-white dark:text-black md:text-white md:dark:text-white"
           >
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={0}
-              duration={500}
-            >
-              Contact
-            </Link>
-          </button>
+            Contact
+          </Link>
+
         </li>
       </ul>
     </nav>
