@@ -22,3 +22,4 @@ pnpm-debug.log*
 
 .firebase/
 .vscode/
+Session.vim
