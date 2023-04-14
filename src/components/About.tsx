@@ -40,9 +40,10 @@ const About: React.FC = () => {
           <img
             src="/portrait.png"
             alt=""
-            className="order-first self-center w-[250px] md:w-auto max-w-full max-h-[350px] md:max-h-[320px] lg:max-h-[350px] md:absolute left-0 md:bottom-8 lg:bottom-0"
+            className="order-first self-center w-[250px] md:w-auto max-w-full max-h-[350px] md:max-h-[320px] lg:max-h-[340px] md:absolute left-0 md:left-[-30px]
+            lg:left-[-20px] 2xl:left-[20px] bottom-0"
           />
-          <div className="flex flex-col gap-4 md:gap-9 z-10 bg-black/30 text-white rounded-3xl p-8 md:p-10 md:max-w-md lg:max-w-xl xl:max-w-2xl flex-auto m-5 mt-3 md:mt-5 lg:m-10 right-6 self-center justify-center text-center md:text-start">
+          <div className="flex flex-col gap-4 md:gap-9 z-10 bg-black/30 text-white rounded-3xl p-8 md:p-10 md:max-w-md lg:max-w-xl xl:max-w-2xl flex-auto m-5 mt-1 md:mt-5 lg:m-10 right-6 self-center justify-center text-center md:text-start">
             <motion.h3
               variants={variant}
               initial="initial"
