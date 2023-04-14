@@ -109,17 +109,17 @@ const Hero: React.FC = () => {
         </div>
       </div>
       <div className="overflow-hidden">
-        <motion.button
-          variants={variant}
-          custom={3.7}
-          initial="initial"
-          animate="animate"
-          className="mt-10 py-3 px-8 bg-blue-500 text-sm md:text-normal text-white rounded"
-        >
-          <Link to="contact" spy={true} smooth={true} offset={0} duration={500}>
+        <Link to="contact" spy={true} smooth={true} offset={0} duration={500}>
+          <motion.div
+            variants={variant}
+            custom={3.7}
+            initial="initial"
+            animate="animate"
+            className="mt-10 py-3 px-8 bg-blue-500 text-sm md:text-normal text-white rounded"
+          >
             About Me
-          </Link>
-        </motion.button>
+          </motion.div>
+        </Link>
       </div>
       <div className="overflow-hidden"></div>
       <motion.svg
