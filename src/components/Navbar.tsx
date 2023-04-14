@@ -34,28 +34,47 @@ const Navbar: React.FC = () => {
         <li className="hidden md:flex">
           <ThemeToggle navbar={true} />
         </li>
-        <li className="hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
-          <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
+        <li className="flex hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
+          <Link
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={0}
+            duration={500}
+            className="w-full"
+          >
             About
           </Link>
         </li>
-        <li className="hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
+        <li className="flex hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
           <Link
             to="projects"
             spy={true}
             smooth={true}
             offset={0}
             duration={500}
+            className="w-full"
           >
             Project
           </Link>
         </li>
-        <li className="hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
-          <Link to="skills" spy={true} smooth={true} offset={0} duration={500}>
+        <li className="flex hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
+          <Link
+            to="skills"
+            spy={true}
+            smooth={true}
+            offset={0}
+            duration={500}
+            className="w-full"
+          >
             Skills
           </Link>
         </li>
-        <li className={`w-full active:scale-95 transition ${toggle ?? "dark:text-black"}`}>
+        <li
+          className={`w-full flex text-center active:scale-95 transition ${
+            toggle ?? "dark:text-black"
+          }`}
+        >
           <Link
             to="contact"
             spy={true}
@@ -66,7 +85,6 @@ const Navbar: React.FC = () => {
           >
             Contact
           </Link>
-
         </li>
       </ul>
     </nav>
