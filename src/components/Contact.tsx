@@ -240,7 +240,8 @@ const Contact = () => {
           ></path>
         </svg>
         <span className="text-xs">
-          Designed and developed by Emmanuel Isenah ©2023
+          Designed and developed by Emmanuel Isenah ©
+          {new Date().getFullYear().toString()}
         </span>
       </div>
     </div>
