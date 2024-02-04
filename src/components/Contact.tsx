@@ -139,7 +139,7 @@ const Contact = () => {
                   GitHub
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/emmanuel-isenah-541593190?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B8jozcR60TrSSNPHpHUNgQw%3D%3D"
+                  href="https://www.linkedin.com/in/emmanuel-isenah-541593190/"
                   target={"_blank"}
                   rel={"noreferrer noopener"}
                   className="col-span-6 flex text-sm xl:text-base gap-2 items-center justify-center rounded-lg py-2 px-4 text-black hover:text-white hover:transition hover:duration-200 font-semibold bg-neutral-100 hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-700 active:scale-90"
