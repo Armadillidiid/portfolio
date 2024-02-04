@@ -56,40 +56,6 @@ import "../styles/index.css"
 </Layout>
 
 <script>
-  const customCursor = document.querySelector(".custom-cursor") as HTMLElement;
-  const root = document.querySelector("html") as HTMLElement;
-  let cursorX = 0;
-  let cursorY = 0;
-  let scrollX = window.scrollX || window.pageXOffset;
-  let scrollY = window.scrollY || window.pageYOffset;
-
-  const handleCursor = (e: MouseEvent) => {
-    cursorX = e.clientX;
-    cursorY = e.clientY;
-    customCursor.style.top = cursorY + scrollY + "px";
-    customCursor.style.left = cursorX + scrollX + "px";
-  };
-
-  root.addEventListener("mousemove", handleCursor);
-
-  window.addEventListener("scroll", () => {
-    scrollX = window.scrollX || window.pageXOffset;
-    scrollY = window.scrollY || window.pageYOffset;
-    customCursor.style.top = cursorY + scrollY + "px";
-    customCursor.style.left = cursorX + scrollX + "px";
-  });
-
-  const handleMouseClick = () => {
-    customCursor.classList.contains("mouse-click")
-      ? customCursor.classList.remove("mouse-click")
-      : customCursor.classList.add("mouse-click");
-  };
-
-  window.addEventListener("mousedown", handleMouseClick);
-  window.addEventListener("mouseup", handleMouseClick);
-</script>
-
-<script>
   const theme = ((): string => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme")!;
@@ -108,43 +74,18 @@ import "../styles/index.css"
   window.localStorage.setItem("theme", theme);
 </script>
 
-<script>
-  // Get custom cursor
-  const customCursor = document.querySelector(".custom-cursor") as HTMLElement;
 
-  // Set the distance from the edge of the screen that the cursor should disappear
-  const distanceFromEdgeX = 100;
-  const distanceFromEdgeY = 5;
+ <script>
+    const cursor = document.querySelector(".custom-cursor") as HTMLElement;
 
-  // Get a reference to the body element
-  const body = document.body;
+    document.addEventListener('mousemove', (e) => {
+      // Update the cursor position based on the mouse coordinates
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
 
-  // Add an event listener to track the mouse movement
-  body.addEventListener("mousemove", (e) => {
-    // Get the current mouse position
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-
-    // Get the width and height of the body element
-    const bodyWidth = window.innerWidth;
-    const bodyHeight = window.innerHeight;
-    if (window.matchMedia("(min-width: 1280px)").matches) {
-      // Check if the mouse is too close to the edge of the screen
-      if (
-        mouseX < distanceFromEdgeX ||
-        mouseX > bodyWidth - distanceFromEdgeX ||
-        mouseY < distanceFromEdgeY ||
-        mouseY > bodyHeight - distanceFromEdgeY
-      ) {
-        // Hide the cursor
-        customCursor.style.opacity = "0";
-
-        body!.style.cursor = "auto";
-      } else {
-        // Show the cursor
-        customCursor.style.opacity = "100";
-        body!.style.cursor = "none ";
-      }
-    }
-  });
-</script>
+    document.addEventListener('scroll', (e) => {
+      window.pageXOffset = window.scrollX;
+      window.pageYOffset = window.scrollY;
+    });
+  </script>

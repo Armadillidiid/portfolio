@@ -141,14 +141,14 @@ svg #wheel {
 }
 
 .custom-cursor {
-  position: absolute;
+  position: fixed;
   border-radius: 50%;
   width: 26px;
   height: 26px;
   transform: translate(-50%, -50%);
   pointer-events: none;
   backdrop-filter: grayscale(1) invert(100%);
-  z-index: 30;
+  z-index: 9999;
   transition-property: opacity, width, height;
   transition-duration: 200ms;
   transition-timing-function: ease;
