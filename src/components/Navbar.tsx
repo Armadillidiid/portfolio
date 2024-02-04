@@ -70,21 +70,30 @@ const Navbar: React.FC = () => {
             Skills
           </Link>
         </li>
-        <li
-          className={`w-full flex text-center active:scale-95 transition ${
-            toggle ?? "dark:text-black"
-          }`}
-        >
+        <li className="flex hover:scale-105 md:hover:scale-[1.2] transition navbar-item">
           <Link
             to="contact"
             spy={true}
             smooth={true}
             offset={0}
             duration={500}
-            className="blue-button duration-100 w-full py-2 px-3 rounded-2xl md:rounded-full text-white dark:text-black md:text-white md:dark:text-white"
+            className="w-full"
           >
             Contact
           </Link>
+        </li>
+        <li
+          className={`w-full flex text-center active:scale-95 transition ${
+            toggle ?? "dark:text-black"
+          }`}
+        >
+          <a
+            href="https://blog.emmanuelisenah.com"
+            target="_blank"
+            className="blue-button duration-100 w-full py-2 px-3 rounded-2xl md:rounded-full text-white dark:text-black md:text-white md:dark:text-white"
+          >
+            Blog
+          </a>
         </li>
       </ul>
     </nav>
