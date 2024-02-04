@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import SectionDescription from "./sub-components/SectionDescription";
 import SectionTitle from "./sub-components/SectionTitle";
 import { motion } from "framer-motion";
@@ -49,7 +50,7 @@ const Skill: React.FC = () => {
                 : arr.category === "libraries"
                 ? 0.15
                 : arr.category === "testing_frameworks"
-                ? 0.20
+                ? 0.2
                 : arr.category === "version_control"
                 ? 0.25
                 : 0.3,
@@ -107,7 +108,9 @@ const Skill: React.FC = () => {
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Frameworks</span>
             <div className="flex flex-grow flex-wrap justify-around items-center gap-8 sm:gap-12">
-              {frameworkList}
+              {frameworkList.map((framework, index) => (
+                <Fragment key={index}>{framework}</Fragment>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -115,7 +118,9 @@ const Skill: React.FC = () => {
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Languages</span>
             <div className="flex flex-grow justify-around items-center gap-8 md:gap-12">
-              {languageList}
+              {languageList.map((language, index) => (
+                <Fragment key={index}>{language}</Fragment>
+              ))}
             </div>
           </div>
         </div>
@@ -123,7 +128,10 @@ const Skill: React.FC = () => {
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Libraries</span>
             <div className="flex flex-grow justify-around items-center gap-8 md:gap-12">
-              {librariesList}
+              {/* {librariesList} */}
+              {librariesList.map((library, index) => (
+                <Fragment key={index}>{library}</Fragment>
+              ))}
             </div>
           </div>
         </div>
@@ -131,7 +139,10 @@ const Skill: React.FC = () => {
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Testing Frameworks</span>
             <div className="flex flex-grow justify-around items-center gap-8 md:gap-12">
-              {testingFrameworkList}
+              {/* {testingFrameworkList} */}
+              {testingFrameworkList.map((testingFramework, index) => (
+                <Fragment key={index}>{testingFramework}</Fragment>
+              ))}
             </div>
           </div>
         </div>
@@ -139,7 +150,10 @@ const Skill: React.FC = () => {
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Version Control</span>
             <div className="flex flex-grow justify-around items-center gap-8 md:gap-12">
-              {versionControlList}
+              {/* {versionControlList} */}
+              {versionControlList.map((versionControl, index) => (
+                <Fragment key={index}>{versionControl}</Fragment>
+              ))}
             </div>
           </div>
         </div>
@@ -147,7 +161,9 @@ const Skill: React.FC = () => {
           <div className="flex flex-col gap-8">
             <span className="font-semibold text-xl">Code Editors</span>
             <div className="flex flex-grow justify-around items-center gap-8 md:gap-12">
-              {editorsList}
+              {editorsList.map((editor, index) => (
+                <Fragment key={index}>{editor}</Fragment>
+              ))}
             </div>
           </div>
         </div>
