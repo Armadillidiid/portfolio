@@ -21,6 +21,18 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
   </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5XT5RQHHNE"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-5XT5RQHHNE");
+  </script>
   <body class="min-h-screen relative dark:bg-zinc-900">
     <slot />
   </body>
