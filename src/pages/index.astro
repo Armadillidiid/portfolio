@@ -10,11 +10,11 @@ import Contact from "../components/Contact";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ThemeToggle from "../components/sub-components/ThemeToggle";
-import "../styles/index.css"
+import "../styles/index.css";
 ---
 
 <Layout title="Emmanuel Isenah | Web Developer">
-  <div class="custom-cursor inset-6 hidden md:block"></div>
+  <div class="custom-cursor inset-6 hidden"></div>
   <div class="container mx-auto px-4 flex justify-center">
     <Navbar client:load />
   </div>
@@ -74,18 +74,25 @@ import "../styles/index.css"
   window.localStorage.setItem("theme", theme);
 </script>
 
+<script>
+  const cursor = document.querySelector(".custom-cursor") as HTMLElement;
 
- <script>
-    const cursor = document.querySelector(".custom-cursor") as HTMLElement;
+  document.addEventListener("mousemove", (e) => {
+    if (!cursor.classList.contains("md:block")) {
+      cursor.classList.add("md:block");
+    }
 
-    document.addEventListener('mousemove', (e) => {
-      // Update the cursor position based on the mouse coordinates
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-    });
+    // Update the cursor position based on the mouse coordinates
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
 
-    document.addEventListener('scroll', (e) => {
-      window.pageXOffset = window.scrollX;
-      window.pageYOffset = window.scrollY;
-    });
-  </script>
+  const handleMouseClick = () => {
+    cursor.classList.contains("mouse-click")
+      ? cursor.classList.remove("mouse-click")
+      : cursor.classList.add("mouse-click");
+  };
+
+  window.addEventListener("mousedown", handleMouseClick);
+  window.addEventListener("mouseup", handleMouseClick);
+</script>
