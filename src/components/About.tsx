@@ -38,7 +38,7 @@ const About: React.FC = () => {
         </p>
         <div className="flex flex-col gap-0 md:gap-20 md:flex-row justify-end bg-gradient-to-br from-[#e7505e] via-[#cb5891]  to-[#a364dc]  rounded-3xl overflow-hidden w-full mt-8 max-w-6xl mx-auto relative">
           <img
-            src="/portrait.png"
+            src="/portrait.webp"
             alt=""
             className="order-first self-center w-[250px] md:w-auto max-w-full max-h-[350px] md:max-h-[320px] lg:max-h-[340px] md:absolute left-0 md:left-[-30px]
             lg:left-[-20px] 2xl:left-[20px] bottom-0"
@@ -60,8 +60,9 @@ const About: React.FC = () => {
               viewport={{ once: true, margin: "-50px" }}
               className="text-base"
             >
-              Let me assist you in developing a website that not only appeals to your
-              target population, but also engages them, and encourages sales.
+              Let me assist you in developing a website that not only appeals to
+              your target population, but also engages them, and encourages
+              sales.
             </motion.p>
             <motion.button
               variants={variant}
