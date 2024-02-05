@@ -8,7 +8,9 @@ interface Prop {
 
 const ThemeToggle = ({ navbar }: Prop) => {
   const [theme, setTheme] = useState<string>(
-    localStorage.getItem("theme") ?? "light"
+    typeof localStorage !== "undefined"
+      ? localStorage.getItem("theme") || "light"
+      : "light",
   );
 
   const handleClick = () => {
