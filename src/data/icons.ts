@@ -58,7 +58,7 @@ const frameworks: Icon[] = [
 const libraries: Icon[] = [
   {
     name: "Framer Motion",
-    url: "/images/framer-motion.png",
+    url: "/images/framer-motion.webp",
     category: "libraries",
   },
   {
