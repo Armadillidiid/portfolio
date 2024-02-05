@@ -108,18 +108,29 @@ const Hero: React.FC = () => {
           </motion.div>
         </div>
       </div>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden mt-10 flex flex-col lg:flex-row gap-2 lg:gap-4">
         <Link to="about" spy={true} smooth={true} offset={0} duration={500}>
-          <motion.div
+          <motion.button
             variants={variant}
             custom={3.7}
             initial="initial"
             animate="animate"
-            className="mt-10 py-3 px-8 bg-blue-500 text-sm md:text-normal text-white rounded"
+            className="min-w-[128px] py-3 flex justify-center bg-blue-500 text-sm md:text-normal text-white rounded"
           >
             About Me
-          </motion.div>
+          </motion.button>
         </Link>
+        <motion.a
+          href="https://blog.emmanuelisenah.com"
+          target="_blank"
+          variants={variant}
+          custom={3.7}
+          initial="initial"
+          animate="animate"
+          className="min-w-[128px] py-3 flex justify-center border border-blue-500 text-sm md:text-normal text-blue-500 rounded"
+        >
+          Blog
+        </motion.a>
       </div>
       <div className="overflow-hidden"></div>
       <motion.svg
