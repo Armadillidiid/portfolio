@@ -21,7 +21,7 @@ const projectData: Project[] = [
     name: "Rumble",
     image: "/images/rumble.webp",
     stack: ["Python", "Django", "PostgreSQL"],
-    previewURL: "https://rumble-eats.live/",
+    previewURL: "https://rumble-eat.xyz/",
     codeURL: "https://github.com/Armadillidiid/food-delivery-ecommerce",
     description:
       "Rumble is a food delivery web app built with Python, Django, and PostgreSQL. It connects customers with local restaurants, and features a clean, user-friendly interface for easy navigation. Customers can track deliveries and pay directly through the app.",
