@@ -50,7 +50,7 @@ const frameworks: Icon[] = [
   },
   {
     name: "Tailwind",
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
     category: "frameworks",
   },
 ];
