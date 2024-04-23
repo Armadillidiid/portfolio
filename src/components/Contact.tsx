@@ -11,6 +11,14 @@ import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { z } from "zod";
+
+const formSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  subject: z.string().min(1),
+  message: z.string().min(1),
+});
 
 const Contact = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -61,27 +69,37 @@ const Contact = () => {
     });
   };
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (form.current === null) return;
 
-    return emailjs
-      .sendForm(
+    if (!form.current) return;
+
+    const data = new FormData(e.currentTarget);
+
+    const formDataObject: Record<string, string> = {};
+    data.forEach((value, key) => {
+      formDataObject[key] = value.toString();
+    });
+
+    const sanitized = formSchema.parse(formDataObject);
+    if (!sanitized) return;
+
+    try {
+      const result = await emailjs.sendForm(
         "service_yxh67lq",
         "template_egmalli",
         form.current,
-        "f22cRsV4RnHdpwvEd"
-      )
-      .then((result) => {
-        displayToast("✅ Message sent");
-        console.log(result.text);
-        form.current?.reset();
-      })
-      .catch((error) => {
-        console.log(error.text);
-        form.current?.reset();
-        throw error;
-      });
+        "f22cRsV4RnHdpwvEd",
+      );
+
+      displayToast("✅ Message sent");
+      form.current?.reset();
+    } catch (error) {
+      console.error(error);
+      displayToast("❌ Something went wrong");
+      form.current?.reset();
+      throw error;
+    }
   };
   return (
     <div>
@@ -198,12 +216,16 @@ const Contact = () => {
                 type="text"
                 placeholder="Your name"
                 className="w-full lg:w-1/2 contact-input"
+                pattern="[A-Za-z ]{1,}"
+                title="Please enter a valid name (letters and spaces only)"
+                required
               />
               <input
                 name="email"
-                type="text"
+                type="email"
                 placeholder="Your email address"
                 className="w-full lg:w-1/2 contact-input"
+                required
               />
             </div>
             <input
@@ -211,12 +233,14 @@ const Contact = () => {
               type="text"
               placeholder="Subject"
               className="w-full contact-input"
+              required
             />
             <textarea
-              name="messaage"
+              name="message"
               id="message"
               placeholder="I'd like to inquire more about..."
               className="w-full h-[200px] lg:h-[264px] contact-textarea"
+              required
             ></textarea>
             <button className="blue-button text-white rounded p-2 text-sm font-medium">
               Submit
