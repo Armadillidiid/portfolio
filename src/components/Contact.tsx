@@ -183,7 +183,7 @@ const Contact = () => {
                 button below.
               </p>
               <a
-                href="https://drive.google.com/file/d/1ZZMAKDxxWueZun5nB3qEM41zy23sg7-_/view?usp=sharing"
+                href="https://flowcv.com/resume/gnpbkob2ww"
                 target={"_blank"}
                 rel={"noreferrer noopener"}
                 className="self-center bg-white text-blue-500 hover:text-white hover:bg-blue-500 transition-all duration-200 ease-in-out flex items-center w-fit gap-2 py-3 px-6 rounded-xl text-sm xl:text-base font-semibold shadow-lg active:scale-90"
