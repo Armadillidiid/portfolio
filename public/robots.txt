@@ -1,0 +1,6 @@
+# public/robots.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://emmanuelisenah.com/sitemap.xml
