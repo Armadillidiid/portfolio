@@ -15,7 +15,7 @@ const Skill: React.FC = () => {
   const icon = (
     arr: { name: string; url: string; category: string },
     id: number,
-    isFramework: boolean = false
+    isFramework: boolean = false,
   ) => (
     <>
       {isFramework ? (
@@ -48,12 +48,12 @@ const Skill: React.FC = () => {
               arr.category === "languages"
                 ? 0.1
                 : arr.category === "libraries"
-                ? 0.15
-                : arr.category === "testing_frameworks"
-                ? 0.2
-                : arr.category === "version_control"
-                ? 0.25
-                : 0.3,
+                  ? 0.15
+                  : arr.category === "testing_frameworks"
+                    ? 0.2
+                    : arr.category === "version_control"
+                      ? 0.25
+                      : 0.3,
           }}
           viewport={{ once: true }}
           key={id}
@@ -71,18 +71,18 @@ const Skill: React.FC = () => {
   );
 
   const languageList = languages.map((language, index) =>
-    icon(language, index)
+    icon(language, index),
   );
   const frameworkList = frameworks.map((framework, index) =>
-    icon(framework, index, true)
+    icon(framework, index, true),
   );
   const testingFrameworkList = testing_frameworks.map((framework, index) =>
-    icon(framework, index)
+    icon(framework, index),
   );
   const librariesList = libraries.map((library, index) => icon(library, index));
   const editorsList = editors.map((editor, index) => icon(editor, index));
   const versionControlList = version_control.map((versionControl, index) =>
-    icon(versionControl, index)
+    icon(versionControl, index),
   );
 
   return (

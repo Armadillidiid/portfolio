@@ -125,8 +125,8 @@ const Contact = () => {
           </SectionDescription>
         </motion.div>
         <p className="text-sm md:text-normal text-neutral-600 dark:text-neutral-400 max-w-[280px] sm:max-w-3xl">
-          Fill in the form on the right with your information and I will get back
-          to you as soon as possible. Alternatively, you can find me on the
+          Fill in the form on the right with your information and I will get
+          back to you as soon as possible. Alternatively, you can find me on the
           platforms listed on the left.
         </p>
       </div>
