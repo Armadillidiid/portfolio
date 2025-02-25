@@ -30,7 +30,7 @@ const projectData: Project[] = [
     name: "CV Application(Maker)",
     image: "/cv-application-gif.gif",
     stack: ["React", "Tailwind", "DaisyUI"],
-    previewURL: "https://armadillidiid.github.io/cv-application/",
+    previewURL: "/cv-application-gif.gif",
     codeURL: "https://github.com/Armadillidiid/cv-application",
     description:
       "CV Maker is a React app that allows users to create and download their CV in a professional format, with real-time updates. It's built using React.js and Tailwind for the frontend, and uses libraries like html2canvas and jsPDF for CV generation and download.",
