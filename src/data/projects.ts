@@ -36,6 +36,15 @@ const projectData: Project[] = [
     description:
       "CV Maker is a React app that allows users to create and download their CV in a professional format, with real-time updates. It's built using React.js and Tailwind for the frontend, and uses libraries like html2canvas and jsPDF for CV generation and download.",
   },
+  {
+    name: "Threadit (Reddit Clone)",
+    image: "/images/threadit.webp",
+    stack: ["Next.js", "TypeScript", "PostgreSQL"],
+    previewURL: "https://reddit-clone-zeta-woad.vercel.app/",
+    codeURL: "https://github.com/Armadillidiid/reddit-clone",
+    description:
+      "Threadit is a Reddit clone built with Next.js, TypeScript, and PostgreSQL. It features real-time updates, and allows users to create threads, comment on posts, and upvote/downvote content.",
+  },
 ];
 
 export { projectData };
