@@ -28,8 +28,7 @@ const projectData: Project[] = [
   },
   {
     name: "CV Application(Maker)",
-    image:
-      "https://raw.githubusercontent.com/Armadillidiid/cv-application/main/cv-application-gif.gif",
+    image: "/cv-application-gif.gif",
     stack: ["React", "Tailwind", "DaisyUI"],
     previewURL: "https://armadillidiid.github.io/cv-application/",
     codeURL: "https://github.com/Armadillidiid/cv-application",
