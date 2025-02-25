@@ -92,7 +92,7 @@ const Project: React.FC = () => {
         whileInView="whileInView"
         viewport={{ once: true }}
       >
-        <SectionTitle>Projects</SectionTitle>
+        <SectionTitle id="projects">Projects</SectionTitle>
       </motion.div>
       <motion.div
         variants={variants}
