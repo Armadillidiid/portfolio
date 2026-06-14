@@ -6,6 +6,7 @@ catalog:
   "@tanstack/react-router": ^1.170.15
   "@tanstack/router-plugin": ^1.168.18
   "@fontsource-variable/jetbrains-mono": ^5.2.8
+  gray-matter: ^4.0.3
 packages:
   - "."
 overrides:
