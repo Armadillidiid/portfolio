@@ -1,12 +1,34 @@
 import path from "path";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { defineConfig } from "vite-plus";
 
+const velitePlugin = {
+  name: "velite",
+  async buildStart() {
+    const { build } = await import("velite");
+    await build({ clean: true });
+  },
+  async configureServer(server: import("vite-plus").ViteDevServer) {
+    const { build } = await import("velite");
+    await build({ watch: true, clean: false });
+    server.watcher.add(".velite");
+  },
+};
+
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    tanstackRouter({ target: "react", autoCodeSplitting: true }),
+    react(),
+    tailwindcss(),
+    velitePlugin,
+  ],
   resolve: {
-    alias: { "@": path.resolve(import.meta.dirname, "src") },
+    alias: {
+      "@": path.resolve(import.meta.dirname, "src"),
+      "@velite": path.resolve(import.meta.dirname, ".velite"),
+    },
   },
   staged: {
     "*": "vp check --fix",
