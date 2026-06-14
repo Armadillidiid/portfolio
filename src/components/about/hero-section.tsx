@@ -31,6 +31,7 @@ export function HeroSection() {
 
       <div className="pt-4 flex flex-wrap gap-4">
         <Button
+          size="xl"
           render={
             <a href="#" className="font-bold">
               VIEW PROJECTS
@@ -39,6 +40,7 @@ export function HeroSection() {
           }
         />
         <Button
+          size="xl"
           variant="outline"
           render={
             <a href="mailto:emmanuel@isenah.example.com" className="font-bold">
