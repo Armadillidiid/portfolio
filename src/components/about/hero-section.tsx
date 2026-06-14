@@ -46,7 +46,7 @@ export function HeroSection() {
             </p>
           </div>
           <div className="hidden md:block">
-            <div className="relative overflow-hidden aspect-square w-full rounded-[1.5rem] ring-1 ring-border">
+            <div className="relative overflow-hidden aspect-[3/4] w-full rounded-[1.5rem] ring-1 ring-border">
               <img
                 src="/pfp.webp"
                 alt="Portrait of Emmanuel Isenah"
