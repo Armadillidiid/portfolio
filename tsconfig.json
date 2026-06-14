@@ -4,6 +4,7 @@
     "module": "esnext",
     "lib": ["ES2023", "DOM"],
     "types": ["vite-plus/client"],
+    "jsx": "react-jsx",
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -17,7 +18,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }
