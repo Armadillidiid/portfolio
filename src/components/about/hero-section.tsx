@@ -7,12 +7,7 @@ import { TerminalWindow } from "@/components/terminal/terminal-window";
 export function HeroSection() {
   return (
     <TerminalWindow filename="about.md">
-      <div className="space-y-2">
-        <TerminalLine command="cat intro.txt" />
-        <h1 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
-          Building resilient systems with code.
-        </h1>
-      </div>
+      <TerminalLine command="cat intro.txt" />
 
       <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
         <p>
