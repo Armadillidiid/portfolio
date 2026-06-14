@@ -10,12 +10,21 @@ export function HeroSection() {
       <TerminalLine command="cat intro.txt" />
 
       <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
-        <p>
-          I am <span className="text-primary font-bold">Emmanuel Isenah</span>, a Software Developer
-          specialized in engineering robust data pipelines and scalable backend architectures. My
-          expertise lies at the intersection of performance and clean code, ensuring systems remain
-          reliable under heavy throughput.
-        </p>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_14rem] gap-6 items-start">
+          <p>
+            I am <span className="text-primary font-bold">Emmanuel Isenah</span>, a Software
+            Developer specialized in engineering robust data pipelines and scalable backend
+            architectures. My expertise lies at the intersection of performance and clean code,
+            ensuring systems remain reliable under heavy throughput.
+          </p>
+          <img
+            src="/pfp.webp"
+            alt="Portrait of Emmanuel Isenah"
+            width={720}
+            height={960}
+            className="w-48 md:w-full h-auto border border-border"
+          />
+        </div>
         <p>
           With a focus on <span className="text-secondary font-semibold">Python</span> and
           high-performance data engineering, I transform complex schema mapping requirements into
