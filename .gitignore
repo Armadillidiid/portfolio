@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Velite
+.velite
+public/static
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
