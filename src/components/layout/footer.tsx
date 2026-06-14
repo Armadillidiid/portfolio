@@ -10,9 +10,8 @@ export function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-[1100px] mx-auto px-4 py-8 md:px-8 gap-4">
         <div className="flex flex-col items-center md:items-start gap-2">
           <span className="text-xs uppercase tracking-widest text-muted-foreground">
-            &copy; 2024 EMMANUEL ISENAH. ALL RIGHTS RESERVED.
+            &copy; {new Date().getFullYear()} EMMANUEL ISENAH. ALL RIGHTS RESERVED.
           </span>
-          <p className="text-xs text-muted-foreground opacity-60">Built for high performance.</p>
         </div>
         <div className="flex gap-8">
           {SOCIAL_LINKS.map((link) => (
