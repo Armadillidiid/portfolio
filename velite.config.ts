@@ -11,9 +11,12 @@ const posts = defineCollection({
       draft: s.boolean().default(false),
       tags: s.array(s.string()).default([]),
       cover: s.string().optional(),
-      body: s.mdx(),
     })
-    .transform((data) => ({ ...data, url: `/blog/${data.slug}` })),
+    .transform((data) => ({
+      ...data,
+      slug: data.slug.replace(/^posts\//, ""),
+      url: `/blog/${data.slug.replace(/^posts\//, "")}`,
+    })),
 });
 
 export default defineConfig({
