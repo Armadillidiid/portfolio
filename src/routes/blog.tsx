@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BlogEmptyState } from "@/components/blog/empty-state";
+import { PostList } from "@/components/blog/post-list";
 
 export const Route = createFileRoute("/blog")({
   component: BlogRoute,
 });
 
 function BlogRoute() {
-  return <BlogEmptyState />;
+  return <PostList />;
 }
