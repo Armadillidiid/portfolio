@@ -10,7 +10,7 @@ export function HeroSection() {
       <TerminalLine command="cat intro.txt" />
 
       <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_14rem] gap-6 items-start">
+        <div className="relative grid grid-cols-1 items-start gap-6 md:grid-cols-[minmax(0,1fr)_19rem] md:gap-8">
           <p>
             I am <span className="text-primary font-bold">Emmanuel Isenah</span>, a Software
             Developer specialized in engineering robust data pipelines and scalable backend
@@ -22,7 +22,7 @@ export function HeroSection() {
             alt="Portrait of Emmanuel Isenah"
             width={720}
             height={960}
-            className="w-48 md:w-full h-auto border border-border"
+            className="pointer-events-none absolute inset-0 z-0 !m-0 h-full w-full scale-[1.04] object-cover blur-xl transition-opacity duration-500 ease-out md:relative md:z-10 md:block md:!m-0 md:h-full md:w-full md:object-cover md:rounded-[8px]"
           />
         </div>
         <p>
