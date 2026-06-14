@@ -7,7 +7,8 @@
     "dev": "vp dev",
     "build": "tsc && vp build",
     "preview": "vp preview",
-    "prepare": "vp config"
+    "prepare": "vp config",
+    "migrate:posts": "node scripts/migrate-posts.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
