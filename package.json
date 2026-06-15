@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vp dev",
-    "build": "tsc && vp build",
+    "dev": "velite build && vp dev",
+    "build": "tsc && velite build && vp build",
     "preview": "vp preview",
     "prepare": "vp config",
     "migrate:posts": "node scripts/migrate-posts.mjs"

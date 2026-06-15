@@ -1,4 +1,5 @@
 import path from "path";
+import { build as veliteBuild } from "velite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
@@ -7,22 +8,20 @@ import { defineConfig } from "vite-plus";
 const velitePlugin = {
   name: "velite",
   async buildStart() {
-    const { build } = await import("velite");
-    await build({ clean: true });
+    await veliteBuild({ clean: true });
   },
   async configureServer(server: import("vite-plus").ViteDevServer) {
-    const { build } = await import("velite");
-    await build({ watch: true, clean: false });
+    await veliteBuild({ watch: true, clean: false });
     server.watcher.add(".velite");
   },
 };
 
 export default defineConfig({
   plugins: [
+    velitePlugin,
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
     tailwindcss(),
-    velitePlugin,
   ],
   resolve: {
     alias: {
