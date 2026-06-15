@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { format } from "date-fns";
+import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TerminalLine } from "@/components/terminal/terminal-line";
 import { TerminalPrompt } from "@/components/terminal/terminal-prompt";
@@ -25,40 +26,53 @@ export function PostList() {
   }
 
   return (
-    <TerminalWindow filename="blog.md">
-      <TerminalLine command="ls -la content/posts" />
-      <p className="text-muted-foreground text-sm">
-        {posts.length} {posts.length === 1 ? "post" : "posts"} · sorted by date desc
-      </p>
+    <div className="space-y-12">
+      <header>
+        <p className="text-secondary text-xs font-bold uppercase tracking-widest mb-3">BLOG</p>
+        <h1 className="text-3xl md:text-5xl font-bold leading-none mb-6">
+          Writing
+          <span
+            aria-hidden="true"
+            className="cursor-blink bg-primary w-2 h-8 md:h-10 inline-block align-middle ml-2"
+          />
+        </h1>
+        <a
+          href="#"
+          className="inline-flex items-center gap-2 text-primary text-sm hover:underline underline-offset-4 decoration-2"
+        >
+          <ArrowRight aria-hidden="true" className="size-4" />
+          Browse by topic
+        </a>
+      </header>
 
-      <ul className="divide-y divide-border">
+      <ul className="space-y-6">
         {posts.map((post) => (
-          <li key={post.slug} className="py-4 first:pt-0 last:pb-0">
+          <li key={post.slug}>
             <Link
               to={post.url}
-              className="group block transition-opacity hover:opacity-80 focus-visible:opacity-80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              className="group block border border-border bg-card p-6 md:p-8 transition-colors duration-200 hover:border-primary focus-visible:border-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             >
-              <div className="flex items-baseline gap-4 flex-wrap">
+              <div className="flex flex-col gap-4">
                 <time dateTime={post.date} className="text-muted-foreground text-sm shrink-0">
                   {format(new Date(post.date), "yyyy-MM-dd")}
                 </time>
-                <h2 className="text-primary font-bold group-hover:underline">{post.title}</h2>
+                <h2 className="text-xl md:text-2xl font-bold group-hover:text-primary transition-colors">
+                  {post.title}
+                </h2>
+                {post.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </div>
-              {post.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {post.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              )}
             </Link>
           </li>
         ))}
       </ul>
-
-      <TerminalPrompt className="pt-2" />
-    </TerminalWindow>
+    </div>
   );
 }
