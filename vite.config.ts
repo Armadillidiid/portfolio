@@ -8,7 +8,7 @@ import { defineConfig } from "vite-plus";
 const velitePlugin = {
   name: "velite",
   async buildStart() {
-    await veliteBuild({ clean: true });
+    await veliteBuild({ clean: false });
   },
   async configureServer(server: import("vite-plus").ViteDevServer) {
     await veliteBuild({ watch: true, clean: false });
