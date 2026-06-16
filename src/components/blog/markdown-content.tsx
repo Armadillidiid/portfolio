@@ -1,6 +1,60 @@
+import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import rehypeShiki from "@shikijs/rehype";
+import { createHighlighter } from "shiki";
+
+let highlighterPromise: ReturnType<typeof createHighlighter>;
+
+function getHighlighterInstance() {
+  if (!highlighterPromise) {
+    highlighterPromise = createHighlighter({
+      themes: ["github-dark"],
+      langs: [
+        "typescript",
+        "ts",
+        "javascript",
+        "js",
+        "bash",
+        "json",
+        "yaml",
+        "css",
+        "xml",
+        "html",
+        "plaintext",
+        "text",
+      ],
+    });
+  }
+  return highlighterPromise;
+}
+
+function CodeBlock({ children, className }: { children: string; className?: string }) {
+  const lang = className?.replace("language-", "") ?? "";
+  const [html, setHtml] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!lang) return;
+    void getHighlighterInstance().then((shiki) => {
+      const result = shiki.codeToHtml(children.trimEnd(), { lang, theme: "github-dark" });
+      setHtml(result);
+    });
+  }, [children, lang]);
+
+  if (html) {
+    return (
+      <div
+        className="border border-border overflow-x-auto text-sm"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    );
+  }
+
+  return (
+    <pre className="border border-border overflow-x-auto text-sm font-mono p-4">
+      <code>{children}</code>
+    </pre>
+  );
+}
 
 type MarkdownContentProps = {
   body: string;
@@ -11,7 +65,6 @@ export function MarkdownContent({ body }: MarkdownContentProps) {
     <div className="space-y-6 text-base text-muted-foreground leading-relaxed">
       <Markdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[[rehypeShiki, { theme: "github-dark", lazy: true }]]}
         components={{
           h1: ({ children }) => (
             <h1 className="text-3xl font-bold text-foreground mt-12 mb-4">{children}</h1>
@@ -65,11 +118,18 @@ export function MarkdownContent({ body }: MarkdownContentProps) {
               </code>
             );
           },
-          pre: ({ children }) => (
-            <pre className="border border-border overflow-x-auto text-sm font-mono [&_code]:bg-transparent!">
-              {children}
-            </pre>
-          ),
+          pre: ({ children }) => {
+            const child = Array.isArray(children) ? children[0] : children;
+            if (child && typeof child === "object" && "props" in child) {
+              const { className, children: codeContent } = child.props;
+              return <CodeBlock className={className}>{String(codeContent)}</CodeBlock>;
+            }
+            return (
+              <pre className="border border-border overflow-x-auto text-sm font-mono p-4">
+                {children}
+              </pre>
+            );
+          },
           table: ({ children }) => (
             <div className="overflow-x-auto border border-border">
               <table className="w-full text-sm">{children}</table>
