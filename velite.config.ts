@@ -11,6 +11,7 @@ const posts = defineCollection({
       draft: s.boolean().default(false),
       tags: s.array(s.string()).default([]),
       cover: s.string().optional(),
+      body: s.raw(),
     })
     .transform((data) => ({
       ...data,
@@ -26,7 +27,6 @@ export default defineConfig({
     assets: "public/static",
     base: "/static/",
     name: "[name]-[hash:6].[ext]",
-    clean: true,
   },
   collections: { posts },
   mdx: {
