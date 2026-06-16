@@ -1,10 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PostList } from "@/components/blog/post-list";
+import { Outlet, createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/blog")({
-  component: BlogRoute,
+  component: BlogLayout,
 });
 
-function BlogRoute() {
-  return <PostList />;
+function BlogLayout() {
+  return <Outlet />;
 }
