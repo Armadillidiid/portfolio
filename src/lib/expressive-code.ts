@@ -8,7 +8,7 @@ import {
 } from "expressive-code";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
-import { pluginFileIcons } from "@xt0rted/expressive-code-file-icons";
+import { inlineFileIcons } from "@/lib/inline-file-icons";
 import { toHtml } from "hast-util-to-html";
 
 type CodeBlockWithIcon = ExpressiveCodeBlock & { props: { icon?: string } };
@@ -176,10 +176,7 @@ async function buildEngine(): Promise<ExpressiveCode> {
       pluginCollapsibleSections(),
       pluginLineNumbers(),
       mapLanguageToFileIcon,
-      pluginFileIcons({
-        iconClass: "inline-block size-5 shrink-0 mr-2 -mt-[2px]",
-        titleClass: "inline-flex flex-row items-center gap-1",
-      }),
+      inlineFileIcons,
       addCodeBlockAnchors,
     ] as ExpressiveCodePlugin[],
   });
