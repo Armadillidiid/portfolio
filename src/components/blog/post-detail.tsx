@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { format } from "date-fns";
@@ -20,9 +21,20 @@ export function PostDetail({ post }: PostDetailProps) {
       </Link>
 
       <header className="space-y-4">
-        <p className="text-secondary text-xs font-bold uppercase tracking-widest">
-          {format(new Date(post.date), "yyyy-MM-dd")}
-          {post.tags.length > 0 ? ` · ${post.tags.join(" · ")}` : ""}
+        <p className="text-secondary text-xs font-bold uppercase tracking-widest flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span>{format(new Date(post.date), "yyyy-MM-dd")}</span>
+          {post.tags.map((tag) => (
+            <Fragment key={tag}>
+              <span aria-hidden="true">·</span>
+              <Link
+                to="/blog/tags/$tag"
+                params={{ tag }}
+                className="hover:text-primary transition-colors"
+              >
+                {tag}
+              </Link>
+            </Fragment>
+          ))}
         </p>
         <h1 className="text-3xl md:text-5xl font-bold leading-none">{post.title}</h1>
       </header>
