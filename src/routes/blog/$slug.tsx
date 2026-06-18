@@ -17,7 +17,7 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ loaderData }) => {
     const post = loaderData;
     const description = post ? extractDescription(post.body) : SITE.description;
-    const ogImage = post?.cover ? absoluteUrl(post.cover) : SITE.defaultOgImage;
+    const ogImage = post?.cover ? absoluteUrl(post.cover.src) : SITE.defaultOgImage;
     const url = post ? absoluteUrl(post.url) : SITE.url;
     return {
       meta: [

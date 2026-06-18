@@ -41,12 +41,12 @@ export function PostDetail({ post }: PostDetailProps) {
 
       {post.cover && (
         <img
-          src={post.cover}
+          src={post.cover.src}
           alt={post.title}
           loading="lazy"
           decoding="async"
-          width={1600}
-          height={840}
+          width={post.cover.width}
+          height={post.cover.height}
           className="w-full border border-border"
         />
       )}

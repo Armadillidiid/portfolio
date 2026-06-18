@@ -5,8 +5,7 @@ tags:
   - javascript
   - webdev
   - typescript
-cover: >-
-  https://cdn.hashnode.com/res/hashnode/image/upload/v1707327833641/c052387d-502f-44da-b092-20203689d8b2.png
+cover: covers/whats-new-in-typescript-54-beta.png
 ---
 
 Greetings! [TypeScript 5.4 Beta](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-beta) just dropped and it presents new exciting features with some bug fixes and QoL changes. Without further delay, let's quickly explore some of these game-changing improvements.

@@ -10,7 +10,7 @@ const posts = defineCollection({
       date: s.isodate(),
       draft: s.boolean().default(false),
       tags: s.array(s.string()).default([]),
-      cover: s.string().optional(),
+      cover: s.image().optional(),
       body: s.raw(),
     })
     .transform((data) => ({
