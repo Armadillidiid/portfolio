@@ -43,8 +43,8 @@ export function Header({ pathname }: HeaderProps) {
                 className={cn(
                   "text-sm uppercase tracking-widest transition-colors pb-1 border-b-2",
                   active
-                    ? "text-primary border-primary"
-                    : "text-muted-foreground border-transparent hover:text-primary",
+                    ? "text-secondary border-primary"
+                    : "text-muted-foreground border-transparent hover:text-secondary",
                 )}
               >
                 {item.label}
