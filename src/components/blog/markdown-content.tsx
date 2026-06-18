@@ -1,59 +1,31 @@
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { createHighlighter } from "shiki";
+import { mountExpressiveCodeStyles, renderCodeBlock } from "@/lib/expressive-code";
+import { remarkCodeMeta } from "@/lib/remark-code-meta";
 
-let highlighterPromise: ReturnType<typeof createHighlighter>;
-
-function getHighlighterInstance() {
-  if (!highlighterPromise) {
-    highlighterPromise = createHighlighter({
-      themes: ["github-dark"],
-      langs: [
-        "typescript",
-        "ts",
-        "javascript",
-        "js",
-        "bash",
-        "json",
-        "yaml",
-        "css",
-        "xml",
-        "html",
-        "plaintext",
-        "text",
-      ],
-    });
-  }
-  return highlighterPromise;
-}
-
-function CodeBlock({ children, className }: { children: string; className?: string }) {
-  const lang = className?.replace("language-", "") ?? "";
+function CodeBlock({ code, language, meta }: { code: string; language: string; meta?: string }) {
   const [html, setHtml] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!lang) return;
-    void getHighlighterInstance().then((shiki) => {
-      const result = shiki.codeToHtml(children.trimEnd(), { lang, theme: "github-dark" });
-      setHtml(result);
+    let cancelled = false;
+    void renderCodeBlock({ code, language, meta }).then((out) => {
+      if (!cancelled) setHtml(out);
     });
-  }, [children, lang]);
+    return () => {
+      cancelled = true;
+    };
+  }, [code, language, meta]);
 
-  if (html) {
+  if (!html) {
     return (
-      <div
-        className="border border-border overflow-x-auto text-sm"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <pre className="border border-border overflow-x-auto text-sm font-mono p-4">
+        <code>{code}</code>
+      </pre>
     );
   }
 
-  return (
-    <pre className="border border-border overflow-x-auto text-sm font-mono p-4">
-      <code>{children}</code>
-    </pre>
-  );
+  return <div className="expressive-code my-6" dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
 type MarkdownContentProps = {
@@ -61,10 +33,14 @@ type MarkdownContentProps = {
 };
 
 export function MarkdownContent({ body }: MarkdownContentProps) {
+  useEffect(() => {
+    void mountExpressiveCodeStyles();
+  }, []);
+
   return (
     <div className="space-y-6 text-base text-muted-foreground leading-relaxed">
       <Markdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkCodeMeta]}
         components={{
           h1: ({ children }) => (
             <h1 className="text-3xl font-bold text-foreground mt-12 mb-4">{children}</h1>
@@ -121,8 +97,22 @@ export function MarkdownContent({ body }: MarkdownContentProps) {
           pre: ({ children }) => {
             const child = Array.isArray(children) ? children[0] : children;
             if (child && typeof child === "object" && "props" in child) {
-              const { className, children: codeContent } = child.props;
-              return <CodeBlock className={className}>{String(codeContent)}</CodeBlock>;
+              const childProps = child.props as {
+                className?: string;
+                children?: unknown;
+                "data-meta"?: string;
+              };
+              const className = childProps.className ?? "";
+              const language = className.match(/language-([\w-]+)/)?.[1] ?? "text";
+              const rawChildren = childProps.children;
+              const code =
+                typeof rawChildren === "string"
+                  ? rawChildren
+                  : Array.isArray(rawChildren)
+                    ? rawChildren.filter((c): c is string => typeof c === "string").join("")
+                    : "";
+              const meta = childProps["data-meta"];
+              return <CodeBlock code={code} language={language} meta={meta} />;
             }
             return (
               <pre className="border border-border overflow-x-auto text-sm font-mono p-4">
