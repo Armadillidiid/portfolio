@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { TerminalIcon } from "@/components/terminal/terminal-icon";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +26,7 @@ export function Header({ pathname }: HeaderProps) {
         <Link
           to="/"
           className="font-bold text-primary tracking-tight"
-          aria-label="EMMANUEL ISENAH — Home"
+          aria-label="Emmanuel Isenah — Home"
         >
           Emmanuel Isenah
         </Link>
@@ -53,10 +52,7 @@ export function Header({ pathname }: HeaderProps) {
           })}
         </div>
 
-        <div className="flex gap-4 items-center">
-          <ThemeToggle />
-          <TerminalIcon href="mailto:emmanuel@isenah.example.com" label="Contact via email" />
-        </div>
+        <ThemeToggle />
       </nav>
     </header>
   );
