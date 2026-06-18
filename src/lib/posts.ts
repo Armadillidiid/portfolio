@@ -9,3 +9,19 @@ export function getAllPosts() {
 export function getPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug);
 }
+
+export function getPostsByTag(tag: string) {
+  return getAllPosts().filter((post) => post.tags.includes(tag));
+}
+
+export function getAllTags() {
+  const counts = new Map<string, number>();
+  for (const post of getAllPosts()) {
+    for (const tag of post.tags) {
+      counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    }
+  }
+  return Array.from(counts, ([tag, count]) => ({ tag, count })).sort(
+    (a, b) => b.count - a.count || a.tag.localeCompare(b.tag),
+  );
+}

@@ -29,3 +29,4 @@ public/static
 !.vscode/
 !.vscode/settings.json
 !.vscode/extensions.json
+/.tanstack/tmp
