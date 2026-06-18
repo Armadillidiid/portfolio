@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { defineConfig } from "vite-plus";
 import { gtmInjectPlugin } from "./vite.gtm";
+import { feedsPlugin } from "./vite.feeds";
 
 const velitePlugin = {
   name: "velite",
@@ -21,6 +22,7 @@ export default defineConfig({
   plugins: [
     velitePlugin,
     gtmInjectPlugin(),
+    feedsPlugin(),
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
     tailwindcss(),
