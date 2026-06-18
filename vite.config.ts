@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { defineConfig } from "vite-plus";
+import { gtmInjectPlugin } from "./vite.gtm";
 
 const velitePlugin = {
   name: "velite",
@@ -19,6 +20,7 @@ const velitePlugin = {
 export default defineConfig({
   plugins: [
     velitePlugin,
+    gtmInjectPlugin(),
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
     tailwindcss(),
