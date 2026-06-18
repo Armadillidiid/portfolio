@@ -30,3 +30,9 @@ public/static
 !.vscode/settings.json
 !.vscode/extensions.json
 /.tanstack/tmp
+
+# Env files (local only)
+.env
+.env.local
+.env.*.local
+
