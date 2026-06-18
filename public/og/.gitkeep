@@ -1,0 +1,3 @@
+# Drop a 1200x630 default OG image here. Used as og:image for the home page
+# and as a fallback when a blog post has no cover.
+# Reference path: /og/default.png (see src/lib/site.ts → SITE.defaultOgImage).
