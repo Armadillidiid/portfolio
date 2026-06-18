@@ -1,7 +1,7 @@
 const SOCIAL_LINKS = [
-  { label: "GITHUB", href: "#" },
-  { label: "LINKEDIN", href: "#" },
-  { label: "TWITTER", href: "#" },
+  { label: "GITHUB", href: "https://github.com/Armadillidiid" },
+  { label: "LINKEDIN", href: "https://www.linkedin.com/in/emmanuel-isenah-541593190" },
+  { label: "TWITTER", href: "https://x.com/EIsenah" },
 ] as const;
 
 export function Footer() {
@@ -18,6 +18,7 @@ export function Footer() {
             <a
               key={link.label}
               href={link.href}
+              target="_blank"
               className="text-xs uppercase text-muted-foreground hover:text-secondary transition-colors hover:underline decoration-primary"
             >
               {link.label}

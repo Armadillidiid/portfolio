@@ -41,7 +41,7 @@ export function PostList() {
           className="inline-flex items-center gap-2 text-primary text-sm hover:underline underline-offset-4 decoration-2"
         >
           <ArrowRight aria-hidden="true" className="size-4" />
-          Browse by topic
+          Browse by tag
         </a>
       </header>
 
