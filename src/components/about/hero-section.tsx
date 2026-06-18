@@ -3,11 +3,12 @@ import { Button } from "@/components/ui/button";
 import { TerminalLine } from "@/components/terminal/terminal-line";
 import { TerminalPrompt } from "@/components/terminal/terminal-prompt";
 import { TerminalWindow } from "@/components/terminal/terminal-window";
+import { Link } from "@tanstack/react-router";
 
 export function HeroSection() {
   return (
     <TerminalWindow filename="about.md">
-      <TerminalLine command="cat intro.txt" />
+      <TerminalLine command="cat about.md" />
 
       <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
         <div className="relative grid grid-cols-1 items-start gap-6 md:grid-cols-[minmax(0,1fr)_19rem] md:gap-8">
@@ -65,17 +66,17 @@ export function HeroSection() {
         <Button
           size="xl"
           render={
-            <a href="#" className="font-bold">
-              VIEW PROJECTS
+            <Link to="/blog" className="font-bold uppercase">
+              VIEW BLOG
               <ArrowRight aria-hidden="true" />
-            </a>
+            </Link>
           }
         />
         <Button
           size="xl"
           variant="outline"
           render={
-            <a href="mailto:emmanuel@isenah.example.com" className="font-bold">
+            <a href="mailto:emmanuel@isenah.example.com" className="font-bold uppercase">
               GET IN TOUCH
             </a>
           }

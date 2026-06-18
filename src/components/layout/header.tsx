@@ -29,7 +29,7 @@ export function Header({ pathname }: HeaderProps) {
           className="font-bold text-primary tracking-tight"
           aria-label="EMMANUEL ISENAH — Home"
         >
-          EMMANUEL ISENAH
+          Emmanuel Isenah
         </Link>
 
         <div className="hidden md:flex gap-8 items-center">

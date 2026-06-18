@@ -8,7 +8,7 @@ type TerminalPromptProps = {
 
 export function TerminalPrompt({
   user = "emmanuel",
-  host = "isenah",
+  host = "blog",
   className,
 }: TerminalPromptProps) {
   return (
