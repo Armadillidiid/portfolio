@@ -1,22 +1,103 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import type { Plugin, ViteDevServer, Connect } from "vite-plus";
+import { SITE } from "./src/lib/site";
 
 type FeedPost = {
   title: string;
   url: string;
   date: string;
-  body: string;
+  description: string;
+  slug: string;
 };
 
-async function readPosts(): Promise<FeedPost[]> {
-  const file = path.resolve(process.cwd(), ".velite/posts.json");
-  const raw = await fs.readFile(file, "utf8");
-  const all = JSON.parse(raw) as Array<FeedPost & { draft: boolean }>;
-  return all
-    .filter((post) => !post.draft)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .map(({ title, url, date, body }) => ({ title, url, date, body }));
+function parseFrontmatter(raw: string): {
+  data: Record<string, unknown>;
+  body: string;
+} {
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!match) return { data: {}, body: raw };
+  const yaml = match[1];
+  const body = match[2];
+  const data: Record<string, unknown> = {};
+  for (const line of yaml.split(/\r?\n/)) {
+    const m = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
+    if (!m) continue;
+    const key = m[1];
+    let value: unknown = m[2].trim();
+    if (typeof value === "string") {
+      if ((value as string).startsWith("[") && (value as string).endsWith("]")) {
+        value = (value as string)
+          .slice(1, -1)
+          .split(",")
+          .map((s) => s.trim().replace(/^["']|["']$/g, ""))
+          .filter(Boolean);
+      } else if ((value as string) === "true") {
+        value = true;
+      } else if ((value as string) === "false") {
+        value = false;
+      } else if (/^["'].*["']$/.test(value as string)) {
+        value = (value as string).slice(1, -1);
+      }
+    }
+    data[key] = value;
+  }
+  return { data, body };
+}
+
+function asString(v: unknown): string {
+  return typeof v === "string" ? v : "";
+}
+
+function asStringArray(v: unknown): string[] {
+  if (Array.isArray(v)) return v.filter((x): x is string => typeof x === "string");
+  return [];
+}
+
+function asBoolean(v: unknown): boolean {
+  return v === true;
+}
+
+async function readPostFile(filePath: string, slug: string): Promise<FeedPost | null> {
+  const raw = await fs.readFile(filePath, "utf8");
+  const { data, body } = parseFrontmatter(raw);
+  if (asBoolean(data.draft)) return null;
+  const title = asString(data.title) || slug;
+  const date = asString(data.date);
+  if (!date) return null;
+  const description = asString(data.description) || body.replace(/\s+/g, " ").trim().slice(0, 280);
+  return {
+    title,
+    url: `/blog/${slug}`,
+    date,
+    description,
+    slug,
+  };
+}
+
+async function collectPosts(root: string): Promise<FeedPost[]> {
+  const blogDir = path.join(root, "pages", "blog");
+  let entries: import("node:fs").Dirent[];
+  try {
+    entries = await fs.readdir(blogDir, { withFileTypes: true });
+  } catch {
+    return [];
+  }
+  const posts: FeedPost[] = [];
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const slug = entry.name;
+    if (slug === "tags") continue;
+    const mdPath = path.join(blogDir, slug, "index.md");
+    try {
+      const post = await readPostFile(mdPath, slug);
+      if (post) posts.push(post);
+    } catch {
+      // no index.md in this dir
+    }
+  }
+  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return posts;
 }
 
 function escapeXml(value: string): string {
@@ -28,25 +109,14 @@ function escapeXml(value: string): string {
     .replace(/'/g, "&apos;");
 }
 
-function stripMarkdown(body: string): string {
-  return body
-    .replace(/```[\s\S]*?```/g, " ")
-    .replace(/`[^`]+`/g, " ")
-    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
-    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
-    .replace(/[#>*_~`-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function absoluteUrl(base: string, path: string): string {
-  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+function absoluteUrl(base: string, p: string): string {
+  if (p.startsWith("http://") || p.startsWith("https://")) return p;
   const b = base.replace(/\/$/, "");
-  return `${b}${path.startsWith("/") ? path : `/${path}`}`;
+  return `${b}${p.startsWith("/") ? p : `/${p}`}`;
 }
 
 function readSiteUrl(): string {
-  return process.env.VITE_SITE_URL ?? "http://localhost:5173";
+  return process.env.VITE_SITE_URL ?? SITE.url;
 }
 
 function buildRss(posts: FeedPost[], siteUrl: string): string {
@@ -54,14 +124,13 @@ function buildRss(posts: FeedPost[], siteUrl: string): string {
   const buildDate = new Date().toUTCString();
   const items = recent
     .map((post) => {
-      const description = stripMarkdown(post.body).slice(0, 280);
       const link = absoluteUrl(siteUrl, post.url);
       return `    <item>
       <title>${escapeXml(post.title)}</title>
       <link>${escapeXml(link)}</link>
       <guid isPermaLink="true">${escapeXml(link)}</guid>
       <pubDate>${escapeXml(new Date(post.date).toUTCString())}</pubDate>
-      <description>${escapeXml(description)}</description>
+      <description>${escapeXml(post.description.slice(0, 280))}</description>
     </item>`;
     })
     .join("\n");
@@ -69,9 +138,9 @@ function buildRss(posts: FeedPost[], siteUrl: string): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>${escapeXml("Emmanuel Isenah")}</title>
+    <title>${escapeXml(SITE.name)}</title>
     <link>${escapeXml(siteUrl)}</link>
-    <description>${escapeXml("Personal site — TypeScript, React, and the web.")}</description>
+    <description>${escapeXml(SITE.description)}</description>
     <language>en</language>
     <lastBuildDate>${escapeXml(buildDate)}</lastBuildDate>
     <atom:link xmlns:atom="http://www.w3.org/2005/Atom" href="${escapeXml(absoluteUrl(siteUrl, "/rss.xml"))}" rel="self" type="application/rss+xml" />
@@ -109,23 +178,24 @@ ${body}
 
 export function feedsPlugin(): Plugin {
   let outDir = "dist";
+  let root = process.cwd();
   return {
     name: "feeds",
     configResolved(config) {
       outDir = config.build.outDir ?? "dist";
+      root = config.root ?? process.cwd();
     },
     async configureServer(server: ViteDevServer) {
       const handler: Connect.NextHandleFunction = async (req, res, next) => {
         try {
           if (!req.url) return next();
+          const posts = await collectPosts(root);
           if (req.url.startsWith("/rss.xml")) {
-            const posts = await readPosts();
             res.setHeader("Content-Type", "application/rss+xml; charset=utf-8");
             res.end(buildRss(posts, readSiteUrl()));
             return;
           }
           if (req.url.startsWith("/sitemap.xml")) {
-            const posts = await readPosts();
             res.setHeader("Content-Type", "application/xml; charset=utf-8");
             res.end(buildSitemap(posts, readSiteUrl()));
             return;
@@ -138,8 +208,8 @@ export function feedsPlugin(): Plugin {
       server.middlewares.use(handler);
     },
     async closeBundle() {
-      const posts = await readPosts();
-      const target = path.resolve(process.cwd(), outDir);
+      const posts = await collectPosts(root);
+      const target = path.resolve(root, outDir);
       await fs.mkdir(target, { recursive: true });
       await fs.writeFile(path.join(target, "rss.xml"), buildRss(posts, readSiteUrl()), "utf8");
       await fs.writeFile(
