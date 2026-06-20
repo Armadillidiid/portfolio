@@ -1,11 +1,9 @@
 ---
-title: What's New in TypeScript 5.4 Beta
+title: "What's New in TypeScript 5.4 Beta"
 date: "2024-02-08T08:24:47.000Z"
-tags:
-  - javascript
-  - webdev
-  - typescript
-cover: covers/whats-new-in-typescript-54-beta.png
+tags: [javascript, webdev, typescript]
+cover: ./cover.png
+description: "Object.groupBy, Map.groupBy, and the NoInfer<T> utility type land in the TypeScript 5.4 Beta."
 ---
 
 Greetings! [TypeScript 5.4 Beta](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-beta) just dropped and it presents new exciting features with some bug fixes and QoL changes. Without further delay, let's quickly explore some of these game-changing improvements.
@@ -14,7 +12,7 @@ Greetings! [TypeScript 5.4 Beta](https://devblogs.microsoft.com/typescript/annou
 
 One of the new API changes added in [TypeScript 5.4 Beta](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-beta) is the declarations for upcoming JavaScript methods: [`Object.groupBy`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy) and [`Map.groupBy`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/groupBy) . These static methods simplify the grouping of items in an array (and iterables such as objects or maps) far easier.
 
-It works by accepting an iterable and a function that classifies which group each element should be placed in. The result of this function is then used to create an object key for each distinct group and adds the original element to an array for every key. Here's an example:
+It works by accepting an iterable and a function that classifies which group each element should be placed into. The result of this function is then used to create an object key for each distinct group and adds the original element to an array for every key. Here's an example:
 
 ```typescript
 const people = [
@@ -53,19 +51,10 @@ For `Map.groupBy`, it performs equivalently to `Object.groupBy`, but instead pro
 ```typescript
 const fruits = ["apple", "banana", "orange", "kiwi"];
 
-// Group fruits by their first letter
 const letterGroups = Map.groupBy(fruits, (fruit) => fruit.charAt(0));
-
-// Resulting map:
-// Map {
-//   'a' => ['apple'],
-//   'b' => ['banana'],
-//   'o' => ['orange'],
-//   'k' => ['kiwi']
-// }
 ```
 
-A good thing to note is the objects produced end up as a `Parital` record as there's no concrete way for the compiler to ensure all keys were created. To access variables, you'll have to use an optional chaining operator or check for `undefined`.
+A good thing to note is the objects produced end up as a `Partial` record as there's no concrete way for the compiler to ensure all keys were created. To access variables, you'll have to use an optional chaining operator or check for `undefined`.
 
 ```typescript
 type AgeGroup = Partial<Record<"young" | "adult" | "senior", { name: string; age: number }[]>>;
@@ -86,11 +75,10 @@ Let's consider a function that receives a list of values, such as fruits in this
 ```typescript
 declare function getValue<T>(values: T[], defaultValue: T): T;
 
-// Example: Without NoInfer<T>
 const result = getValue(["apple", "lemon"], "apple"); // OK
 ```
 
-For this example, TypeScript infers the type of result as `"apple" | "lemon"` as it should be. But what if we changed our default value to something very different?
+For this example, TypeScript infers the type of result as `"apple" | "lemon"` as it should. But what if we changed our default value to something very different?
 
 ```typescript
 const result = getValue(["apple", "lemon"], "bomb"); // Also OK
@@ -109,17 +97,16 @@ const result = getValue(["apple", "lemon"], "bomb");
 
 This also works but it's a bit more verbose and generic `D` most likely won't be used anywhere else in the signature.
 
-This is where the new utility type `NoInfer` comes in. By surrounding our type in `NoInfer<...>` , TypeScript will skip to adding the type parameter as a candidate for type inference.
+This is where the new utility type `NoInfer` comes in. By surrounding our type in `NoInfer<...>`, TypeScript will skip adding the type parameter as a candidate for type inference.
 
 ```typescript
 declare function getValue<const T>(values: T[], defaultValue: NoInfer<T>): T;
 
-// Example: With NoInfer<T>
 const result = getValue(["apple", "lemon"], "bomb");
 // Error: Argument of type "bomb" is not assignable to parameter of type ("apple" | "lemon")
 ```
 
-By excluding the `defaultValue` type, we ensure that whatever is inputted isn't included in the union of values returned or inferred by our function.
+By excluding the `defaultValue` type, we ensure that whatever is inputted isn't included in the union of values returned or inferred by the `getValue` function.
 
 Now previously before this utility type was officially introduced, the community had created a workaround type to combat this issue.
 

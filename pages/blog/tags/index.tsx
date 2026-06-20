@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { TagList } from "@/components/blog/tag-list";
+import type { TagCount } from "@/lib/posts";
 
-export const Route = createFileRoute("/blog/tags/")({
-  component: TagsIndexRoute,
-});
+type Props = {
+  tags: TagCount[];
+};
 
-function TagsIndexRoute() {
+export default function TagsIndexPage({ tags }: Props) {
   return (
     <div className="space-y-12">
       <header>
@@ -21,7 +21,7 @@ function TagsIndexRoute() {
           All tags across published posts. Click a tag to filter.
         </p>
       </header>
-      <TagList />
+      <TagList tags={tags} />
     </div>
   );
 }

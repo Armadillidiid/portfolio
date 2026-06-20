@@ -1,22 +1,22 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@void/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 type NavItem = {
   label: string;
-  to: string;
+  href: string;
 };
 
 const NAV_ITEMS: ReadonlyArray<NavItem> = [
-  { label: "ABOUT", to: "/" },
-  { label: "BLOG", to: "/blog" },
+  { label: "ABOUT", href: "/" },
+  { label: "BLOG", href: "/blog" },
 ] as const;
 
 type HeaderProps = {
-  pathname: string;
+  path: string;
 };
 
-export function Header({ pathname }: HeaderProps) {
+export function Header({ path }: HeaderProps) {
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50">
       <nav
@@ -24,7 +24,7 @@ export function Header({ pathname }: HeaderProps) {
         className="flex justify-between items-center w-full max-w-[1100px] mx-auto px-4 py-4 md:px-8"
       >
         <Link
-          to="/"
+          href="/"
           className="font-bold text-primary tracking-tight"
           aria-label="Emmanuel Isenah — Home"
         >
@@ -33,11 +33,11 @@ export function Header({ pathname }: HeaderProps) {
 
         <div className="hidden md:flex gap-8 items-center">
           {NAV_ITEMS.map((item) => {
-            const active = pathname === item.to;
+            const active = path === item.href;
             return (
               <Link
-                key={item.to}
-                to={item.to}
+                key={item.href}
+                href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "text-sm uppercase tracking-widest transition-colors pb-1 border-b-2",

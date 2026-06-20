@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { TerminalLine } from "@/components/terminal/terminal-line";
 import { TerminalPrompt } from "@/components/terminal/terminal-prompt";
 import { TerminalWindow } from "@/components/terminal/terminal-window";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@void/react";
 
 export function HeroSection() {
   return (
@@ -66,7 +66,7 @@ export function HeroSection() {
         <Button
           size="xl"
           render={
-            <Link to="/blog" className="font-bold uppercase">
+            <Link href="/blog" className="font-bold uppercase">
               VIEW BLOG
               <ArrowRight aria-hidden="true" />
             </Link>

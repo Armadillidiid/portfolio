@@ -1,10 +1,12 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@void/react";
 import { ArrowRight } from "lucide-react";
-import { getAllTags } from "@/lib/posts";
+import type { TagCount } from "@/lib/posts";
 
-export function TagList() {
-  const tags = getAllTags();
+type TagListProps = {
+  tags: TagCount[];
+};
 
+export function TagList({ tags }: TagListProps) {
   if (tags.length === 0) {
     return <p className="text-muted-foreground text-sm">No tags yet.</p>;
   }
@@ -14,8 +16,7 @@ export function TagList() {
       {tags.map(({ tag, count }) => (
         <li key={tag}>
           <Link
-            to="/blog/tags/$tag"
-            params={{ tag }}
+            href={`/blog/tags/${tag}`}
             className="group flex items-center justify-between gap-4 p-4 md:p-5 transition-colors hover:bg-muted focus-visible:bg-muted focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
           >
             <span className="flex items-baseline gap-3 flex-wrap">

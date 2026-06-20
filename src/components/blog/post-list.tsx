@@ -1,21 +1,19 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@void/react";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TerminalLine } from "@/components/terminal/terminal-line";
 import { TerminalPrompt } from "@/components/terminal/terminal-prompt";
 import { TerminalWindow } from "@/components/terminal/terminal-window";
-import { getAllPosts } from "@/lib/posts";
+import type { PostSummary } from "@/lib/posts";
 import { format } from "date-fns";
 import { ArrowLeft } from "lucide-react";
 
 type PostListProps = {
+  posts: PostSummary[];
   tag?: string;
 };
 
-export function PostList({ tag }: PostListProps = {}) {
-  const allPosts = getAllPosts();
-  const posts = tag ? allPosts.filter((p) => p.tags.includes(tag)) : allPosts;
-
+export function PostList({ posts, tag }: PostListProps) {
   if (posts.length === 0) {
     return (
       <TerminalWindow filename="blog.md">
@@ -24,16 +22,15 @@ export function PostList({ tag }: PostListProps = {}) {
         {tag ? (
           <p className="text-muted-foreground text-sm">
             No posts tagged <code className="text-secondary">{tag}</code>.{" "}
-            <Link to="/blog/tags" className="text-primary underline">
+            <Link href="/blog/tags" className="text-primary underline">
               Browse all tags
             </Link>
             .
           </p>
         ) : (
           <p className="text-muted-foreground text-sm">
-            Run <code className="text-secondary">pnpm dlx velite new</code> in a{" "}
-            <code className="text-secondary">content/posts/</code> directory to scaffold your first
-            post.
+            Add a markdown file under <code className="text-secondary">pages/blog/</code> to publish
+            your first post.
           </p>
         )}
         <TerminalPrompt className="pt-2" />
@@ -60,7 +57,7 @@ export function PostList({ tag }: PostListProps = {}) {
         </h1>
         {tag ? (
           <Link
-            to="/blog"
+            href="/blog"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft className="size-4" aria-hidden="true" />
@@ -68,7 +65,7 @@ export function PostList({ tag }: PostListProps = {}) {
           </Link>
         ) : (
           <Link
-            to="/blog/tags"
+            href="/blog/tags"
             className="inline-flex items-center gap-2 text-primary text-sm hover:underline underline-offset-4 decoration-2"
           >
             <ArrowRight aria-hidden="true" className="size-4" />
@@ -81,7 +78,7 @@ export function PostList({ tag }: PostListProps = {}) {
         {posts.map((post) => (
           <li key={post.slug}>
             <Link
-              to={post.url}
+              href={post.url}
               className="group block border border-border bg-card p-6 md:p-8 transition-colors duration-200 hover:border-primary focus-visible:border-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             >
               <div className="flex flex-col gap-4">
@@ -94,11 +91,7 @@ export function PostList({ tag }: PostListProps = {}) {
                 {post.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((t) => (
-                      <Badge
-                        key={t}
-                        variant="secondary"
-                        render={<Link to="/blog/tags/$tag" params={{ tag: t }} />}
-                      >
+                      <Badge key={t} variant="secondary">
                         {t}
                       </Badge>
                     ))}

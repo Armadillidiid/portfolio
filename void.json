@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/void/schema.json",
+  "output": "static",
+  "head": {
+    "titleTemplate": "%s",
+    "htmlAttrs": { "lang": "en" },
+    "meta": [
+      { "name": "viewport", "content": "width=device-width, initial-scale=1.0" },
+      { "name": "theme-color", "content": "#131313" },
+      { "name": "description", "content": "Personal site — TypeScript, React, and the web." },
+      { "property": "og:site_name", "content": "Emmanuel Isenah" },
+      { "property": "og:type", "content": "website" },
+      { "property": "og:title", "content": "Emmanuel Isenah" },
+      {
+        "property": "og:description",
+        "content": "Personal site — TypeScript, React, and the web."
+      },
+      { "property": "og:image", "content": "/og/default.png" },
+      { "name": "twitter:card", "content": "summary_large_image" }
+    ],
+    "link": [{ "rel": "icon", "type": "image/png", "href": "/favicon.png" }]
+  },
+  "inference": {
+    "appType": "void"
+  },
+  "worker": {
+    "compatibility_date": "2026-06-01"
+  }
+}

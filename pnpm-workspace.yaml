@@ -2,11 +2,10 @@ catalog:
   vite: npm:@voidzero-dev/vite-plus-core@^0.1.24
   vitest: npm:@voidzero-dev/vite-plus-test@latest
   vite-plus: ^0.1.24
-  velite: ^0.3.1
-  "@tanstack/react-router": ^1.170.15
-  "@tanstack/router-plugin": ^1.168.18
+  void: ^0.9.3
+  "@void/react": ^0.9.3
+  "@void/md": ^0.9.3
   "@fontsource-variable/jetbrains-mono": ^5.2.8
-  gray-matter: ^4.0.3
 packages:
   - "."
 overrides:
@@ -20,5 +19,7 @@ peerDependencyRules:
     vite: "*"
     vitest: "*"
 allowBuilds:
+  better-sqlite3: set this to true or false
   esbuild: true
   sharp: true
+  workerd: set this to true or false

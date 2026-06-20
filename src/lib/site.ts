@@ -1,9 +1,14 @@
+const envUrl =
+  typeof import.meta.env !== "undefined" && import.meta.env.VITE_SITE_URL
+    ? import.meta.env.VITE_SITE_URL
+    : undefined;
+
 export const SITE = {
   name: "Emmanuel Isenah",
   shortName: "emmanuel",
   description: "Personal site — TypeScript, React, and the web.",
-  url: import.meta.env.VITE_SITE_URL ?? "http://localhost:5173",
-  defaultOgImage: `${import.meta.env.VITE_SITE_URL ?? "http://localhost:5173"}/og/default.png`,
+  url: envUrl ?? "http://localhost:5173",
+  defaultOgImage: `${envUrl ?? "http://localhost:5173"}/og/default.png`,
   locale: "en_US",
   author: {
     name: "Emmanuel Isenah",

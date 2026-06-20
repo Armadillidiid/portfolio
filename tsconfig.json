@@ -21,9 +21,8 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@/*": ["./src/*"],
-      "@velite": ["./.velite"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["src", ".velite", "src/routeTree.gen.ts"]
+  "include": ["src", "pages", ".void/routes.d.ts", ".void/md.d.ts", ".void/tsconfig.json"]
 }
