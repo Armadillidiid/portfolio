@@ -1,25 +1,13 @@
 import { defineHead } from "void";
-import pages from "@void/md/pages";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 const SLUG = "whats-new-in-typescript-54-beta";
-
-const thisPage = pages.find((p) => p.path === `/blog/${SLUG}`);
-
-const fm = (thisPage?.frontmatter ?? {}) as {
-  title?: string;
-  date?: string;
-  description?: string;
-  cover?: string | null;
-};
-
-const title = fm.title ?? "Post";
-const date = fm.date ?? "";
-const description = fm.description ?? SITE.description;
-const coverUrl = fm.cover
-  ? absoluteUrl(`/blog/${SLUG}/${fm.cover.replace(/^\.\//, "")}`)
-  : SITE.defaultOgImage;
+const coverUrl = absoluteUrl(`/blog/${SLUG}/cover.png`);
 const url = absoluteUrl(`/blog/${SLUG}`);
+const title = "What's New in TypeScript 5.4 Beta";
+const date = "2024-02-08T08:24:47.000Z";
+const description =
+  "Object.groupBy, Map.groupBy, and the NoInfer<T> utility type land in the TypeScript 5.4 Beta.";
 
 export const head = defineHead(() => ({
   title: `${title} — ${SITE.name}`,
@@ -34,7 +22,7 @@ export const head = defineHead(() => ({
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: coverUrl },
-    ...(date ? [{ property: "article:published_time", content: date }] : []),
+    { property: "article:published_time", content: date },
   ],
   link: [{ rel: "canonical", href: url }],
 }));

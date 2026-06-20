@@ -6,6 +6,16 @@ cover: ./cover.png
 description: "Object.groupBy, Map.groupBy, and the NoInfer<T> utility type land in the TypeScript 5.4 Beta."
 ---
 
+<p class="text-sm"><a href="/blog" class="text-muted-foreground hover:text-primary transition-colors">← cd ..</a></p>
+
+# What's New in TypeScript 5.4 Beta
+
+<p class="text-secondary text-xs font-bold uppercase tracking-widest">2024-02-08 · <a href="/blog/tags/javascript" class="hover:text-primary">#javascript</a> · <a href="/blog/tags/webdev" class="hover:text-primary">#webdev</a> · <a href="/blog/tags/typescript" class="hover:text-primary">#typescript</a></p>
+
+![Cover](/blog/whats-new-in-typescript-54-beta/cover.png)
+
+---
+
 Greetings! [TypeScript 5.4 Beta](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-beta) just dropped and it presents new exciting features with some bug fixes and QoL changes. Without further delay, let's quickly explore some of these game-changing improvements.
 
 ## `Object.groupBy` and `Map.groupBy`
