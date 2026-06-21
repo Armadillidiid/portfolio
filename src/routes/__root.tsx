@@ -2,21 +2,10 @@ import { HeadContent, Outlet, createRootRoute, useLocation } from "@tanstack/rea
 import { useEffect } from "react";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { SITE } from "@/lib/site";
+import { defaultSeo } from "@/lib/seo";
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { name: "description", content: SITE.description },
-      { property: "og:site_name", content: SITE.name },
-      { property: "og:type", content: "website" },
-      { property: "og:title", content: SITE.name },
-      { property: "og:description", content: SITE.description },
-      { property: "og:image", content: SITE.defaultOgImage },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: SITE.url }],
-  }),
+  head: () => defaultSeo(),
   component: RootLayout,
 });
 

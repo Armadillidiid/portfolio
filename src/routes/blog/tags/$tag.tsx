@@ -1,7 +1,8 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { PostList } from "@/components/blog/post-list";
-import { SITE, absoluteUrl } from "@/lib/site";
+import { SITE } from "@/lib/site";
 import { getAllTags } from "@/lib/posts";
+import { pageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/tags/$tag")({
   component: TaggedPostsRoute,
@@ -13,18 +14,11 @@ export const Route = createFileRoute("/blog/tags/$tag")({
   },
   head: ({ loaderData, params }) => {
     const tag = loaderData?.tag ?? params.tag;
-    const url = absoluteUrl(`/blog/tags/${tag}`);
-    return {
-      meta: [
-        { title: `#${tag} — Blog — ${SITE.name}` },
-        { name: "description", content: `Posts tagged #${tag} by ${SITE.author.name}.` },
-        { property: "og:title", content: `#${tag} — ${SITE.name}` },
-        { property: "og:description", content: `Posts tagged #${tag}.` },
-        { property: "og:image", content: SITE.defaultOgImage },
-        { property: "og:url", content: url },
-      ],
-      links: [{ rel: "canonical", href: url }],
-    };
+    return pageSeo({
+      title: `#${tag} — Blog`,
+      description: `Posts tagged #${tag} by ${SITE.author.name}.`,
+      url: `/blog/tags/${tag}`,
+    });
   },
 });
 

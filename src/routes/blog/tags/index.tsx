@@ -1,8 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TagList } from "@/components/blog/tag-list";
+import { SITE } from "@/lib/site";
+import { pageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/tags/")({
   component: TagsIndexRoute,
+  head: () =>
+    pageSeo({
+      title: "Tags",
+      description: `All tags across posts by ${SITE.author.name}.`,
+      url: "/blog/tags",
+    }),
 });
 
 function TagsIndexRoute() {
