@@ -21,7 +21,7 @@ const velitePlugin = {
 
 export default defineConfig({
   plugins: [
-    voidPlugin(),
+    // voidPlugin(),  // disabled: deploy via personal Cloudflare Pages, not Void platform
     velitePlugin,
     gtmInjectPlugin(),
     feedsPlugin(),
