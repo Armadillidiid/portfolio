@@ -47,7 +47,7 @@ export function PostDetail({ post }: PostDetailProps) {
           decoding="async"
           width={post.cover.width}
           height={post.cover.height}
-          className="w-full border border-border"
+          className="w-full"
         />
       )}
 
