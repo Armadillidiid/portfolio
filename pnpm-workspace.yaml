@@ -7,8 +7,16 @@ catalog:
   "@tanstack/router-plugin": ^1.168.18
   "@fontsource-variable/jetbrains-mono": ^5.2.8
   gray-matter: ^4.0.3
+  void: ^0.9.3
 packages:
   - "."
+
+allowBuilds:
+  better-sqlite3: true
+  esbuild: true
+  sharp: true
+  workerd: true
+
 overrides:
   vite: "catalog:"
   vitest: "catalog:"
@@ -19,6 +27,3 @@ peerDependencyRules:
   allowedVersions:
     vite: "*"
     vitest: "*"
-allowBuilds:
-  esbuild: true
-  sharp: true

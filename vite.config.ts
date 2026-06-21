@@ -6,6 +6,7 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { defineConfig } from "vite-plus";
 import { gtmInjectPlugin } from "./vite.gtm";
 import { feedsPlugin } from "./vite.feeds";
+import { voidPlugin } from "void";
 
 const velitePlugin = {
   name: "velite",
@@ -20,6 +21,7 @@ const velitePlugin = {
 
 export default defineConfig({
   plugins: [
+    voidPlugin(),
     velitePlugin,
     gtmInjectPlugin(),
     feedsPlugin(),
