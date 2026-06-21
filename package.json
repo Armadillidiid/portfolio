@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "velite build && vp dev",
-    "build": "tsc && velite build && vp build",
+    "build": "velite build && tsc && vp build",
     "preview": "vp preview",
     "deploy:pages": "wrangler pages deploy dist --project-name=portfolio --branch=main --commit-dirty=true",
     "prepare": "vp config",

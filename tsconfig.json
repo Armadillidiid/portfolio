@@ -1,10 +1,9 @@
 {
-  "extends": "./.void/tsconfig.json",
   "compilerOptions": {
     "target": "es2023",
     "module": "esnext",
     "lib": ["ES2023", "DOM"],
-    "types": ["vite-plus/client", "void/env"],
+    "types": ["vite-plus/client"],
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -18,8 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@velite": ["./.velite"],
-      "@void/md/pages": ["./.void/md.d.ts"]
+      "@velite": ["./.velite"]
     }
   },
   "include": ["src", ".velite", "src/routeTree.gen.ts"]
