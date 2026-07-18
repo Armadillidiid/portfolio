@@ -73,4 +73,4 @@ When the user gets access to the Void platform:
 
 ### Deep linking
 
-All routes are pre-rendered as individual HTML files — Cloudflare Pages serves the matching `index.html` from each directory directly. Unknown paths get a Cloudflare 404 (no SPA fallback; the site is fully SSG).
+All routes are pre-rendered as individual HTML files — Cloudflare Pages serves the matching `index.html` from each directory directly. `wrangler.jsonc` sets `html_handling: "drop-trailing-slash"` so `/blog/slug` serves cleanly without redirect. Unknown paths get a Cloudflare 404 (no SPA fallback; the site is fully SSG).
