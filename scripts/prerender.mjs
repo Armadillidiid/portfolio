@@ -41,9 +41,10 @@ const routes = await getRoutes();
 for (const url of routes) {
   console.log(`Prerendering: ${url}`);
   try {
-    const { html, dehydrate, statusCode } = await render(url);
+    const { html, head, dehydrate, statusCode } = await render(url);
 
     const pageHtml = template
+      .replace("</head>", () => `  ${head}\n  </head>`)
       .replace("<!--app-outlet-->", html)
       .replace("<!--dehydrate-outlet-->", dehydrate);
 

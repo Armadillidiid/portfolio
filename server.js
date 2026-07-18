@@ -24,9 +24,10 @@ async function start() {
       template = await vite.transformIndexHtml(url, template);
 
       const { render } = await vite.ssrLoadModule("/src/entry-server.tsx");
-      const { html, dehydrate, statusCode } = await render(url);
+      const { html, head, dehydrate, statusCode } = await render(url);
 
       const finalHtml = template
+        .replace("</head>", () => `  ${head}\n  </head>`)
         .replace("<!--app-outlet-->", html)
         .replace("<!--dehydrate-outlet-->", dehydrate);
 

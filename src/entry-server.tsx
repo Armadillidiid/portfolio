@@ -26,12 +26,20 @@ export async function render(url: string) {
     </AppThemeProvider>,
   );
 
+  const headTagPattern = /<(title|meta|link)[^>]*\/?>[^<]*(?:<\/\1>)?/gi;
+  const headTags: string[] = [];
+  const bodyHtml = appHtml.replace(headTagPattern, (match) => {
+    headTags.push(match);
+    return "";
+  });
+
   router.serverSsr?.setRenderFinished();
   const dehydrate = router.serverSsr?.takeBufferedHtml() || "";
   router.serverSsr?.cleanup();
 
   return {
-    html: appHtml,
+    html: bodyHtml,
+    head: headTags.join("\n"),
     dehydrate,
     statusCode: router.stores.statusCode.get(),
   };
