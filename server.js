@@ -33,15 +33,16 @@ async function start() {
     const url = req.url || "/";
 
     // Keystatic API routes
-    if (url.startsWith("/api/keystatic/")) {
+    if (url.startsWith("/api/keystatic")) {
       try {
         let body = "";
         req.on("data", (chunk) => (body += chunk));
         await new Promise((resolve) => req.on("end", resolve));
+        const fullUrl = `http://${req.headers.host}${url}`;
         const ksReq = {
           headers: { get: (name) => req.headers[name.toLowerCase()] ?? null },
           method: req.method,
-          url: req.url,
+          url: fullUrl,
           json: async () => JSON.parse(body || "null"),
         };
         const { status, headers, body: responseBody } = await apiHandler(ksReq);
