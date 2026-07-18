@@ -1,18 +1,26 @@
 import path from "path";
-import { build as veliteBuild } from "velite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { defineConfig } from "vite-plus";
 import { feedsPlugin } from "./vite.feeds";
 
-const velitePlugin = {
-  name: "velite",
+const keystaticPlugin = {
+  name: "keystatic-content",
   async buildStart() {
-    await veliteBuild({ clean: false });
+    const { buildContent } = await import("./scripts/keystatic-content.mjs");
+    await buildContent();
   },
   async configureServer(server: import("vite-plus").ViteDevServer) {
-    await veliteBuild({ watch: true, clean: false });
+    const { buildContent } = await import("./scripts/keystatic-content.mjs");
+    await buildContent();
+    const contentGlob = "content/posts/**/*.{md,mdoc}";
+    server.watcher.add(contentGlob);
+    server.watcher.on("change", async (file: string) => {
+      if (file.startsWith("content/posts") && (file.endsWith(".md") || file.endsWith(".mdoc"))) {
+        await buildContent();
+      }
+    });
     server.watcher.add(".velite");
   },
 };
@@ -20,7 +28,7 @@ const velitePlugin = {
 export default defineConfig(({ isSsrBuild }) => {
   const commonPlugins = [
     // voidPlugin(),
-    velitePlugin,
+    keystaticPlugin,
     feedsPlugin(),
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
