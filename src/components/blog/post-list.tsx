@@ -31,9 +31,8 @@ export function PostList({ tag }: PostListProps = {}) {
           </p>
         ) : (
           <p className="text-muted-foreground text-sm">
-            Run <code className="text-secondary">pnpm dlx velite new</code> in a{" "}
-            <code className="text-secondary">content/posts/</code> directory to scaffold your first
-            post.
+            Visit <code className="text-secondary">/keystatic</code> in{" "}
+            <code className="text-secondary">pnpm dev</code> to create your first post.
           </p>
         )}
         <TerminalPrompt className="pt-2" />
