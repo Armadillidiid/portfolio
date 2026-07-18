@@ -33,7 +33,13 @@ function ThemeContextProvider({ children }: { children: React.ReactNode }) {
 
 export function AppThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} {...props}>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem={false}
+      scriptProps={{ nonce: "" }}
+      {...props}
+    >
       <ThemeContextProvider>{children}</ThemeContextProvider>
     </ThemeProvider>
   );

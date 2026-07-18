@@ -109,10 +109,16 @@ ${body}
 
 export function feedsPlugin(): Plugin {
   let outDir = "dist";
+  let isSsrBuild = false;
   return {
     name: "feeds",
+    config(_config, { isSsrBuild: _isSsrBuild }) {
+      isSsrBuild = _isSsrBuild ?? false;
+    },
     configResolved(config) {
-      outDir = config.build.outDir ?? "dist";
+      if (!isSsrBuild) {
+        outDir = config.build.outDir ?? "dist";
+      }
     },
     async configureServer(server: ViteDevServer) {
       const handler: Connect.NextHandleFunction = async (req, res, next) => {
@@ -138,6 +144,7 @@ export function feedsPlugin(): Plugin {
       server.middlewares.use(handler);
     },
     async closeBundle() {
+      if (isSsrBuild) return;
       const posts = await readPosts();
       const target = path.resolve(process.cwd(), outDir);
       await fs.mkdir(target, { recursive: true });

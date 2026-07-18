@@ -40,7 +40,7 @@ This site is deployed to **Cloudflare Pages** (project: `portfolio`), not the Vo
 
 ### Build
 
-`pnpm build` runs `tsc && velite build && vp build`. Output goes to `dist/` (Vite SPA, no `dist/client/` or `dist/ssr/`). Build env vars (set in Cloudflare Pages dashboard, not in the repo):
+`pnpm build` runs `pnpm build:content && pnpm typecheck && pnpm build:client && pnpm build:ssr && pnpm build:prerender`. Output goes to `dist/client/`. Build env vars (set in Cloudflare Pages dashboard, not in the repo):
 
 - `VITE_SITE_URL` — absolute URL for og:image, sitemap, RSS. Production: `https://emmanuelisenah.com`.
 - `VITE_GTM_ID` — Google Tag Manager container ID, optional.
@@ -53,7 +53,7 @@ For local verification:
 
 ```bash
 pnpm build
-pnpm deploy:pages  # runs wrangler pages deploy dist --project-name=portfolio --branch=main
+pnpm deploy:pages  # runs wrangler pages deploy dist/client --project-name=portfolio --branch=main
 ```
 
 First time: `pnpm dlx wrangler login` to authenticate, then `pnpm deploy:pages`.

@@ -65,6 +65,7 @@ export function HeroSection() {
       <div className="pt-4 flex flex-wrap gap-4">
         <Button
           size="xl"
+          nativeButton={false}
           render={
             <Link to="/blog" className="font-bold uppercase">
               VIEW BLOG
@@ -75,6 +76,7 @@ export function HeroSection() {
         <Button
           size="xl"
           variant="outline"
+          nativeButton={false}
           render={
             <a href="mailto:emmanuel@isenah.example.com" className="font-bold uppercase">
               GET IN TOUCH
