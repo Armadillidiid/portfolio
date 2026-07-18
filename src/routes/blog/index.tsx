@@ -8,7 +8,7 @@ export const Route = createFileRoute("/blog/")({
     pageSeo({
       title: "Blog",
       description: `Posts on TypeScript, React, and the web by ${SITE.author.name}.`,
-      url: "/blog/",
+      url: "/blog",
     }),
   component: PostList,
 });

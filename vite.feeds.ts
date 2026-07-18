@@ -84,7 +84,7 @@ ${items}
 function buildSitemap(posts: FeedPost[], siteUrl: string): string {
   const entries = [
     { loc: siteUrl, lastmod: new Date().toISOString() },
-    { loc: absoluteUrl(siteUrl, "/blog/"), lastmod: new Date().toISOString() },
+    { loc: absoluteUrl(siteUrl, "/blog"), lastmod: new Date().toISOString() },
     ...posts.map((post) => ({
       loc: absoluteUrl(siteUrl, post.url),
       lastmod: new Date(post.date).toISOString(),

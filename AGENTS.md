@@ -71,6 +71,6 @@ When the user gets access to the Void platform:
 3. Optionally restore `.github/workflows/deploy.yml` to run `pnpm void deploy` on push.
 4. The `wrangler` devDep + `deploy:pages` script can stay (no harm).
 
-### SPA deep linking
+### Deep linking
 
-`public/_redirects` contains `/* /index.html 200`. This is required for direct URL access (e.g. `https://emmanuelisenah.com/blog/<slug>`) to work with TanStack Router's client-side routing. Without it, Cloudflare Pages serves `404.html` for unknown paths.
+All routes are pre-rendered as individual HTML files — Cloudflare Pages serves the matching `index.html` from each directory directly. Unknown paths get a Cloudflare 404 (no SPA fallback; the site is fully SSG).

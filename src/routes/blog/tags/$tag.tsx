@@ -17,7 +17,7 @@ export const Route = createFileRoute("/blog/tags/$tag")({
     return pageSeo({
       title: `#${tag} — Blog`,
       description: `Posts tagged #${tag} by ${SITE.author.name}.`,
-      url: `/blog/tags/${tag}/`,
+      url: `/blog/tags/${tag}`,
     });
   },
 });

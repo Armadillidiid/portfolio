@@ -9,7 +9,7 @@ export const Route = createFileRoute("/blog/tags/")({
     pageSeo({
       title: "Tags",
       description: `All tags across posts by ${SITE.author.name}.`,
-      url: "/blog/tags/",
+      url: "/blog/tags",
     }),
 });
 
