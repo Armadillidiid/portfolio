@@ -16,7 +16,7 @@ const posts = defineCollection({
     .transform((data) => ({
       ...data,
       slug: data.slug.replace(/^posts\//, ""),
-      url: `/blog/${data.slug.replace(/^posts\//, "")}`,
+      url: `/blog/${data.slug.replace(/^posts\//, "")}/`,
     })),
 });
 
