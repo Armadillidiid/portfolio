@@ -14,13 +14,22 @@ const keystaticPlugin = {
   async configureServer(server: import("vite-plus").ViteDevServer) {
     const { buildContent } = await import("./scripts/keystatic-content.mjs");
     await buildContent();
-    const contentGlob = "content/posts/**/*.{md,mdoc}";
-    server.watcher.add(contentGlob);
-    server.watcher.on("change", async (file: string) => {
-      if (file.startsWith("content/posts") && (file.endsWith(".md") || file.endsWith(".mdoc"))) {
-        await buildContent();
-      }
-    });
+    server.watcher.add("content/posts/**/*");
+    let rebuildTimer: ReturnType<typeof setTimeout> | undefined;
+    const scheduleRebuild = (file: string) => {
+      if (!file.startsWith("content/posts") || file.includes("covers/")) return;
+      clearTimeout(rebuildTimer);
+      rebuildTimer = setTimeout(async () => {
+        try {
+          await buildContent();
+        } catch (e) {
+          console.error("[keystatic-content] rebuild error:", e);
+        }
+      }, 200);
+    };
+    server.watcher.on("change", scheduleRebuild);
+    server.watcher.on("add", scheduleRebuild);
+    server.watcher.on("unlink", scheduleRebuild);
     server.watcher.add(".velite");
   },
 };
