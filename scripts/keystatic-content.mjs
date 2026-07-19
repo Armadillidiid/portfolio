@@ -21,7 +21,10 @@ async function dims(filePath) {
 }
 
 async function copyCover(coverRel) {
+  if (path.isAbsolute(coverRel)) throw new Error(`Cover path must be relative: ${coverRel}`);
   const coverPath = path.resolve(contentDir, coverRel);
+  if (!coverPath.startsWith(contentDir + path.sep))
+    throw new Error(`Cover path escapes content directory: ${coverRel}`);
   await fs.access(coverPath);
   const buf = await fs.readFile(coverPath);
   const ext = path.extname(coverRel);
@@ -34,6 +37,43 @@ async function copyCover(coverRel) {
   return { src: `/static/${destName}`, width: w, height: h };
 }
 
+async function processBodyImages(body, sourceDir, slug) {
+  const imgRegex = /!\[.*?\]\((?!https?:\/\/)(.*?)\)/g;
+  const matches = [];
+  let match;
+  while ((match = imgRegex.exec(body)) !== null) {
+    matches.push(match);
+  }
+  const candidateDirs = [
+    sourceDir,
+    path.join(sourceDir, slug, "content"),
+    path.join(sourceDir, slug),
+  ];
+  for (const [fullMatch, relPath] of matches) {
+    const ext = path.extname(relPath);
+    let found = false;
+    for (const dir of candidateDirs) {
+      const imgPath = path.resolve(dir, relPath);
+      try {
+        await fs.access(imgPath);
+        const buf = await fs.readFile(imgPath);
+        const hash = createHash("md5").update(buf).digest("hex").slice(0, 6);
+        const destName = `${slug}-${hash}${ext}`;
+        await fs.writeFile(path.resolve(staticDir, destName), buf);
+        body = body.replace(fullMatch, fullMatch.replace(relPath, `/static/${destName}`));
+        found = true;
+        break;
+      } catch {
+        /* try next dir */
+      }
+    }
+    if (!found) {
+      // image not found in any candidate dir — leave reference as-is
+    }
+  }
+  return body;
+}
+
 export async function buildContent() {
   await fs.mkdir(veliteDir, { recursive: true });
 
@@ -41,14 +81,37 @@ export async function buildContent() {
   const posts = [];
 
   for (const entry of entries) {
-    if (!entry.isFile()) continue;
-    const ext = path.extname(entry.name);
-    if (ext !== ".mdoc" && ext !== ".md") continue;
+    let filePath, slug;
+    let ext;
 
-    const raw = await fs.readFile(path.join(contentDir, entry.name), "utf-8");
-    const { data, content: body } = matter(raw);
+    if (entry.isFile()) {
+      ext = path.extname(entry.name);
+      if (ext !== ".mdoc" && ext !== ".md") continue;
+      filePath = path.join(contentDir, entry.name);
+      slug = path.basename(entry.name, ext);
+    } else if (entry.isDirectory()) {
+      for (const idxName of ["index.mdoc", "index.md"]) {
+        const candidate = path.join(contentDir, entry.name, idxName);
+        try {
+          await fs.access(candidate);
+          ext = path.extname(idxName);
+          filePath = candidate;
+          slug = entry.name;
+          break;
+        } catch {
+          /* no index file */
+        }
+      }
+      if (!filePath) continue;
+    } else {
+      continue;
+    }
 
-    const slug = path.basename(entry.name, ext);
+    const raw = await fs.readFile(filePath, "utf-8");
+    const { data, content: _body } = matter(raw);
+    let body = _body;
+    const sourceDir = path.dirname(filePath);
+    body = await processBodyImages(body, sourceDir, slug);
     const title = data.title ?? slug;
     const date = data.date ? String(data.date) : new Date().toISOString();
     const draft = Boolean(data.draft);
