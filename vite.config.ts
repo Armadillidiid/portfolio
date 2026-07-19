@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { defineConfig } from "vite-plus";
 import { feedsPlugin } from "./vite.feeds";
+import { keystaticServerPlugin } from "./vite.keystatic-server";
 
 const keystaticPlugin = {
   name: "keystatic-content",
@@ -37,6 +38,7 @@ const keystaticPlugin = {
 export default defineConfig(({ isSsrBuild }) => {
   const commonPlugins = [
     // voidPlugin(),
+    keystaticServerPlugin(),
     keystaticPlugin,
     feedsPlugin(),
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
