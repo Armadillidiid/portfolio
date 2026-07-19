@@ -15,10 +15,11 @@ export function HeroSection() {
           <div>
             <div className="flex items-start justify-between gap-3">
               <p>
-                I am <span className="text-primary font-bold">Emmanuel Isenah</span>, a Software
-                Developer specialized in engineering robust data pipelines and scalable backend
-                architectures. My expertise lies at the intersection of performance and clean code,
-                ensuring systems remain reliable under heavy throughput.
+                Hey, I'm <span className="text-primary font-bold">Emmanuel Isenah</span>, a
+                full-stack software engineer passionate about building web applications, backend
+                systems, and the tooling that helps teams ship software faster. I work primarily
+                across the TypeScript ecosystem with React, Node.js, and AWS, taking products from
+                idea to production.
               </p>
               <div className="md:hidden shrink-0">
                 <div className="relative overflow-hidden h-14 w-14 rounded-[9999px] ring-1 ring-border">
@@ -35,15 +36,15 @@ export function HeroSection() {
               </div>
             </div>
             <p className="mt-4">
-              With a focus on <span className="text-secondary font-semibold">Python</span> and
-              high-performance data engineering, I transform complex schema mapping requirements
-              into streamlined, automated workflows. I thrive on solving technical bottlenecks that
-              hinder development velocity.
+              As an <span className="text-secondary font-semibold">AWS Community Builder</span>, I
+              enjoy sharing what I learn about cloud architecture, developer tooling, and modern
+              DevOps practices. I'm also a strong believer in open source and the community that
+              makes much of today's software possible.
             </p>
             <p className="mt-4">
-              Beyond raw code, I advocate for developer-centric environments where documentation and
-              technical precision are treated as first-class citizens. I believe the best software
-              is transparent, fast, and rewards curiosity through its internal structure.
+              When I'm not shipping code, you'll probably find me tinkering with Linux, customizing
+              Neovim, or trying out a new tiling window manager. I believe great tooling helps
+              engineers do their best work.
             </p>
           </div>
           <div className="hidden md:block">
@@ -78,7 +79,7 @@ export function HeroSection() {
           variant="outline"
           nativeButton={false}
           render={
-            <a href="mailto:emmanuel@isenah.example.com" className="font-bold uppercase">
+            <a href="mailto:hello@emmanuelisenah.com" className="font-bold uppercase">
               GET IN TOUCH
             </a>
           }

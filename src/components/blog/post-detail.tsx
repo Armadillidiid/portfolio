@@ -52,6 +52,16 @@ export function PostDetail({ post }: PostDetailProps) {
       )}
 
       <MarkdownContent body={post.body} />
+
+      <nav className="pt-4">
+        <Link
+          to="/blog"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+        >
+          <ArrowLeft className="size-4" aria-hidden="true" />
+          All posts
+        </Link>
+      </nav>
     </article>
   );
 }

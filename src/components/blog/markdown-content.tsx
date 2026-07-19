@@ -140,7 +140,7 @@ export function MarkdownContent({ body }: MarkdownContentProps) {
               alt={alt ?? ""}
               loading="lazy"
               decoding="async"
-              className="w-full border border-border"
+              className="mx-auto"
             />
           ),
         }}

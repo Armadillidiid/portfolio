@@ -6,7 +6,7 @@ import { TerminalPrompt } from "@/components/terminal/terminal-prompt";
 import { TerminalWindow } from "@/components/terminal/terminal-window";
 import { getAllPosts } from "@/lib/posts";
 import { format } from "date-fns";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Rss } from "lucide-react";
 
 type PostListProps = {
   tag?: string;
@@ -66,13 +66,24 @@ export function PostList({ tag }: PostListProps = {}) {
             cd ..
           </Link>
         ) : (
-          <Link
-            to="/blog/tags"
-            className="inline-flex items-center gap-2 text-primary text-sm hover:underline underline-offset-4 decoration-2"
-          >
-            <ArrowRight aria-hidden="true" className="size-4" />
-            Browse by tag
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/blog/tags"
+              className="inline-flex items-center gap-2 text-primary text-sm hover:underline underline-offset-4 decoration-2"
+            >
+              <ArrowRight aria-hidden="true" className="size-4" />
+              Browse by tag
+            </Link>
+            <a
+              href="/rss.xml"
+              target="_blank"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              aria-label="RSS feed"
+            >
+              <Rss className="size-4" aria-hidden="true" />
+              RSS
+            </a>
+          </div>
         )}
       </header>
 

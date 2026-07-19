@@ -1,6 +1,5 @@
 import { HeadContent, Outlet, createRootRoute, useLocation } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { defaultSeo } from "@/lib/seo";
 
@@ -35,7 +34,6 @@ function RootLayout() {
           <Outlet />
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
