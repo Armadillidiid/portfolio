@@ -15,10 +15,10 @@ const keystaticPlugin = {
   async configureServer(server: import("vite-plus").ViteDevServer) {
     const { buildContent } = await import("./scripts/keystatic-content.mjs");
     await buildContent();
-    server.watcher.add("content/posts/**/*");
     let rebuildTimer: ReturnType<typeof setTimeout> | undefined;
     const scheduleRebuild = (file: string) => {
-      if (!file.startsWith("content/posts") || file.includes("covers/")) return;
+      const rel = path.relative(server.config.root, file).split(path.sep).join("/");
+      if (!rel.startsWith("content/posts") || rel.includes("covers/")) return;
       clearTimeout(rebuildTimer);
       rebuildTimer = setTimeout(async () => {
         try {
