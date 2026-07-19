@@ -31,8 +31,8 @@ export function PostList({ tag }: PostListProps = {}) {
           </p>
         ) : (
           <p className="text-muted-foreground text-sm">
-            Visit <code className="text-secondary">/keystatic</code> in{" "}
-            <code className="text-secondary">pnpm dev</code> to create your first post.
+            Run <code className="text-secondary">pnpm dev</code> and visit{" "}
+            <code className="text-secondary">/keystatic</code> to create your first post.
           </p>
         )}
         <TerminalPrompt className="pt-2" />
