@@ -57,10 +57,15 @@ export function keystaticServerPlugin(): Plugin {
             let body = "";
             req.on("data", (chunk: string) => (body += chunk));
             await new Promise<void>((resolve) => req.on("end", resolve));
-            const fullUrl = `http://${req.headers.host}${url}`;
+            const host = req.headers.host ?? "localhost:5173";
+            const fullUrl = `http://${host}${url}`;
             const ksReq: KeystaticRequest = {
               headers: {
-                get: (name: string) => (req.headers[name.toLowerCase()] as string) ?? null,
+                get: (name: string) => {
+                  const val = req.headers[name.toLowerCase()];
+                  if (val === undefined) return null;
+                  return Array.isArray(val) ? val.join(", ") : val;
+                },
               },
               method: req.method ?? "GET",
               url: fullUrl,
@@ -70,13 +75,21 @@ export function keystaticServerPlugin(): Plugin {
             if (headers) {
               if (Array.isArray(headers)) {
                 for (const [key, value] of headers) res.setHeader(key, String(value));
+              } else if (headers instanceof Headers) {
+                headers.forEach((value, key) => res.setHeader(key, value));
               } else if (typeof headers === "object" && headers !== null) {
                 for (const [key, value] of Object.entries(headers))
                   res.setHeader(key, String(value));
               }
             }
             res.statusCode = status ?? 200;
-            res.end((responseBody as string) ?? "");
+            if (responseBody == null) {
+              res.end("");
+            } else if (typeof responseBody === "string" || responseBody instanceof Uint8Array) {
+              res.end(responseBody);
+            } else {
+              res.end(JSON.stringify(responseBody));
+            }
           } catch (err) {
             console.error("[keystatic-api]", err);
             res.statusCode = 500;
@@ -85,7 +98,8 @@ export function keystaticServerPlugin(): Plugin {
           return;
         }
 
-        if (url === "/keystatic" || url.startsWith("/keystatic/")) {
+        const pathname = url.split("?")[0];
+        if (pathname === "/keystatic" || pathname.startsWith("/keystatic/")) {
           try {
             const html = await server.transformIndexHtml(url, keystaticHtml);
             res.statusCode = 200;
