@@ -1,18 +1,36 @@
 import path from "path";
-import { build as veliteBuild } from "velite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import { defineConfig } from "vite-plus";
 import { feedsPlugin } from "./vite.feeds";
+import { keystaticServerPlugin } from "./vite.keystatic-server";
 
-const velitePlugin = {
-  name: "velite",
+const keystaticPlugin = {
+  name: "keystatic-content",
   async buildStart() {
-    await veliteBuild({ clean: false });
+    const { buildContent } = await import("./scripts/keystatic-content.mjs");
+    await buildContent();
   },
   async configureServer(server: import("vite-plus").ViteDevServer) {
-    await veliteBuild({ watch: true, clean: false });
+    const { buildContent } = await import("./scripts/keystatic-content.mjs");
+    await buildContent();
+    let rebuildTimer: ReturnType<typeof setTimeout> | undefined;
+    const scheduleRebuild = (file: string) => {
+      const rel = path.relative(server.config.root, file).split(path.sep).join("/");
+      if (!rel.startsWith("content/posts") || rel.includes("covers/")) return;
+      clearTimeout(rebuildTimer);
+      rebuildTimer = setTimeout(async () => {
+        try {
+          await buildContent();
+        } catch (e) {
+          console.error("[keystatic-content] rebuild error:", e);
+        }
+      }, 200);
+    };
+    server.watcher.on("change", scheduleRebuild);
+    server.watcher.on("add", scheduleRebuild);
+    server.watcher.on("unlink", scheduleRebuild);
     server.watcher.add(".velite");
   },
 };
@@ -20,7 +38,8 @@ const velitePlugin = {
 export default defineConfig(({ isSsrBuild }) => {
   const commonPlugins = [
     // voidPlugin(),
-    velitePlugin,
+    keystaticServerPlugin(),
+    keystaticPlugin,
     feedsPlugin(),
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
