@@ -23,6 +23,7 @@
     "@expressive-code/plugin-line-numbers": "^0.43.1",
     "@fontsource-variable/geist": "^5.2.9",
     "@fontsource-variable/jetbrains-mono": "catalog:",
+    "@giscus/react": "^3.1.0",
     "@keystatic/core": "^0.5.51",
     "@tailwindcss/vite": "^4.3.1",
     "@tanstack/react-devtools": "^0.10.7",
