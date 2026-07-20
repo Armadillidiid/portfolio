@@ -6,4 +6,6 @@ import { defineEnv, string, url } from "void/env";
 export default defineEnv({
   VITE_GTM_ID: string(),
   VITE_SITE_URL: url(),
+  VITE_GISCUS_REPO_ID: string().optional(),
+  VITE_GISCUS_CATEGORY_ID: string().optional(),
 });

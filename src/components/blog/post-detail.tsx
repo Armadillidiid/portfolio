@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { format } from "date-fns";
+import { CommentSection } from "@/components/blog/comment-section";
 import { MarkdownContent } from "@/components/blog/markdown-content";
 import type { Post } from "@velite";
 
@@ -52,6 +53,8 @@ export function PostDetail({ post }: PostDetailProps) {
       )}
 
       <MarkdownContent body={post.body} />
+
+      <CommentSection />
 
       <nav className="pt-4">
         <Link
