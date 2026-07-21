@@ -11,15 +11,13 @@ export function HeroSection() {
       <TerminalLine command="cat about.md" />
 
       <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
-        <div className="relative grid grid-cols-1 items-start gap-6 md:grid-cols-[minmax(0,1fr)_19rem] md:gap-8">
+        <div className="relative grid grid-cols-1 items-start gap-6 md:grid-cols-[minmax(0,1fr)_19rem] md:gap-10">
           <div>
             <div className="flex items-start justify-between gap-3">
               <p>
-                Hey, I'm <span className="text-primary font-bold">Emmanuel Isenah</span>, a
-                full-stack software engineer passionate about building web applications, backend
-                systems, and the tooling that helps teams ship software faster. I work primarily
-                across the TypeScript ecosystem with React, Node.js, and AWS, taking products from
-                idea to production.
+                Hi 👋, I'm <span className="text-primary font-bold">Emmanuel Isenah</span>, a
+                cloud/DevOps engineer passionate about building serverless applications and
+                automated CI/CD pipelines that helps teams ship software faster.{" "}
               </p>
               <div className="md:hidden shrink-0">
                 <div className="relative overflow-hidden h-14 w-14 rounded-[9999px] ring-1 ring-border">
@@ -35,16 +33,20 @@ export function HeroSection() {
                 </div>
               </div>
             </div>
+
             <p className="mt-4">
-              As an <span className="text-secondary font-semibold">AWS Community Builder</span>, I
-              enjoy sharing what I learn about cloud architecture, developer tooling, and modern
-              DevOps practices. I'm also a strong believer in open source and the community that
-              makes much of today's software possible.
+              I work primarily across the TypeScript ecosystem with Node.js, React and AWS CDK{" "}
+              <small>(no terraform yet)</small>.
             </p>
             <p className="mt-4">
-              When I'm not shipping code, you'll probably find me tinkering with Linux, customizing
-              Neovim, or trying out a new tiling window manager. I believe great tooling helps
-              engineers do their best work.
+              As an <span className="text-secondary font-semibold">AWS Community Builder</span>, I
+              enjoy sharing what I learn about modern DevOps practices for the cloud. I'm also a
+              strong believer in open source and the community that makes much of today's software
+              possible.
+            </p>
+            <p className="mt-4">
+              When I'm not shipping code, you'll probably find me tinkering with linux, ricing a
+              tiling window manager, or customizing a new neovim plugin.
             </p>
           </div>
           <div className="hidden md:block">
