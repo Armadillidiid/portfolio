@@ -131,7 +131,7 @@ export function postSeo(
   ]);
 }
 
-export function extractDescription(body: string): string {
+function extractDescription(body: string): string {
   const stripped = body
     .replace(/```[\s\S]*?```/g, " ")
     .replace(/`[^`]+`/g, " ")

@@ -10,10 +10,6 @@ export function getPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug);
 }
 
-export function getPostsByTag(tag: string) {
-  return getAllPosts().filter((post) => post.tags.includes(tag));
-}
-
 export function getAllTags() {
   const counts = new Map<string, number>();
   for (const post of getAllPosts()) {
