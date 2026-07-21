@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Emmanuel Isenah",
   shortName: "emmanuel",
-  description: "Personal site — TypeScript, React, and the web.",
+  description: "Software engineer writing about cloud infra and the open web.",
   url: import.meta.env.VITE_SITE_URL ?? "http://localhost:5173",
   defaultOgImage: `${import.meta.env.VITE_SITE_URL ?? "http://localhost:5173"}/og/default.png`,
   locale: "en_US",

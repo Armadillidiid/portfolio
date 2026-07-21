@@ -43,7 +43,7 @@ const svg = `
     font-family="Arial, Helvetica, sans-serif"
     font-size="36"
     font-weight="400"
-  >Personal site — TypeScript, React, and the web.</text>
+  >Portfolio &amp; Blog</text>
   <rect x="80" y="450" width="80" height="4" fill="${ACCENT}" />
   <text
     x="80"
