@@ -1,10 +1,12 @@
 ---
 title: Different ways to conditionally provision a CDK resource
-date: 2026-01-11T11:18:06.135Z
+date: 2025-08-09T15:56:00.000Z
+draft: false
 tags:
   - aws
-  - cdk
+  - devops
   - iac
+cover: covers/different-ways-to-conditionally-provision-a-cdk-resource.png
 ---
 
 So over the weekend, I had the brilliant idea to offload the grunt work of setting up a [WireGuard](https://www.wireguard.com/) server to Infrastructure as Code.
@@ -228,7 +230,7 @@ There are two main parts to a custom resource: the [provider](https://docs.aws.a
 For the consumer side, two things are needed:
 
 1. A service token. E.g., Lambda function, SNS topic.
-2. At least one resource property
+1. At least one resource property
 
 ```ts
 const bucketResource = new CustomResource(this, "CustomBucketResource", {
@@ -249,7 +251,7 @@ For our continued example, a Lambda function works perfectly fine.
 On the provider side, we need two things also:
 
 1. A handler that processes the requests CloudFormation sends and performs actions based on the event.
-2. A CDK construct that provisions the handler and returns the ARN to be used as the service token.
+1. A CDK construct that provisions the handler and returns the ARN to be used as the service token.
 
 > It's a good idea to treat the provider as a separate package, because as soon as you add any third-party dependency apart from the AWS SDK, you'll need to introduce bundling for your Lambda function.
 
@@ -366,7 +368,7 @@ In it, we use a switch to exhaustively handle all event types (`Create`, `Update
 
 To make things clearer, let’s look at the event interfaces, starting with the request event:
 
-```ts
+```typescript
 interface OnEventRequest {
   RequestType: "Create" | "Update" | "Delete";
   LogicalResourceId: string;
@@ -395,8 +397,8 @@ interface OnEventResponse {
 For event response, there are three main properties we should care about.
 
 1. The `PhysicalResourceId`, which is compulsory with an exception to one event (reason why it could be optional),
-2. `Data`, an optional record of values which can be retrieved by the consumer using `Fn::GetAtt` (we'll call this later on to retrieve the bucket name)
-3. And finally, `NoEcho` to mask sensitive output.
+1. `Data`, an optional record of values which can be retrieved by the consumer using `Fn::GetAtt` (we'll call this later on to retrieve the bucket name)
+1. And finally, `NoEcho` to mask sensitive output.
 
 > For more details on response objects, see [Custom resource response objects](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/crpg-ref-responses.html).
 
