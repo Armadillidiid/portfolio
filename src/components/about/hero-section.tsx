@@ -1,9 +1,9 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, ExternalLinkIcon } from "lucide-react";
 import { TerminalLine } from "@/components/terminal/terminal-line";
 import { TerminalPrompt } from "@/components/terminal/terminal-prompt";
 import { TerminalWindow } from "@/components/terminal/terminal-window";
-import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
@@ -39,8 +39,16 @@ export function HeroSection() {
               <small>(no terraform yet)</small>.
             </p>
             <p className="mt-4">
-              As an <span className="text-secondary font-semibold">AWS Community Builder</span>, I
-              enjoy sharing what I learn about modern DevOps practices for the cloud. I'm also a
+              As an{" "}
+              <a
+                className="text-secondary font-semibold hover:underline"
+                href="https://builder.aws.com/community/community-builders"
+                target="_blank"
+                rel="noopener"
+              >
+                AWS Community Builder
+              </a>
+              , I enjoy sharing what I learn about modern DevOps practices for the cloud. I'm also a
               strong believer in open source and the community that makes much of today's software
               possible.
             </p>
@@ -48,6 +56,17 @@ export function HeroSection() {
               When I'm not shipping code, you'll probably find me tinkering with linux, ricing a
               tiling window manager, or customizing a new neovim plugin.
             </p>
+
+            <p></p>
+            <a
+              className="block mt-4 text-secondary font-semibold hover:underline"
+              href="https://flowcv.com/resume/gnpbkob2ww"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              resume.pdf
+              <ExternalLinkIcon className="inline-block size-4 ml-1" />
+            </a>
           </div>
           <div className="hidden md:block">
             <div className="relative overflow-hidden aspect-[3/4] w-full rounded-[1.5rem] ring-1 ring-border">
