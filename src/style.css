@@ -246,6 +246,74 @@
   }
 }
 
+/* GitHub-style alerts authored as `> [!NOTE]` in post bodies */
+.markdown-alert {
+  --alert-accent: var(--primary);
+  border-left: 2px solid var(--alert-accent);
+  padding: 0.75rem 1rem;
+}
+
+.markdown-alert-note {
+  --alert-accent: var(--primary);
+}
+
+.markdown-alert-tip {
+  --alert-accent: var(--secondary);
+}
+
+.markdown-alert-important {
+  --alert-accent: var(--chart-3);
+}
+
+.markdown-alert-warning {
+  --alert-accent: var(--chart-2);
+}
+
+.markdown-alert-caution {
+  --alert-accent: var(--destructive);
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--alert-accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.markdown-alert .markdown-alert-title svg {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  fill: currentColor;
+}
+
+/* Post body components drop margins; restore rhythm inside alerts. */
+.markdown-alert > * {
+  margin-block: 0;
+}
+
+.markdown-alert > * + * {
+  margin-top: 0.75rem;
+}
+
+.markdown-alert ul,
+.markdown-alert ol {
+  padding-left: 1.25rem;
+}
+
+.markdown-alert ul {
+  list-style: disc;
+}
+
+.markdown-alert ol {
+  list-style: decimal;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;

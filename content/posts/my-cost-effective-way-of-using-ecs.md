@@ -157,13 +157,12 @@ If you desire any of the above features, then yeah, picking an ALB is no brainer
 
 Your manager stays happy. Accounting definitely stays happy.
 
-Note
-
-While the [AWS walkthrough tutorial](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-private.html) that depicts using SRV record for Cloud Map integration, it seems it isn't actually necessary.
-
-I asked AI at the time of writing and it responded API Gateway calls&nbsp;`DiscoverInstances` API instead of doing DNS lookups. So, in theory, you might not need a DNS Cloud Map namespace.
-
-Now, I haven't tested this myself, but you can verify yourself if you must use an API only namespace.
+> [!NOTE]
+> While the [AWS walkthrough tutorial](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-private.html) that depicts using SRV record for Cloud Map integration, it seems it isn't actually necessary.
+>
+> I asked AI at the time of writing and it responded API Gateway calls&nbsp;`DiscoverInstances` API instead of doing DNS lookups. So, in theory, you might not need a DNS Cloud Map namespace.
+>
+> Now, I haven't tested this myself, but you can verify yourself if you must use an API only namespace.
 
 ## Further cost optimization
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { remarkAlert } from "remark-github-blockquote-alert";
 import { mountExpressiveCodeStyles, renderCodeBlock } from "@/lib/expressive-code";
 import { remarkCodeMeta } from "@/lib/remark-code-meta";
 import { MermaidBlock } from "@/components/blog/mermaid-block";
@@ -41,7 +42,7 @@ export function MarkdownContent({ body }: MarkdownContentProps) {
   return (
     <div className="space-y-6 text-base text-muted-foreground leading-relaxed">
       <Markdown
-        remarkPlugins={[remarkGfm, remarkCodeMeta]}
+        remarkPlugins={[remarkGfm, remarkCodeMeta, remarkAlert]}
         components={{
           h1: ({ children }) => (
             <h1 className="text-3xl font-bold text-foreground mt-12 mb-4">{children}</h1>
