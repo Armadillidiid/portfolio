@@ -20,6 +20,70 @@ async function dims(filePath) {
   }
 }
 
+// Keystatic stores tables using Markdoc syntax (`{% table %} ... {% /table %}`),
+// but the site renders with react-markdown + remark-gfm, which only understands
+// GFM pipe tables. Convert them at build time so authored content stays valid
+// Markdoc (Keystatic round-trips it) while the rendered output is plain GFM.
+function renderGfmTable(blockLines) {
+  const rows = [];
+  let row = [];
+  for (const line of blockLines) {
+    if (/^\s*---+\s*$/.test(line)) {
+      if (row.length) rows.push(row);
+      row = [];
+      continue;
+    }
+    const item = /^\s*[-*]\s+(.*)$/.exec(line);
+    if (item) {
+      row.push(item[1].trim());
+    } else if (line.trim() && row.length) {
+      // Continuation of the previous cell.
+      row[row.length - 1] = `${row[row.length - 1]} ${line.trim()}`;
+    }
+  }
+  if (row.length) rows.push(row);
+  if (!rows.length) return [];
+
+  const width = Math.max(...rows.map((r) => r.length));
+  const cell = (value) => (value ?? "").replace(/\|/g, "\\|").replace(/\s+/g, " ").trim();
+  const renderRow = (r) => `| ${Array.from({ length: width }, (_, k) => cell(r[k])).join(" | ")} |`;
+
+  return [
+    renderRow(rows[0]),
+    `| ${Array.from({ length: width }, () => "---").join(" | ")} |`,
+    ...rows.slice(1).map(renderRow),
+  ];
+}
+
+function markdocTablesToGfm(body) {
+  const lines = body.split("\n");
+  const out = [];
+  let inFence = false;
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (/^\s*(```|~~~)/.test(line)) inFence = !inFence;
+
+    if (!inFence && /^\s*\{%\s*table\b[^%]*%\}\s*$/.test(line)) {
+      const block = [];
+      let end = i + 1;
+      for (; end < lines.length; end += 1) {
+        if (/^\s*\{%\s*\/table\s*%\}\s*$/.test(lines[end])) break;
+        block.push(lines[end]);
+      }
+      if (end < lines.length) {
+        out.push(...renderGfmTable(block), "");
+        i = end;
+        continue;
+      }
+    }
+
+    out.push(line);
+  }
+
+  return out.join("\n");
+}
+
 async function copyCover(coverRel) {
   if (path.isAbsolute(coverRel)) throw new Error(`Cover path must be relative: ${coverRel}`);
   const coverPath = path.resolve(contentDir, coverRel);
@@ -109,7 +173,7 @@ export async function buildContent() {
 
     const raw = await fs.readFile(filePath, "utf-8");
     const { data, content: _body } = matter(raw);
-    let body = _body;
+    let body = markdocTablesToGfm(_body);
     const sourceDir = path.dirname(filePath);
     body = await processBodyImages(body, sourceDir, slug);
     const title = data.title ?? slug;
