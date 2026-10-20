@@ -3,6 +3,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { mountExpressiveCodeStyles, renderCodeBlock } from "@/lib/expressive-code";
 import { remarkCodeMeta } from "@/lib/remark-code-meta";
+import { MermaidBlock } from "@/components/blog/mermaid-block";
 
 function CodeBlock({ code, language, meta }: { code: string; language: string; meta?: string }) {
   const [html, setHtml] = useState<string | null>(null);
@@ -112,6 +113,7 @@ export function MarkdownContent({ body }: MarkdownContentProps) {
                     ? rawChildren.filter((c): c is string => typeof c === "string").join("")
                     : "";
               const meta = childProps["data-meta"];
+              if (language === "mermaid") return <MermaidBlock code={code} />;
               return <CodeBlock code={code} language={language} meta={meta} />;
             }
             return (

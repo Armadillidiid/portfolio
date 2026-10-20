@@ -74,9 +74,9 @@ At the time before this integration existed, there's was no way for API Gateway 
 
 That changed with the Cloud Map integration.
 
-Here's what the full request chain look like:
+Here's what the full request chain looks like:
 
-```
+```mermaid
 flowchart TB
     Client --> Route53["Route 53"]
     Route53 --> APIGW["API Gateway"]
@@ -84,10 +84,9 @@ flowchart TB
     CloudMap -. "Resolves service instances" .-> APIGW
     APIGW --> VPCLink["VPC Link"]
     VPCLink --> ECS["ECS"]
-
 ```
 
-![](architecture.drawio.png)
+![Request flow: Client to Route 53 to API Gateway to VPC Link to Cloud Map to ECS](architecture.drawio.png)
 
 Cloud Map handles the heavy lifting of service discovery for us. You can picture it as a phonebook where an entity is assigned entry.
 
