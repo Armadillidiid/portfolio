@@ -100,7 +100,7 @@ Instead of relying on a hardcoded list of IP addresses that gets stale over time
 
 For ECS, that means when a task gets launched, it registers it's reachable IP address and port into Cloud Map automatically.
 
-![](Pasted%20image%2020261016111117.png)
+![Cloud Map service instance details](cloud-map-service-instance.png)
 
 With that in place, API Gateway can now lookup the address of registered tasks and forward requests to them.
 
@@ -186,7 +186,7 @@ But if you have a service with a steady baseline threshold, Fargate might not be
 
 Punching into AWS calculator, running the bare minimum of 0.25 vCPU (which is complete buns btw) with 0.5 GB memory for a month straight will cost you ~$10
 
-![](Pasted%20image%2020261020134931.png)
+![Fargate monthly cost in the AWS calculator](fargate-cost-calculator.png)
 
 Oof. That's a huge no bueno for such little compute.
 
