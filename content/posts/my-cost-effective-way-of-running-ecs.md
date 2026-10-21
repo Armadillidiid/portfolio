@@ -34,7 +34,7 @@ And yeah, you’re right. But the catch is that you still need some way to get i
 
 Hence, Application Load Balancer enters the chat, which alone costs you about $19/month regardless if it's idle or not.
 
-Now think about that for a second... That's is the baseline cost before you've even touched other services. And if you have multiple long-lived environments, multiple that by how many you have as it's not really a resource you want to share across environment.
+Now think about that for a second... That is the baseline cost before you’ve even touched other services. And if you separate your long-lived environments per AWS account, multiply that by how many you have, as it’s not a resource you can share across accounts.
 
 It's not looking good, is it?
 
