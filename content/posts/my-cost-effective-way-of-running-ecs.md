@@ -26,7 +26,7 @@ You build your OCI image, push to a registry, and tell ECS to start a new deploy
 
 Pretty classic if you're coming from the world of Kubernetes.
 
-But unfortunately, the cloud bill for is a bit expensive for a solo project with zero users.
+But unfortunately, the cloud bill for ECS is a bit expensive for a solo project with zero users.
 
 "But ECS the service itself is free," I hear you say
 
@@ -50,15 +50,15 @@ But at a second look, the [comment](https://www.reddit.com/r/aws/comments/1syh0g
 
 To cut the long story short, the answer is YES! After some research, I discovered the dated AWS blog post where [private integrations with AWS Cloud Map](https://aws.amazon.com/about-aws/whats-new/2020/03/api-gateway-private-integrations-aws-elb-cloudmap-http-apis-release/) was announced for API Gateway.
 
-The release of this integration meant we could effectively swap API Gateway in place of an ALB as our public-facing entry point.
-
 ![Cloud Map Integration](cloud-map-integration.png)
+
+The release of this integration meant we could effectively swap API Gateway in place of an ALB as our public-facing entry point.
 
 If you're lost and don't see how it fits together, let me break it down.
 
 So API Gateway is a serverless router that handles incoming requests and forwards them to a destination. These destinations are what AWS calls "integrations".
 
-They're basically a routing rule that answers "where do I send this incoming request to"
+They're basically a routing rule that answers "where do I send this incoming request to?"
 
 There are a few types:
 
@@ -155,7 +155,7 @@ The old setup had a baseline cost just for existing. Whereas this new setup, we 
 
 Now, if i'm to be fair and play devil's advocate, there's a lot of reasons to eat the cost and pay for an ALB. You lose out on some of its features such weighted target groups, gRPC support, OIDC and login flow.
 
-You also need to consider API Gateway’s 10MB payload limit and how it selects Cloud Map targets. There's no round-bin as it randomly targets, compared to ALB which gives you target distribution controls.
+You also need to consider API Gateway’s 10MB payload limit and how it selects Cloud Map targets. There's no round-bin as it randomly select targets, compared to ALB which gives you target distribution controls.
 
 If you desire any of the above features, then yeah, picking an ALB is no brainer. But if not, API Gateway can be a decent way to cut your cloud bill.
 
