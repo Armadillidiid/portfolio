@@ -52,6 +52,8 @@ To cut the long story short, the answer is YES! After some research, I discovere
 
 The release of this integration meant we could effectively swap API Gateway in place of an ALB as our public-facing entry point.
 
+![Cloud Map Integration](cloud-map-integration.png)
+
 If you're lost and don't see how it fits together, let me break it down.
 
 So API Gateway is a serverless router that handles incoming requests and forwards them to a destination. These destinations are what AWS calls "integrations".
@@ -60,11 +62,13 @@ They're basically a routing rule that answers "where do I send this incoming req
 
 There are a few types:
 
-1. AWS integrations, such as a destination like an SQS queue or SNS topic.
-1. HTTP integrations, which send requests to a public URL.
+1. AWS service integrations, such as a destination like an SQS queue, SNS topic, EventBridge and friends.
+1. HTTP integration, which send requests to a public URL.
 1. Or for our use case, private integrations, such as [Cloud Map](https://docs.aws.amazon.com/cloud-map/latest/dg/what-is-cloud-map.html)
 
-Stay with me, we'll get to explain Cloud Map in a bit.
+![API Gateway Integration types](integration-types.png)
+
+We'll get to explain Cloud Map in a bit.
 
 The main catch for us is API Gateway is pay-per-request and it's dirt cheap. We're talking $1 per million requests, with no baseline hourly cost compared to an ALB.
 
