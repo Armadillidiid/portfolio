@@ -1,11 +1,11 @@
 ---
-title: My cost effective way of using ECS
+title: My cost effective way of running ECS
 date: 2026-10-20T18:00:00.000Z
 draft: false
 tags:
   - aws
   - devops
-cover: covers/my-cost-effective-way-of-using-ecs.jpg
+cover: covers/my-cost-effective-way-of-running-ecs.jpg
 ---
 
 Sometime around April, I made a [post](https://www.reddit.com/r/aws/comments/1syh0gl/whats_your_cicd_flow_for_a_containerized_app_on/) on r/aws asking about the best way to deploy containers on AWS other than using ECS.
