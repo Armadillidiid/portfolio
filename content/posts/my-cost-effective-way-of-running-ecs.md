@@ -1,6 +1,6 @@
 ---
 title: My cost effective way of running ECS
-date: 2026-10-20T18:00:00.000Z
+date: 2026-10-21T12:00:00.000Z
 draft: false
 tags:
   - aws
@@ -12,11 +12,11 @@ Sometime around April, I made a [post](https://www.reddit.com/r/aws/comments/1sy
 
 Why exclude ECS you might ask?
 
-Well, it comes down to one of these things we humans call money. Or, if we want to make it sound more fun, the Benjamins.
+Well, it comes down to one of these things we humans call money. Or, if we want sound more fun, Benjamins.
 
-At the time, I was working on a green field project and figured it was time to deploy it somewhere other than my MacBook.
+At the time, I was working on a green field project on a shoestring budget and figured it was time to deploy it somewhere other than my MacBook.
 
-I’d been using AWS for a couple of years. I wasn’t exactly a noob, but I definitely wouldn’t call myself an expert either. So I was genuinely curious the most cheapest way one could host a HTTP server that could scale.
+I’d been using AWS for a couple of years. I wasn’t exactly a noob, but I definitely wouldn’t call myself an expert either. So I was genuinely curious the most cheapest way one could host a HTTP server without trading in scalability.
 
 I personally took it up as a challenge.
 
