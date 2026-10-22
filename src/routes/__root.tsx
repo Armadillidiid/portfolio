@@ -12,11 +12,13 @@ function RootLayout() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const gtmId = import.meta.env.VITE_GTM_ID as string | undefined;
-    if (!gtmId) return;
-    const w = window as unknown as { dataLayer?: unknown[] };
-    w.dataLayer = w.dataLayer ?? [];
-    w.dataLayer.push({ event: "page_view", page_path: pathname });
+    const gaId = import.meta.env.VITE_GA_ID as string | undefined;
+    if (!gaId || typeof window.gtag !== "function") return;
+    window.gtag("event", "page_view", {
+      page_path: pathname,
+      page_location: window.location.href,
+      page_title: document.title,
+    });
   }, [pathname]);
 
   return (

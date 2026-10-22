@@ -43,7 +43,7 @@ This site is deployed to **Cloudflare Pages** (project: `portfolio`), not the Vo
 `pnpm build` runs `pnpm build:content && pnpm typecheck && pnpm build:client && pnpm build:ssr && pnpm build:prerender`. Output goes to `dist/client/`. Build env vars (set in Cloudflare Pages dashboard, not in the repo):
 
 - `VITE_SITE_URL` — absolute URL for og:image, sitemap, RSS. Production: `https://emmanuelisenah.com`.
-- `VITE_GTM_ID` — Google Tag Manager container ID, optional.
+- `VITE_GA_ID` — Google Analytics 4 tag ID (`G-XXXXXXX`), optional. When set, `page_view` is sent per route from `src/routes/__root.tsx`.
 
 ### Deploy (auto on push)
 
